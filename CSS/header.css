@@ -1,0 +1,45 @@
+/* ===== Header / Nav ===== */
+      header.site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(17, 21, 27, 0.7);
+        backdrop-filter: blur(var(--blur));
+        border-bottom: 1px solid var(--border);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        height: 64px;
+      }
+      .nav a.logo {
+        font-weight: 800;
+        letter-spacing: 0.3px;
+      }
+      .nav ul {
+        display: flex;
+        gap: 0.75rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .nav a.navlink {
+        padding: 0.6rem 0.9rem;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: 1px solid transparent;
+      }
+      .nav a.navlink:hover {
+        background: var(--chip);
+        border-color: var(--border);
+      }
+      .cta {
+        padding: 0.6rem 0.95rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        font-weight: 600;
+      }

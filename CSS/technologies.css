@@ -1,0 +1,53 @@
+/* ===== Technologies ===== */
+      .grid-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+      .chip {
+        padding: 0.55rem 0.9rem;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        font-weight: 700;
+        letter-spacing: 0.1px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        transition: transform 0.15s ease, filter 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+      .chip:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+      }
+      /* Color-ways: we blend brand color with dark bg to éviter l'effet criard */
+      .chip.angular {
+        background: color-mix(in oklab, var(--angular) 26%, #0f1319);
+      }
+      .chip.vue {
+        background: color-mix(in oklab, var(--vue) 28%, #0f1319);
+        color: #0b1f17;
+      }
+      .chip.nestjs {
+        background: color-mix(in oklab, var(--nestjs) 26%, #0f1319);
+      }
+      .chip.node {
+        background: color-mix(in oklab, var(--node) 26%, #0f1319);
+      }
+      .chip.docker {
+        background: color-mix(in oklab, var(--docker) 28%, #0f1319);
+      }
+      .chip.symfony {
+        background: color-mix(in oklab, var(--symfony) 32%, #0f1319);
+      }
+      .chip.elastic {
+        background: color-mix(in oklab, var(--elastic) 26%, #0f1319);
+      }
+      .chip.js {
+        background: color-mix(in oklab, var(--js) 22%, #0f1319);
+        color: #0e0e0e;
+      }
+      .chip.tailwind{
+        background: color-mix(in oklab, var(--tailwind) 28%, #0f1319);
+        color: #fff;
+      }

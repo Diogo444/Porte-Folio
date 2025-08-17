@@ -1,0 +1,9 @@
+/* ===== Sections ===== */
+      section {
+        padding: clamp(40px, 6vw, 72px) 0;
+        border-top: 1px solid var(--border);
+      }
+      .section-title {
+        font-size: 1.6rem;
+        margin: 0 0 1.2rem 0;
+      }

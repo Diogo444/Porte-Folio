@@ -1,0 +1,159 @@
+/* ===== Responsive ===== */
+      @media (max-width: 900px) {
+        .hero-wrap {
+          grid-template-columns: 1fr;
+          gap: 1.25rem;
+        }
+        .avatar {
+          justify-self: start;
+        }
+        .projects {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        .projects {
+          grid-template-columns: 1fr;
+        }
+        .nav ul {
+          display: none;
+        }
+      }
+      /* === Brand colors & responsive fixes (override) === */
+      :root {
+        --angular: #dd0031;
+        --vue: #42b883;
+        --nestjs: #e0234e;
+        --node: #339933;
+        --docker: #1d63ed;
+        --symfony: #000000;
+        --elastic: #00bfb3;
+        --js: #f7df1e;
+      }
+      /* Solid chips & tags with exact brand colors */
+      .chip.angular {
+        background: var(--angular);
+        color: #fff;
+      }
+      .chip.vue {
+        background: var(--vue);
+        color: #0b1f17;
+      }
+      .chip.nestjs {
+        background: var(--nestjs);
+        color: #fff;
+      }
+      .chip.node {
+        background: var(--node);
+        color: #fff;
+      }
+      .chip.docker {
+        background: var(--docker);
+        color: #fff;
+      }
+      .chip.symfony {
+        background: var(--symfony);
+        color: #fff;
+      }
+      .chip.elastic {
+        background: var(--elastic);
+        color: #0e1a18;
+      }
+      .chip.js {
+        background: var(--js);
+        color: #111;
+      }
+
+      .chip:hover {
+        filter: brightness(1.05);
+      }
+
+      .tag.angular {
+        background: var(--angular);
+        color: #fff;
+      }
+      .tag.vue {
+        background: var(--vue);
+        color: #0b1f17;
+      }
+      .tag.nestjs {
+        background: var(--nestjs);
+        color: #fff;
+      }
+      .tag.node {
+        background: var(--node);
+        color: #fff;
+      }
+      .tag.docker {
+        background: var(--docker);
+        color: #fff;
+      }
+      .tag.elastic {
+        background: var(--elastic);
+        color: #0e1a18;
+      }
+      .tag.symfony {
+        background: var(--symfony);
+        color: #fff;
+      }
+      .tag.js {
+        background: var(--js);
+        color: #111;
+      }
+
+      /* Layout & responsiveness */
+      .projects {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+      .hero-wrap {
+        grid-template-columns: minmax(120px, 160px) 1fr;
+      }
+      .avatar {
+        width: clamp(96px, 18vw, 160px);
+        height: clamp(96px, 18vw, 160px);
+      }
+      .nav {
+        flex-wrap: wrap;
+        row-gap: 0.5rem;
+      }
+
+      @media (max-width: 1200px) {
+        .container {
+          padding: 0 1rem;
+        }
+      }
+      @media (max-width: 992px) {
+        .hero-wrap {
+          grid-template-columns: 120px 1fr;
+          gap: 1.25rem;
+        }
+      }
+      @media (max-width: 768px) {
+        .nav {
+          justify-content: center;
+        }
+        .nav ul {
+          display: none;
+        }
+        .hero {
+          padding: 40px 0;
+        }
+        .hero-wrap {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .avatar {
+          margin-inline: auto;
+        }
+        .subtitle {
+          font-size: 1rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .tile {
+          padding: 0.5rem 0.75rem;
+        }
+        .chip {
+          padding: 0.5rem 0.75rem;
+        }
+      }
