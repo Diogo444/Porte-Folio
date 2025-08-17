@@ -20,9 +20,12 @@
       *::after {
         box-sizing: border-box;
       }
+     
       html,
       body {
         height: 100%;
+        scroll-behavior: smooth;
+
       }
       :root {
         /* Theme */
@@ -48,6 +51,7 @@
         --symfony: #000000;
         --elastic: #005571;
         --js: #f7df1e;
+        --tailwind: #38b2ac;
       }
       @media (prefers-color-scheme: light) {
         :root {
@@ -261,6 +265,10 @@
         background: color-mix(in oklab, var(--js) 22%, #0f1319);
         color: #0e0e0e;
       }
+      .chip.tailwind{
+        background: color-mix(in oklab, var(--tailwind) 28%, #0f1319);
+        color: #fff;
+      }
 
       /* ===== Projects ===== */
       .projects {
@@ -337,6 +345,10 @@
       .tag.js {
         background: color-mix(in oklab, var(--js) 22%, #0f1319);
         color: #0e0e0e;
+      }
+      .tag.tailwind {
+        background: color-mix(in oklab, var(--tailwind) 28%, #0f1319);
+        color: #fff;
       }
 
       .card-actions {
@@ -655,14 +667,15 @@
         <div class="container reveal">
           <h2 class="section-title">Technologies</h2>
           <div class="grid-chips" role="list">
+            <span class="chip tailwind" role="listitem">Tailwind CSS</span>
+            <span class="chip js" role="listitem">JavaScript</span>
             <span class="chip angular" role="listitem">Angular</span>
             <span class="chip vue" role="listitem">Vue.js</span>
-            <span class="chip nestjs" role="listitem">NestJS</span>
             <span class="chip node" role="listitem">Node.js</span>
-            <span class="chip docker" role="listitem">Docker</span>
+            <span class="chip nestjs" role="listitem">NestJS</span>
             <span class="chip symfony" role="listitem">Symfony</span>
-            <span class="chip elastic" role="listitem">Elastic</span>
-            <span class="chip js" role="listitem">JavaScript</span>
+            <span class="chip docker" role="listitem">Docker</span>
+            <span class="chip elastic" role="listitem">Elasticsearch</span>
           </div>
         </div>
       </section>
@@ -674,76 +687,74 @@
           <div class="projects">
             <!-- Projet 1 -->
             <article class="card">
-              <div class="thumb">Capture / Mockup</div>
+              <div class="thumb"><img src="./assets/img/project ginku.png" alt=""></div>
               <div class="card-body">
                 <h3>Ginku · App transports Besançon</h3>
                 <p class="muted">
                   Interface Vue.js pour horaires temps réel et itinéraires,
-                  backend Node/Nest et intégration API Ginko. Déploiement
+                  backend Node.js et intégration API Ginko. Déploiement
                   containerisé.
                 </p>
                 <div class="tags">
                   <span class="tag vue">Vue.js</span>
-                  <span class="tag nestjs">NestJS</span>
+                  <span class="tag node">Node.js</span>
                   <span class="tag docker">Docker</span>
                 </div>
                 <div class="card-actions">
                   <a
                     class="btn primary"
-                    href="#"
+                    href="https://ginku.diogo-andrade.org"
                     target="_blank"
                     rel="noreferrer"
                     >Voir la démo</a
                   >
-                  <a class="btn" href="#" target="_blank" rel="noreferrer"
+                  <a class="btn" href="https://github.com/Diogo444/Ginku" target="_blank" rel="noreferrer"
                     >Code source</a
                   >
                 </div>
               </div>
             </article>
-
-            <!-- Projet 2 -->
+           <!-- Projet 2 --> 
             <article class="card">
-              <div class="thumb">Capture / Mockup</div>
-              <div class="card-body">
-                <h3>Moteur de recherche DOCX</h3>
-                <p class="muted">
-                  Indexation Elasticsearch et interface légère pour retrouver
-                  rapidement des documents Word. Pipeline Node.js.
-                </p>
-                <div class="tags">
-                  <span class="tag angular">Angular</span>
-                  <span class="tag node">Node.js</span>
-                  <span class="tag elastic">Elastic</span>
-                </div>
-                <div class="card-actions">
-                  <a class="btn" href="#" target="_blank" rel="noreferrer"
-                    >Code source</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <!-- Projet 3 -->
+  <div class="thumb"><img src="./assets/img/project coursFinder.png" alt=""></div>
+  <div class="card-body">
+    <h3>CoursFinder · Moteur de recherche pour mes cours</h3>
+    <p class="muted">
+      Première expérience avec Elasticsearch, Vue.js et Tailwind CSS.  
+      Indexation de mes cours et recherche par mots-clés via une interface
+      simple et rapide.
+    </p>
+    <div class="tags">
+      <span class="tag vue">Vue.js</span>
+      <span class="tag tailwind">Tailwind CSS</span>
+      <span class="tag docker">Docker</span>
+      <span class="tag elastic">Elasticsearch</span>
+    </div>
+    <div class="card-actions">
+      <a class="btn" href="https://github.com/Diogo444/CoursFinder" target="_blank" rel="noreferrer">Code source</a>
+    </div>
+  </div>
+</article>
             <article class="card">
-              <div class="thumb">Capture / Mockup</div>
-              <div class="card-body">
-                <h3>Dashboard maison (Wake‑on‑LAN)</h3>
-                <p class="muted">
-                  Panneau web pour allumer/éteindre un serveur domestique. UI
-                  minimaliste, intégration WOL et commandes SSH.
-                </p>
-                <div class="tags">
-                  <span class="tag vue">Vue.js</span>
-                  <span class="tag node">Node.js</span>
-                </div>
-                <div class="card-actions">
-                  <a class="btn" href="#" target="_blank" rel="noreferrer"
-                    >Code source</a
-                  >
-                </div>
-              </div>
-            </article>
+  <div class="thumb"><img src="./assets/img/project Miam DV.png" alt=""></div>
+  <div class="card-body">
+    <h3>Miam DV · Menu de la semaine</h3>
+    <p class="muted">
+        Application web affichant le menu de la semaine de l’internat,
+      pensée pour être accessible aux jeunes malvoyants et non-voyants.
+    </p>
+    <div class="tags">
+      <span class="tag angular">Angular</span>
+      <span class="tag docker">Docker</span>
+    </div>
+    <div class="card-actions">
+      <a class="btn" href="https://github.com/Diogo444/Miam-DV" target="_blank" rel="noreferrer">Code source</a>
+    </div>
+  </div>
+</article>
+
+
+           
           </div>
         </div>
       </section>
