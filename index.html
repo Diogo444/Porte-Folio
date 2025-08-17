@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diogo Andrade – Portfolio</title>
+  <meta name="description" content="Portfolio de Diogo Andrade – Développeur Front‑end (Angular, Vue.js), NestJS, Node.js, Docker." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Reset & Base ===== */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    :root{
+      /* Theme */
+      --bg:#0b0e12;           /* page background */
+      --surface:#11151b;      /* card/nav background */
+      --muted:#8b97a6;        /* secondary text */
+      --text:#e6e9ef;         /* main text */
+      --primary:#7c3aed;      /* accent 1 */
+      --primary-2:#4f46e5;    /* accent 2 */
+      --ring:rgba(124,58,237,.35);
+      --border:#202632;       /* borders */
+      --chip:#0f1319;         /* chip bg */
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --blur:10px;
+      --container:1100px;
+      /* Brand colors */
+      --angular:#dd0031; --vue:#42b883; --nestjs:#e0234e; --node:#3c873a;
+      --docker:#2496ed; --symfony:#000000; --elastic:#005571; --js:#f7df1e;
+    }
+    @media (prefers-color-scheme: light){
+      :root{--bg:#f6f7fb;--surface:#ffffff;--text:#0b0e12;--muted:#5c6572;--border:#e6e8ee;--chip:#f0f3f8}
+    }
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* ===== Utilities ===== */
+    .container{max-width:var(--container);margin-inline:auto;padding:0 1.25rem}
+    .muted{color:var(--muted)}
+
+    /* ===== Header / Nav ===== */
+    header.site-header{position:sticky;top:0;z-index:50;background:rgba(17,21,27,.7);backdrop-filter:blur(var(--blur));border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:64px}
+    .nav a.logo{font-weight:800;letter-spacing:.3px}
+    .nav ul{display:flex;gap:.75rem;list-style:none;margin:0;padding:0}
+    .nav a.navlink{padding:.6rem .9rem;border-radius:999px;display:inline-flex;align-items:center;gap:.5rem;border:1px solid transparent}
+    .nav a.navlink:hover{background:var(--chip);border-color:var(--border)}
+    .cta{padding:.6rem .95rem;border-radius:999px;background:linear-gradient(135deg,var(--primary),var(--primary-2));font-weight:600}
+
+    /* ===== Hero ===== */
+    .hero{padding:clamp(48px,7vw,96px) 0}
+    .hero-wrap{display:grid;grid-template-columns:160px 1fr;gap:2rem;align-items:center}
+    .avatar{width:160px;height:160px;border-radius:50%;background:linear-gradient(180deg,#1b2130,#0c0f14);border:1px solid var(--border);box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .avatar img{width:100%;height:100%;object-fit:cover}
+    .avatar::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 2px rgba(255,255,255,.04)}
+    .hero h1{font-size:clamp(2rem,6vw,3.5rem);margin:0 0 .5rem 0;line-height:1.05}
+    .subtitle{color:var(--muted);font-size:clamp(1rem,2.4vw,1.2rem)}
+
+    .quick{margin-top:1.2rem;display:flex;flex-wrap:wrap;gap:.6rem}
+    .tile{--pad:.55rem;display:inline-flex;align-items:center;gap:.5rem;padding:var(--pad) .9rem;background:var(--chip);border:1px solid var(--border);border-radius:999px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+    .tile:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.25);border-color:var(--ring)}
+    .tile svg{width:18px;height:18px;opacity:.9}
+
+    /* ===== Sections ===== */
+    section{padding:clamp(40px,6vw,72px) 0;border-top:1px solid var(--border)}
+    .section-title{font-size:1.6rem;margin:0 0 1.2rem 0}
+
+    /* ===== Technologies ===== */
+    .grid-chips{display:flex;flex-wrap:wrap;gap:.6rem}
+    .chip{padding:.55rem .9rem;border-radius:999px;display:inline-flex;align-items:center;font-weight:700;letter-spacing:.1px;border:1px solid rgba(255,255,255,.06);
+      transition:transform .15s ease, filter .15s ease, box-shadow .15s ease}
+    .chip:hover{transform:translateY(-1px);filter:brightness(1.05);box-shadow:0 8px 16px rgba(0,0,0,.25)}
+    /* Color-ways: we blend brand color with dark bg to éviter l'effet criard */
+    .chip.angular{background:color-mix(in oklab, var(--angular) 26%, #0f1319)}
+    .chip.vue{background:color-mix(in oklab, var(--vue) 28%, #0f1319); color:#0b1f17}
+    .chip.nestjs{background:color-mix(in oklab, var(--nestjs) 26%, #0f1319)}
+    .chip.node{background:color-mix(in oklab, var(--node) 26%, #0f1319)}
+    .chip.docker{background:color-mix(in oklab, var(--docker) 28%, #0f1319)}
+    .chip.symfony{background:color-mix(in oklab, var(--symfony) 32%, #0f1319)}
+    .chip.elastic{background:color-mix(in oklab, var(--elastic) 26%, #0f1319)}
+    .chip.js{background:color-mix(in oklab, var(--js) 22%, #0f1319); color:#0e0e0e}
+
+    /* ===== Projects ===== */
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#18202b,#10151c);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+    .card-body{padding:1rem}
+    .card h3{margin:.2rem 0 .35rem;font-size:1.1rem}
+    .tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.5rem}
+    .tag{font-size:.85rem;padding:.35rem .65rem;border-radius:999px;font-weight:700;border:1px solid rgba(255,255,255,.06)}
+    .tag.angular{background:color-mix(in oklab, var(--angular) 26%, #0f1319); color:#fff}
+    .tag.vue{background:color-mix(in oklab, var(--vue) 28%, #0f1319); color:#0b1f17}
+    .tag.nestjs{background:color-mix(in oklab, var(--nestjs) 26%, #0f1319); color:#fff}
+    .tag.node{background:color-mix(in oklab, var(--node) 26%, #0f1319); color:#fff}
+    .tag.docker{background:color-mix(in oklab, var(--docker) 28%, #0f1319); color:#fff}
+    .tag.elastic{background:color-mix(in oklab, var(--elastic) 26%, #0f1319); color:#e6f7ff}
+    .tag.symfony{background:color-mix(in oklab, var(--symfony) 32%, #0f1319); color:#fff}
+    .tag.js{background:color-mix(in oklab, var(--js) 22%, #0f1319); color:#0e0e0e}
+
+    .card-actions{display:flex;gap:.6rem;margin-top:1rem}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .8rem;border-radius:10px;border:1px solid var(--border);background:var(--chip)}
+    .btn.primary{background:linear-gradient(135deg,var(--primary),var(--primary-2));border-color:transparent;color:white}
+
+    /* ===== About & Contact ===== */
+    .about p{max-width:70ch}
+
+    /* ===== Footer ===== */
+    footer{padding:28px 0;border-top:1px solid var(--border);color:var(--muted);text-align:center}
+
+    /* ===== Animations ===== */
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @media (prefers-reduced-motion: reduce){.tile,.btn,.reveal{transition:none}}
+
+    /* ===== Responsive ===== */
+    @media (max-width:900px){
+      .hero-wrap{grid-template-columns:1fr;gap:1.25rem}
+      .avatar{justify-self:start}
+      .projects{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:600px){
+      .projects{grid-template-columns:1fr}
+      .nav ul{display:none}
+    }
+    /* === Brand colors & responsive fixes (override) === */
+  :root{
+    --angular:#DD0031; --vue:#42B883; --nestjs:#E0234E; --node:#339933;
+    --docker:#1D63ED; --symfony:#000000; --elastic:#00BFB3; --js:#F7DF1E;
+  }
+  /* Solid chips & tags with exact brand colors */
+  .chip.angular{background:var(--angular); color:#fff}
+  .chip.vue{background:var(--vue); color:#0b1f17}
+  .chip.nestjs{background:var(--nestjs); color:#fff}
+  .chip.node{background:var(--node); color:#fff}
+  .chip.docker{background:var(--docker); color:#fff}
+  .chip.symfony{background:var(--symfony); color:#fff}
+  .chip.elastic{background:var(--elastic); color:#0e1a18}
+  .chip.js{background:var(--js); color:#111}
+
+  .chip:hover{filter:brightness(1.05)}
+
+  .tag.angular{background:var(--angular); color:#fff}
+  .tag.vue{background:var(--vue); color:#0b1f17}
+  .tag.nestjs{background:var(--nestjs); color:#fff}
+  .tag.node{background:var(--node); color:#fff}
+  .tag.docker{background:var(--docker); color:#fff}
+  .tag.elastic{background:var(--elastic); color:#0e1a18}
+  .tag.symfony{background:var(--symfony); color:#fff}
+  .tag.js{background:var(--js); color:#111}
+
+  /* Layout & responsiveness */
+  .projects{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+  .hero-wrap{grid-template-columns:minmax(120px,160px) 1fr;}
+  .avatar{width:clamp(96px,18vw,160px);height:clamp(96px,18vw,160px);}
+  .nav{flex-wrap:wrap;row-gap:.5rem}
+
+  @media (max-width:1200px){.container{padding:0 1rem}}
+  @media (max-width:992px){.hero-wrap{grid-template-columns:120px 1fr; gap:1.25rem}}
+  @media (max-width:768px){
+    .nav{justify-content:center}
+    .nav ul{display:none}
+    .hero{padding:40px 0}
+    .hero-wrap{grid-template-columns:1fr; text-align:center}
+    .avatar{margin-inline:auto}
+    .subtitle{font-size:1rem}
+  }
+  @media (max-width:480px){
+    .tile{padding:.5rem .75rem}
+    .chip{padding:.5rem .75rem}
+  }
+  </style>
+</head>
+<body>
+  <!-- ===== NAV ===== -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#home" class="logo">DA</a>
+      <ul>
+        <li><a class="navlink" href="#about">À propos</a></li>
+        <li><a class="navlink" href="#tech">Technologies</a></li>
+        <li><a class="navlink" href="#projects">Projets</a></li>
+        <li><a class="navlink" href="#contact">Contact</a></li>
+      </ul>
+      <a class="cta" href="assets/CV_Diogo_Andrade.pdf" download>Télécharger mon CV</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section id="home" class="hero">
+      <div class="container hero-wrap reveal">
+        <div class="avatar">
+          <img src="assets/diogo.jpg" alt="Photo de Diogo Andrade" />
+        </div>
+        <div>
+          <h1>Diogo Andrade</h1>
+          <p class="subtitle">Développeur Front‑end</p>
+
+          <!-- Tuiles de coordonnées -->
+          <div class="quick" aria-label="Liens rapides">
+            <a class="tile" href="mailto:diogo.andrade@example.com" aria-label="M'écrire par e‑mail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/><path d="m22 7-10 6L2 7"/></svg>
+              <span>Email</span>
+            </a>
+            <a class="tile" href="https://www.linkedin.com/in/diogo-andrade" target="_blank" rel="noreferrer" aria-label="Mon LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4zM8.5 8.5h3.8v2.1h.1c.5-1 1.8-2.1 3.7-2.1 3.9 0 4.6 2.6 4.6 6V24h-4v-7.1c0-1.7 0-3.9-2.4-3.9-2.4 0-2.7 1.9-2.7 3.8V24h-4z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a class="tile" href="https://github.com/diogo-andrade" target="_blank" rel="noreferrer" aria-label="Mon GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path fill-rule="evenodd" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.55v-2.1c-3.22.7-3.9-1.56-3.9-1.56-.53-1.35-1.29-1.71-1.29-1.71-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.11-.75.41-1.27.75-1.56-2.57-.29-5.27-1.29-5.27-5.76 0-1.27.45-2.31 1.2-3.13-.12-.29-.52-1.45.11-3.03 0 0 .98-.31 3.2 1.2.93-.26 1.92-.39 2.91-.39.99 0 1.98.13 2.91.39 2.22-1.51 3.2-1.2 3.2-1.2.63 1.58.23 2.74.11 3.03.75.82 1.2 1.86 1.2 3.13 0 4.49-2.71 5.46-5.29 5.75.42.36.81 1.07.81 2.17v3.22c0 .3.21.67.8.55A11.5 11.5 0 0 0 12 .5Z" clip-rule="evenodd"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== À PROPOS ===== -->
+    <section id="about" class="about">
+      <div class="container reveal">
+        <h2 class="section-title">À propos</h2>
+        <p class="muted">Développeur front‑end passionné par les interfaces épurées et performantes. Je travaille surtout avec Angular et Vue.js, et j’aime connecter le tout à des APIs NestJS/Node, avec un déploiement propre via Docker.</p>
+      </div>
+    </section>
+
+    <!-- ===== TECHNOLOGIES ===== -->
+    <section id="tech">
+      <div class="container reveal">
+        <h2 class="section-title">Technologies</h2>
+        <div class="grid-chips" role="list">
+          <span class="chip angular" role="listitem">Angular</span>
+          <span class="chip vue" role="listitem">Vue.js</span>
+          <span class="chip nestjs" role="listitem">NestJS</span>
+          <span class="chip node" role="listitem">Node.js</span>
+          <span class="chip docker" role="listitem">Docker</span>
+          <span class="chip symfony" role="listitem">Symfony</span>
+          <span class="chip elastic" role="listitem">Elastic</span>
+          <span class="chip js" role="listitem">JavaScript</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJETS ===== -->
+    <section id="projects">
+      <div class="container reveal">
+        <h2 class="section-title">Projets</h2>
+        <div class="projects">
+          <!-- Projet 1 -->
+          <article class="card">
+            <div class="thumb">Capture / Mockup</div>
+            <div class="card-body">
+              <h3>Ginku · App transports Besançon</h3>
+              <p class="muted">Interface Vue.js pour horaires temps réel et itinéraires, backend Node/Nest et intégration API Ginko. Déploiement containerisé.</p>
+              <div class="tags">
+                <span class="tag vue">Vue.js</span>
+                <span class="tag nestjs">NestJS</span>
+                <span class="tag docker">Docker</span>
+              </div>
+              <div class="card-actions">
+                <a class="btn primary" href="#" target="_blank" rel="noreferrer">Voir la démo</a>
+                <a class="btn" href="#" target="_blank" rel="noreferrer">Code source</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projet 2 -->
+          <article class="card">
+            <div class="thumb">Capture / Mockup</div>
+            <div class="card-body">
+              <h3>Moteur de recherche DOCX</h3>
+              <p class="muted">Indexation Elasticsearch et interface légère pour retrouver rapidement des documents Word. Pipeline Node.js.</p>
+              <div class="tags">
+                <span class="tag angular">Angular</span>
+                <span class="tag node">Node.js</span>
+                <span class="tag elastic">Elastic</span>
+              </div>
+              <div class="card-actions">
+                <a class="btn" href="#" target="_blank" rel="noreferrer">Code source</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projet 3 -->
+          <article class="card">
+            <div class="thumb">Capture / Mockup</div>
+            <div class="card-body">
+              <h3>Dashboard maison (Wake‑on‑LAN)</h3>
+              <p class="muted">Panneau web pour allumer/éteindre un serveur domestique. UI minimaliste, intégration WOL et commandes SSH.</p>
+              <div class="tags">
+                <span class="tag vue">Vue.js</span>
+                <span class="tag node">Node.js</span>
+              </div>
+              <div class="card-actions">
+                <a class="btn" href="#" target="_blank" rel="noreferrer">Code source</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+      <div class="container reveal">
+        <h2 class="section-title">Contact</h2>
+        <p class="muted">Un projet, une idée, une opportunité ? Écris‑moi ou retrouve‑moi sur les réseaux :</p>
+        <div class="quick" aria-label="Moyens de contact">
+          <a class="tile" href="mailto:diogo.andrade@example.com"><span>diogo.andrade@example.com</span></a>
+          <a class="tile" href="https://www.linkedin.com/in/diogo-andrade" target="_blank" rel="noreferrer"><span>LinkedIn</span></a>
+          <a class="tile" href="https://github.com/diogo-andrade" target="_blank" rel="noreferrer"><span>GitHub</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Diogo Andrade · Tous droits réservés</div>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
