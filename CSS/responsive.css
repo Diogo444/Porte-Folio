@@ -124,7 +124,7 @@
       }
       @media (max-width: 992px) {
         .hero-wrap {
-          grid-template-columns: 120px 1fr;
+          grid-template-columns: minmax(120px, 160px) 1fr;
           gap: 1.25rem;
         }
       }
