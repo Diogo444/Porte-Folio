@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Titre + description (clairs pour Google) -->
     <title>Diogo Andrade – Développeur Front-end (Angular, Vue.js, APIs)</title>
     <meta
       name="description"
@@ -12,10 +11,18 @@
     />
     <meta name="robots" content="index,follow" />
 
-    <!-- Version officielle de la page -->
+    <!-- Canonique HTTPS -->
     <link rel="canonical" href="https://diogo-andrade.org/" />
 
-    <!-- Open Graph / Twitter (aperçus réseaux + aide à Google) -->
+    <!-- Perfs polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Diogo Andrade" />
     <meta property="og:title" content="Diogo Andrade – Développeur Front-end" />
@@ -28,6 +35,9 @@
       property="og:image"
       content="https://diogo-andrade.org/og-image.jpg"
     />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="fr_FR" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -42,7 +52,30 @@
       content="https://diogo-andrade.org/og-image.jpg"
     />
 
-    <!-- Données structurées : Person + WebSite -->
+    <!-- PWA / UX -->
+    <meta name="theme-color" content="#111827" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Favicons (choisis racine OU /assets/, ici en racine) -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/android-chrome-512x512.png"
+    />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Données structurées -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -50,6 +83,7 @@
         "name": "Diogo Andrade",
         "jobTitle": "Développeur Front-end",
         "url": "https://diogo-andrade.org/",
+        "image": "https://diogo-andrade.org/android-chrome-192x192.png",
         "sameAs": [
           "https://github.com/Diogo444",
           "https://www.linkedin.com/in/diogo-andrade-3874b0305"
@@ -61,37 +95,26 @@
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "Diogo Andrade – Portfolio",
-        "url": "https://diogo-andrade.org/"
+        "url": "https://diogo-andrade.org/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://diogo-andrade.org/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
       }
     </script>
 
-    <!-- Favicon de base -->
-<link rel="icon" href="./assets/favicon.ico" sizes="any">
-
-<!-- Versions PNG -->
-<link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="./assets/img/android-chrome-192x192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="./assets/img/android-chrome-512x512.png">
-
-<!-- Apple iOS -->
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-<!-- Manifest (PWA / Android) -->
-<link rel="manifest" href="site.webmanifest">
-
-    <!-- Feuilles de style -->
-    <link rel="stylesheet" href="./CSS/styles.css" />
-    <link rel="stylesheet" href="./CSS/header.css" />
-    <link rel="stylesheet" href="./CSS/hero.css" />
-    <!-- ⚠️ Évite espaces & caractères spéciaux dans les noms de fichiers -->
-    <link rel="stylesheet" href="./CSS/about-contact.css" />
-    <link rel="stylesheet" href="./CSS/technologies.css" />
-    <link rel="stylesheet" href="./CSS/prooject.css" />
-    <link rel="stylesheet" href="./CSS/animations.css" />
-    <link rel="stylesheet" href="./CSS/responsive.css" />
-    <link rel="stylesheet" href="./CSS/sections.css" />
-    <link rel="stylesheet" href="./CSS/footer.css" />
+    <!-- CSS (vérifie le nom 'prooject.css' si c'est un typo) -->
+    <link rel="stylesheet" href="/CSS/styles.css" />
+    <link rel="stylesheet" href="/CSS/header.css" />
+    <link rel="stylesheet" href="/CSS/hero.css" />
+    <link rel="stylesheet" href="/CSS/about-contact.css" />
+    <link rel="stylesheet" href="/CSS/technologies.css" />
+    <link rel="stylesheet" href="/CSS/prooject.css" />
+    <link rel="stylesheet" href="/CSS/animations.css" />
+    <link rel="stylesheet" href="/CSS/responsive.css" />
+    <link rel="stylesheet" href="/CSS/sections.css" />
+    <link rel="stylesheet" href="/CSS/footer.css" />
   </head>
 
   <body>
