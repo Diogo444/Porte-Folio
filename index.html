@@ -508,5 +508,40 @@
         );
       })();
     </script>
+    <script>
+      (function () {
+        var link = document.querySelector('a.cta[href$=".pdf"]');
+        if (!link) return;
+        var url = link.href;
+
+        function downloadCv(e) {
+          if (!('fetch' in window) || !('URL' in window)) { return; }
+          e.preventDefault();
+          fetch(url, { cache: 'no-store' })
+            .then(function (res) {
+              if (!res.ok) throw new Error('HTTP ' + res.status);
+              return res.blob();
+            })
+            .then(function (blob) {
+              var blobUrl = URL.createObjectURL(blob);
+              var a = document.createElement('a');
+              a.href = blobUrl;
+              var pathname = (new URL(url, window.location.href)).pathname;
+              var name = decodeURIComponent(pathname.substring(pathname.lastIndexOf('/') + 1)) || 'CV.pdf';
+              a.download = name;
+              a.rel = 'noopener';
+              document.body.appendChild(a);
+              a.click();
+              a.remove();
+              setTimeout(function () { URL.revokeObjectURL(blobUrl); }, 4000);
+            })
+            .catch(function () {
+              window.location.href = url;
+            });
+        }
+
+        link.addEventListener('click', downloadCv, { passive: false });
+      })();
+    </script>
   </body>
 </html>
