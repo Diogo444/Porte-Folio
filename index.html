@@ -10,6 +10,7 @@
       content="Portfolio de Diogo Andrade – développeur front-end. Spécialités : Angular, Vue.js, intégration d’APIs (NestJS/Node), déploiement Docker. Interfaces épurées et performantes."
     />
     <meta name="robots" content="index,follow" />
+    <meta name="author" content="Diogo Andrade" />
 
     <!-- Canonique HTTPS -->
     <link rel="canonical" href="https://diogo-andrade.org/" />
@@ -33,10 +34,11 @@
     <meta property="og:url" content="https://diogo-andrade.org/" />
     <meta
       property="og:image"
-      content="https://diogo-andrade.org/og-image.jpg"
+      content="https://diogo-andrade.org/assets/img/android-chrome-512x512.png"
     />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="Portrait/portfolio de Diogo Andrade" />
     <meta property="og:locale" content="fr_FR" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -49,31 +51,32 @@
     />
     <meta
       name="twitter:image"
-      content="https://diogo-andrade.org/og-image.jpg"
+      content="https://diogo-andrade.org/assets/img/android-chrome-512x512.png"
     />
 
     <!-- PWA / UX -->
     <meta name="theme-color" content="#111827" />
     <meta name="color-scheme" content="light dark" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preload" as="image" href="/assets/img/android-chrome-192x192.png" />
 
-    <!-- Favicons (choisis racine OU /assets/, ici en racine) -->
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <!-- Favicons (utilisation du dossier /assets/img) -->
+    <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png" />
     <link
       rel="icon"
       type="image/png"
       sizes="192x192"
-      href="/android-chrome-192x192.png"
+      href="/assets/img/android-chrome-192x192.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="512x512"
-      href="/android-chrome-512x512.png"
+      href="/assets/img/android-chrome-512x512.png"
     />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
 
     <!-- Données structurées -->
     <script type="application/ld+json">
@@ -83,7 +86,7 @@
         "name": "Diogo Andrade",
         "jobTitle": "Développeur Front-end",
         "url": "https://diogo-andrade.org/",
-        "image": "https://diogo-andrade.org/android-chrome-192x192.png",
+        "image": "https://diogo-andrade.org/assets/img/android-chrome-192x192.png",
         "sameAs": [
           "https://github.com/Diogo444",
           "https://www.linkedin.com/in/diogo-andrade-3874b0305"
@@ -101,6 +104,46 @@
           "target": "https://diogo-andrade.org/?q={search_term_string}",
           "query-input": "required name=search_term_string"
         }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Projets de Diogo Andrade",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Ginku · App transports Besançon",
+              "url": "https://ginku.diogo-andrade.org",
+              "image": "https://diogo-andrade.org/assets/img/project%20ginku.png",
+              "sameAs": "https://github.com/Diogo444/Ginku"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "CoursFinder · Moteur de recherche",
+              "url": "https://github.com/Diogo444/CoursFinder",
+              "image": "https://diogo-andrade.org/assets/img/project%20coursFinder.png"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Miam DV · Menu de la semaine",
+              "url": "https://github.com/Diogo444/Miam-DV",
+              "image": "https://diogo-andrade.org/assets/img/project%20Miam%20DV.png"
+            }
+          }
+        ]
       }
     </script>
 
@@ -139,7 +182,7 @@
       <section id="home" class="hero">
         <div class="container hero-wrap reveal">
           <div class="avatar">
-            <img src="assets/diogo.jpg" alt="Photo de Diogo Andrade" />
+            <img src="/assets/img/android-chrome-192x192.png" alt="Photo de Diogo Andrade" width="160" height="160" fetchpriority="high" />
           </div>
           <div>
             <h1>Diogo Andrade</h1>
@@ -172,7 +215,7 @@
                 class="tile"
                 href="https://www.linkedin.com/in/diogo-andrade-3874b0305"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label="Mon LinkedIn"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
@@ -186,7 +229,7 @@
                 class="tile"
                 href="https://github.com/Diogo444"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label="Mon GitHub"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
@@ -245,6 +288,7 @@
                 <img
                   src="./assets/img/project ginku.png"
                   alt="Ginku : application transports Besançon (Vue.js + Node.js)"
+                  loading="lazy" decoding="async" width="800" height="450"
                 />
               </div>
               <div class="card-body">
@@ -264,14 +308,14 @@
                     class="btn primary"
                     href="https://ginku.diogo-andrade.org"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     >Voir la démo</a
                   >
                   <a
                     class="btn"
                     href="https://github.com/Diogo444/Ginku"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     >Code source</a
                   >
                 </div>
@@ -283,6 +327,7 @@
                 <img
                   src="./assets/img/project coursFinder.png"
                   alt="CoursFinder : moteur de recherche de cours (Vue.js + Elasticsearch)"
+                  loading="lazy" decoding="async" width="800" height="450"
                 />
               </div>
               <div class="card-body">
@@ -303,7 +348,7 @@
                     class="btn"
                     href="https://github.com/Diogo444/CoursFinder"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     >Code source</a
                   >
                 </div>
@@ -314,6 +359,7 @@
                 <img
                   src="./assets/img/project Miam DV.png"
                   alt="Miam DV : affichage menu hebdo, accessible (Angular)"
+                  loading="lazy" decoding="async" width="800" height="450"
                 />
               </div>
               <div class="card-body">
@@ -332,7 +378,7 @@
                     class="btn"
                     href="https://github.com/Diogo444/Miam-DV"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     >Code source</a
                   >
                 </div>
@@ -358,14 +404,14 @@
               class="tile"
               href="https://www.linkedin.com/in/diogo-andrade-3874b0305"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               ><span>LinkedIn</span></a
             >
             <a
               class="tile"
               href="https://github.com/Diogo444"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               ><span>GitHub</span></a
             >
           </div>
