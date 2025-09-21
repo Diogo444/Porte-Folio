@@ -442,6 +442,71 @@
 
       // Year
       document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Nav hide/show on scroll (robuste, sans hover au bord de l'écran)
+      (() => {
+        const header = document.querySelector("header.site-header");
+        if (!header) return;
+
+        let lastY = window.scrollY || 0;
+        let downStreak = 0;
+        let upStreak = 0;
+        const headerH = header.offsetHeight || 64;
+        const HIDE_THRESHOLD = Math.max(24, Math.floor(headerH / 2));
+        const SHOW_THRESHOLD = 12;
+        let ticking = false;
+
+        const handle = () => {
+          const y = window.scrollY || 0;
+
+          // Toujours visible tout en haut
+          if (y <= 0) {
+            header.classList.remove("is-hidden");
+            lastY = 0;
+            downStreak = 0;
+            upStreak = 0;
+            return;
+          }
+
+          const delta = Math.abs(y - lastY);
+          const goingDown = y > lastY;
+
+          if (goingDown) {
+            downStreak += delta;
+            upStreak = 0;
+            if (y > headerH && downStreak > HIDE_THRESHOLD) {
+              header.classList.add("is-hidden");
+            }
+          } else {
+            upStreak += delta;
+            downStreak = 0;
+            if (upStreak > SHOW_THRESHOLD) {
+              header.classList.remove("is-hidden");
+            }
+          }
+
+          lastY = y;
+        };
+
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (!ticking) {
+              window.requestAnimationFrame(() => {
+                handle();
+                ticking = false;
+              });
+              ticking = true;
+            }
+          },
+          { passive: true }
+        );
+
+        // Afficher si on navigue au clavier dans la nav
+        header.addEventListener("focusin", () =>
+          header.classList.remove("is-hidden")
+        );
+      })();
     </script>
   </body>
 </html>

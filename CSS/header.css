@@ -6,6 +6,20 @@
         background: rgba(17, 21, 27, 0.7);
         backdrop-filter: blur(var(--blur));
         border-bottom: 1px solid var(--border);
+        transition: transform 0.28s ease, background-color 0.2s ease,
+          border-color 0.2s ease;
+        will-change: transform;
+      }
+      header.site-header.is-hidden {
+        transform: translateY(-100%);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        header.site-header {
+          transition: none;
+        }
+        header.site-header.is-hidden {
+          transform: none; /* éviter les mouvements pour accessibilité */
+        }
       }
       @media (prefers-color-scheme: light) {
         header.site-header {
