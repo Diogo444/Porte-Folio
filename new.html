@@ -187,28 +187,6 @@
             background-color: #111827;
             background-image: linear-gradient(135deg, #111827 0%, #46010f 100%);
         }
-        
-        /* Détection automatique du mode sombre/clair du navigateur */
-        @media (prefers-color-scheme: dark) {
-            html:not(.light) {
-                color-scheme: dark;
-            }
-            html:not(.light) body {
-                background-color: #111827;
-                background-image: linear-gradient(135deg, #111827 0%, #46010f 100%);
-                color: #F3F4F6;
-            }
-        }
-        
-        @media (prefers-color-scheme: light) {
-            html:not(.dark) {
-                color-scheme: light;
-            }
-            html:not(.dark) body {
-                background-color: #FAFAFA;
-                color: #111827;
-            }
-        }
     </style>
 </head>
 <body class="bg-background-light text-text-light dark:text-text-dark font-display antialiased">
@@ -230,13 +208,7 @@
 <a class="text-sm font-medium hover:text-primary transition-colors" href="#projects">Projets</a>
 <a class="text-sm font-medium hover:text-primary transition-colors" href="#contact">Contact</a>
 </div>
-<button class="flex items-center justify-center size-10 rounded-lg bg-background-light dark:bg-card-dark border border-border-light dark:border-border-dark" onclick="(function() { 
-  var html = document.documentElement;
-  var isDark = html.classList.contains('dark');
-  html.classList.toggle('dark');
-  html.classList.toggle('light');
-  localStorage.setItem('theme', isDark ? 'light' : 'dark');
-})()">
+<button class="flex items-center justify-center size-10 rounded-lg bg-background-light dark:bg-card-dark border border-border-light dark:border-border-dark" onclick="document.documentElement.classList.toggle('dark')">
 <span class="material-symbols-outlined text-xl dark:hidden">dark_mode</span>
 <span class="material-symbols-outlined text-xl hidden dark:inline">light_mode</span>
 </button>
@@ -373,34 +345,6 @@
 </div>
 </body>
 <script>
-  // Détection automatique du mode sombre/clair au chargement
-  (function () {
-    // Vérifie s'il y a une préférence sauvegardée
-    var savedTheme = localStorage.getItem('theme');
-    
-    if (savedTheme) {
-      // Utilise la préférence sauvegardée
-      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-      document.documentElement.classList.toggle('light', savedTheme === 'light');
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      // Si pas de préférence sauvegardée, utilise la préférence système
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.add('light');
-    }
-    
-    // Écoute les changements de préférence système
-    if (window.matchMedia) {
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-        // Ne change que si l'utilisateur n'a pas défini de préférence manuelle
-        if (!localStorage.getItem('theme')) {
-          document.documentElement.classList.toggle('dark', e.matches);
-          document.documentElement.classList.toggle('light', !e.matches);
-        }
-      });
-    }
-  })();
-  
   (function () {
     var span = document.getElementById('year');
     if (span) {
