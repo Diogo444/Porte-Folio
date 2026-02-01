@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Ginku – Application de transports accessible pour Besançon | Diogo Andrade</title>
+  <meta name="description" content="Découvrez Ginku, une application web accessible pour consulter les horaires de bus et tramway à Besançon. Conçue pour les personnes déficientes visuelles avec Vue.js, Node.js et l'API Ginko."/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="author" content="Diogo Andrade"/>
+
+  <!-- Canonique -->
+  <link rel="canonical" href="https://diogo-andrade.org/projects/ginku.html"/>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Polices -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="Diogo Andrade"/>
+  <meta property="og:title" content="Ginku – Application de transports accessible pour Besançon"/>
+  <meta property="og:description" content="Application web accessible pour consulter les horaires de bus et tramway à Besançon. Conçue pour les personnes déficientes visuelles."/>
+  <meta property="og:url" content="https://diogo-andrade.org/projects/ginku.html"/>
+  <meta property="og:image" content="https://diogo-andrade.org/assets/img/project%20ginku.png"/>
+  <meta property="og:locale" content="fr_FR"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+
+  <!-- PWA -->
+  <meta name="theme-color" content="#111827"/>
+  <meta name="color-scheme" content="light dark"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+
+  <!-- Favicons -->
+  <link rel="icon" href="/assets/favicon.ico" sizes="any"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png"/>
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png"/>
+
+  <!-- Données structurées Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Ginku – Application de transports accessible pour Besançon",
+    "description": "Découvrez comment j'ai créé une application web accessible pour consulter les horaires de bus et tramway à Besançon, pensée pour les personnes déficientes visuelles.",
+    "author": {
+      "@type": "Person",
+      "name": "Diogo Andrade",
+      "url": "https://diogo-andrade.org"
+    },
+    "datePublished": "2025-01-15",
+    "dateModified": "2026-02-01",
+    "image": "https://diogo-andrade.org/assets/img/project%20ginku.png",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://diogo-andrade.org/projects/ginku.html"
+    }
+  }
+  </script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#DD0031",
+            "secondary": "#E0234E",
+            "background-light": "#FAFAFA",
+            "background-dark": "#111827",
+            "text-light": "#111827",
+            "text-dark": "#F3F4F6",
+            "card-light": "#FFFFFF",
+            "card-dark": "#1F2937",
+            "border-light": "#E5E7EB",
+            "border-dark": "#374151"
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="/CSS/article.css"/>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #FAFAFA; }
+    .dark body {
+      background-color: #111827;
+      background-image: linear-gradient(135deg, #111827 0%, #46010f 100%);
+    }
+    @media (prefers-color-scheme: dark) {
+      html:not(.light) body {
+        background-color: #111827;
+        background-image: linear-gradient(135deg, #111827 0%, #46010f 100%);
+        color: #F3F4F6;
+      }
+    }
+    @media (prefers-color-scheme: light) {
+      html:not(.dark) body {
+        background-color: #FAFAFA;
+        color: #111827;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark font-display antialiased">
+  <div class="relative w-full overflow-x-hidden min-h-screen flex flex-col">
+    
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-center bg-card-light/80 dark:bg-card-dark/80 backdrop-blur-sm border-b border-border-light dark:border-border-dark">
+      <nav class="flex items-center justify-between w-full max-w-5xl px-6 py-4">
+        <a class="flex items-center gap-3" href="/">
+          <div class="size-6 text-primary">
+            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor"></path>
+            </svg>
+          </div>
+          <h2 class="text-lg font-bold leading-tight">Diogo Andrade</h2>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/#about">À propos</a>
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/#skills">Technologies</a>
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/#projects">Projets</a>
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/#contact">Contact</a>
+        </div>
+        <button class="flex items-center justify-center size-10 rounded-lg bg-background-light dark:bg-card-dark border border-border-light dark:border-border-dark" onclick="(function() { 
+          var html = document.documentElement;
+          var isDark = html.classList.contains('dark');
+          html.classList.toggle('dark');
+          html.classList.toggle('light');
+          localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        })()">
+          <span class="material-symbols-outlined text-xl dark:hidden">dark_mode</span>
+          <span class="material-symbols-outlined text-xl hidden dark:inline">light_mode</span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="flex-grow pt-16">
+      
+      <!-- Hero Image -->
+      <div class="article-hero" style="background-image: url('/assets/img/project ginku.png');">
+        <div class="article-hero-content fade-in">
+          <span class="inline-block px-3 py-1 mb-3 text-sm font-semibold bg-primary text-white rounded-full">Projet Personnel</span>
+          <h1>Ginku · Application de transports accessible</h1>
+          <p class="subtitle">Une alternative accessible pour consulter les horaires de bus et tramway à Besançon</p>
+        </div>
+      </div>
+
+      <!-- Back Link -->
+      <div class="max-w-5xl mx-auto px-6 pt-8">
+        <a href="/#projects" class="back-link bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary">
+          <span class="material-symbols-outlined">arrow_back</span>
+          Retour aux projets
+        </a>
+      </div>
+
+      <!-- Article Content -->
+      <article class="article-container">
+        <div class="article-content">
+
+          <!-- Introduction -->
+          <section class="fade-in fade-in-delay-1">
+            <h2>🎯 Pourquoi ce projet ?</h2>
+            <p>
+              En tant que personne <strong>déficiente visuelle</strong>, j'ai toujours été confronté à des applications mobiles 
+              et web qui ne prenaient pas en compte les besoins d'accessibilité. L'application officielle <strong>Ginko</strong> 
+              de Besançon, bien que fonctionnelle, présentait des lacunes importantes pour les utilisateurs de synthèse vocale 
+              et ceux ayant des difficultés visuelles.
+            </p>
+            <p>
+              C'est de cette frustration qu'est née <strong>Ginku</strong> : une application web pensée dès le départ pour être 
+              <strong>accessible à tous</strong>. Mon objectif était simple : permettre à n'importe qui de consulter les horaires 
+              de bus et de tramway de manière fluide, que ce soit avec ou sans assistance technologique.
+            </p>
+
+            <div class="info-box">
+              <p><strong>💡 Le saviez-vous ?</strong> En France, environ 1,7 million de personnes sont atteintes d'un trouble de la vision. 
+              L'accessibilité numérique n'est pas un luxe, c'est une nécessité.</p>
+            </div>
+          </section>
+
+          <!-- Fonctionnalités -->
+          <section class="fade-in fade-in-delay-2">
+            <h2>✨ Fonctionnalités principales</h2>
+            <p>
+              Ginku a été conçue pour offrir une expérience utilisateur simplifiée tout en restant complète. 
+              Voici les principales fonctionnalités disponibles :
+            </p>
+
+            <div class="feature-grid">
+              <div class="feature-card">
+                <div class="icon">🕐</div>
+                <h4>Horaires en temps réel</h4>
+                <p>Consultez les prochains passages de bus et tramway avec une mise à jour automatique des données.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">🚌</div>
+                <h4>Toutes les lignes</h4>
+                <p>Accédez à l'ensemble des lignes du réseau Ginko : bus, tramway et lignes spéciales.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">⚠️</div>
+                <h4>Infos trafic</h4>
+                <p>Restez informé des perturbations, travaux et modifications de parcours en cours.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">⭐</div>
+                <h4>Lignes favorites</h4>
+                <p>Enregistrez vos lignes préférées pour y accéder rapidement depuis la page d'accueil.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">🔍</div>
+                <h4>Recherche rapide</h4>
+                <p>Trouvez une ligne ou un arrêt en quelques caractères grâce à la barre de recherche intelligente.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">🔊</div>
+                <h4>Compatible synthèse vocale</h4>
+                <p>Navigation entièrement accessible aux lecteurs d'écran (VoiceOver, NVDA, JAWS).</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Technologies -->
+          <section class="fade-in fade-in-delay-3">
+            <h2>🛠️ Stack technique</h2>
+            <p>
+              Pour développer Ginku, j'ai choisi une stack moderne et performante qui me permettait 
+              d'itérer rapidement tout en garantissant une excellente expérience utilisateur.
+            </p>
+
+            <h3>Frontend</h3>
+            <div class="tech-stack">
+              <span class="tech-badge" style="background-color: #4FC08D; color: #0b1f17;">Vue.js 3</span>
+              <span class="tech-badge" style="background-color: #646CFF; color: white;">Vite</span>
+              <span class="tech-badge" style="background-color: #06B6D4; color: black;">Tailwind CSS</span>
+              <span class="tech-badge" style="background-color: #5A29E4; color: white;">Axios</span>
+              <span class="tech-badge" style="background-color: #FF6A00; color: white;">Vue Router</span>
+            </div>
+            <p>
+              <strong>Vue.js 3</strong> avec la Composition API offre une excellente réactivité et une structure de code claire. 
+              Couplé à <strong>Vite</strong> pour un rechargement instantané en développement, le workflow est extrêmement fluide. 
+              <strong>Tailwind CSS</strong> permet de créer rapidement une interface cohérente et responsive.
+            </p>
+
+            <h3>Backend</h3>
+            <div class="tech-stack">
+              <span class="tech-badge" style="background-color: #339933; color: white;">Node.js</span>
+              <span class="tech-badge" style="background-color: #000000; color: white;">Express</span>
+              <span class="tech-badge" style="background-color: #ECD53F; color: black;">dotenv</span>
+            </div>
+            <p>
+              Le backend <strong>Node.js</strong> avec <strong>Express</strong> sert de proxy entre le frontend et l'API officielle Ginko. 
+              Ce choix architectural permet de :
+            </p>
+            <ul>
+              <li><strong>Sécuriser la clé API</strong> : elle n'est jamais exposée côté client</li>
+              <li><strong>Mettre en cache les réponses</strong> : réduction des appels API et amélioration des performances</li>
+              <li><strong>Transformer les données</strong> : adaptation du format pour le frontend</li>
+            </ul>
+
+            <h3>Déploiement</h3>
+            <div class="tech-stack">
+              <span class="tech-badge" style="background-color: #2496ED; color: white;">Docker</span>
+              <span class="tech-badge" style="background-color: #1F88C9; color: white;">Caddy</span>
+              <span class="tech-badge" style="background-color: #F69220; color: white;">pnpm</span>
+            </div>
+            <p>
+              L'application est containerisée avec <strong>Docker</strong> pour garantir un déploiement reproductible. 
+              <strong>Caddy</strong> sert de serveur web pour les fichiers statiques et de reverse proxy pour router les requêtes 
+              vers le bon service.
+            </p>
+          </section>
+
+          <!-- Architecture -->
+          <section class="fade-in fade-in-delay-4">
+            <h2>🏗️ Architecture du projet</h2>
+            <p>
+              Ginku suit une architecture classique mais efficace, séparant clairement le frontend du backend :
+            </p>
+
+            <div class="architecture-box">
+              <div class="architecture-flow">
+                <div class="arch-item bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark">
+                  <div class="icon">👤</div>
+                  <span>Utilisateur</span>
+                </div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-item bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark">
+                  <div class="icon">🌐</div>
+                  <span>Caddy</span>
+                </div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-item bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark">
+                  <div class="icon">💚</div>
+                  <span>Vue.js SPA</span>
+                </div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-item bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark">
+                  <div class="icon">🟢</div>
+                  <span>Backend Node</span>
+                </div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-item bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark">
+                  <div class="icon">🚌</div>
+                  <span>API Ginko</span>
+                </div>
+              </div>
+
+              <div class="mt-6 text-sm opacity-80">
+                <p><strong>Flux de données :</strong></p>
+                <ol class="list-decimal list-inside space-y-1 mt-2">
+                  <li>L'utilisateur accède à l'application via son navigateur</li>
+                  <li>Caddy sert les fichiers statiques Vue.js (SPA)</li>
+                  <li>Le frontend effectue des requêtes vers <code>/api/*</code></li>
+                  <li>Caddy route ces requêtes vers le backend Node.js</li>
+                  <li>Le backend ajoute la clé API et interroge l'API Ginko officielle</li>
+                  <li>Les données sont mises en cache (TTL ~60s) puis renvoyées au frontend</li>
+                </ol>
+              </div>
+            </div>
+
+            <h3>Structure des fichiers</h3>
+            <div class="code-block">
+              <code>
+ginku/<br>
+├── front/           # SPA Vue 3 (Vite + Tailwind)<br>
+│   ├── src/<br>
+│   │   ├── components/<br>
+│   │   ├── views/<br>
+│   │   └── router/<br>
+│   └── .env.development<br>
+├── backend/         # API Express (proxy)<br>
+│   ├── routes/<br>
+│   ├── middleware/<br>
+│   └── .env<br>
+├── docker-compose.yml<br>
+├── Caddyfile<br>
+└── pnpm-workspace.yaml
+              </code>
+            </div>
+          </section>
+
+          <!-- Défis et apprentissages -->
+          <section>
+            <h2>🧗 Défis rencontrés</h2>
+            <p>
+              Ce projet m'a permis de surmonter plusieurs défis techniques et de développer de nouvelles compétences :
+            </p>
+
+            <h3>1. Accessibilité ARIA</h3>
+            <p>
+              Rendre une application véritablement accessible ne se limite pas à ajouter quelques attributs <code>alt</code>. 
+              J'ai dû apprendre les bonnes pratiques ARIA, structurer le HTML sémantiquement, gérer le focus clavier, 
+              et tester régulièrement avec des lecteurs d'écran comme NVDA et VoiceOver.
+            </p>
+
+            <h3>2. Gestion du cache</h3>
+            <p>
+              Trouver le bon équilibre entre fraîcheur des données et performance a nécessité plusieurs itérations. 
+              Un TTL de 60 secondes s'est avéré optimal pour les horaires en temps réel.
+            </p>
+
+            <h3>3. Configuration Docker multi-services</h3>
+            <p>
+              Orchestrer frontend, backend et reverse proxy dans Docker Compose tout en gérant les réseaux et 
+              les variables d'environnement a été formateur. La documentation de chaque étape dans le README 
+              facilite maintenant le déploiement.
+            </p>
+
+            <div class="info-box tip">
+              <p><strong>💪 Ce que j'ai appris :</strong> L'accessibilité doit être pensée dès la conception, pas ajoutée après coup. 
+              Chaque décision d'UI a un impact sur l'expérience des utilisateurs de technologies d'assistance.</p>
+            </div>
+          </section>
+
+          <!-- CTA -->
+          <section>
+            <h2>🚀 Essayez Ginku</h2>
+            <p>
+              L'application est disponible en ligne et le code source est ouvert. 
+              N'hésitez pas à l'essayer et à contribuer !
+            </p>
+
+            <div class="cta-section">
+              <a href="https://ginku.diogo-andrade.org" target="_blank" rel="noopener noreferrer" 
+                 class="bg-primary text-white hover:opacity-90">
+                <span class="material-symbols-outlined">open_in_new</span>
+                Voir la démo en ligne
+              </a>
+              <a href="https://github.com/Diogo444/Ginku" target="_blank" rel="noopener noreferrer"
+                 class="bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary">
+                <span class="material-symbols-outlined">code</span>
+                Code source sur GitHub
+              </a>
+            </div>
+          </section>
+
+        </div>
+      </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-border-light dark:border-border-dark mt-16">
+      <div class="max-w-5xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center text-sm">
+        <p class="text-text-light/70 dark:text-text-dark/70">© <span id="year"></span> Diogo Andrade. Tous droits réservés.</p>
+        <a class="flex items-center gap-2 mt-4 sm:mt-0 text-text-light/70 dark:text-text-dark/70 hover:text-primary transition-colors" href="/#projects">
+          Voir tous les projets
+          <span class="material-symbols-outlined text-lg">arrow_forward</span>
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Theme detection
+    (function () {
+      var savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+        document.documentElement.classList.toggle('light', savedTheme === 'light');
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.add('light');
+      }
+    })();
+
+    // Year
+    (function () {
+      var span = document.getElementById('year');
+      if (span) span.textContent = new Date().getFullYear();
+    })();
+
+    // Intersection Observer for animations
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in').forEach(function(el) {
+        el.style.animationPlayState = 'paused';
+        observer.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>

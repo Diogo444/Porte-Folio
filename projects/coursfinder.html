@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>CoursFinder – Moteur de recherche pour mes cours avec Elasticsearch | Diogo Andrade</title>
+  <meta name="description" content="Découvrez CoursFinder, un moteur de recherche personnel pour retrouver instantanément n'importe quel contenu dans mes documents de cours grâce à Elasticsearch et Vue.js."/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="author" content="Diogo Andrade"/>
+
+  <!-- Canonique -->
+  <link rel="canonical" href="https://diogo-andrade.org/projects/coursfinder.html"/>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Polices -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="Diogo Andrade"/>
+  <meta property="og:title" content="CoursFinder – Moteur de recherche pour mes cours avec Elasticsearch"/>
+  <meta property="og:description" content="Un moteur de recherche personnel pour retrouver instantanément n'importe quel contenu dans mes documents de cours."/>
+  <meta property="og:url" content="https://diogo-andrade.org/projects/coursfinder.html"/>
+  <meta property="og:image" content="https://diogo-andrade.org/assets/img/project%20coursFinder.png"/>
+  <meta property="og:locale" content="fr_FR"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+
+  <!-- PWA -->
+  <meta name="theme-color" content="#111827"/>
+  <meta name="color-scheme" content="light dark"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+
+  <!-- Favicons -->
+  <link rel="icon" href="/assets/favicon.ico" sizes="any"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png"/>
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png"/>
+
+  <!-- Données structurées Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "CoursFinder – Moteur de recherche pour mes cours avec Elasticsearch",
+    "description": "Découvrez comment j'ai créé un moteur de recherche personnel pour indexer et retrouver instantanément mes documents de cours grâce à Elasticsearch.",
+    "author": {
+      "@type": "Person",
+      "name": "Diogo Andrade",
+      "url": "https://diogo-andrade.org"
+    },
+    "datePublished": "2025-03-10",
+    "dateModified": "2026-02-01",
+    "image": "https://diogo-andrade.org/assets/img/project%20coursFinder.png",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://diogo-andrade.org/projects/coursfinder.html"
+    }
+  }
+  </script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#DD0031",
+            "secondary": "#E0234E",
+            "background-light": "#FAFAFA",
+            "background-dark": "#111827",
+            "text-light": "#111827",
+            "text-dark": "#F3F4F6",
+            "card-light": "#FFFFFF",
+            "card-dark": "#1F2937",
+            "border-light": "#E5E7EB",
+            "border-dark": "#374151"
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="/CSS/article.css"/>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #FAFAFA; }
+    .dark body {
+      background-color: #111827;
+      background-image: linear-gradient(135deg, #111827 0%, #46010f 100%);
+    }
+    @media (prefers-color-scheme: dark) {
+      html:not(.light) body {
+        background-color: #111827;
+        background-image: linear-gradient(135deg, #111827 0%, #46010f 100%);
+        color: #F3F4F6;
+      }
+    }
+    @media (prefers-color-scheme: light) {
+      html:not(.dark) body {
+        background-color: #FAFAFA;
+        color: #111827;
+      }
+    }
+    
+    /* Elasticsearch colors */
+    .elastic-gradient {
+      background: linear-gradient(135deg, #005571 0%, #00bfb3 100%);
+    }
+  </style>
+</head>
+
+<body class="bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark font-display antialiased">
+  <div class="relative w-full overflow-x-hidden min-h-screen flex flex-col">
+    
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-center bg-card-light/80 dark:bg-card-dark/80 backdrop-blur-sm border-b border-border-light dark:border-border-dark">
+      <nav class="flex items-center justify-between w-full max-w-5xl px-6 py-4">
+        <a class="flex items-center gap-3" href="/">
+          <div class="size-6 text-primary">
+            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor"></path>
+            </svg>
+          </div>
+          <h2 class="text-lg font-bold leading-tight">Diogo Andrade</h2>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/#about">À propos</a>
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/#skills">Technologies</a>
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/#projects">Projets</a>
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/#contact">Contact</a>
+        </div>
+        <button class="flex items-center justify-center size-10 rounded-lg bg-background-light dark:bg-card-dark border border-border-light dark:border-border-dark" onclick="(function() { 
+          var html = document.documentElement;
+          var isDark = html.classList.contains('dark');
+          html.classList.toggle('dark');
+          html.classList.toggle('light');
+          localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        })()">
+          <span class="material-symbols-outlined text-xl dark:hidden">dark_mode</span>
+          <span class="material-symbols-outlined text-xl hidden dark:inline">light_mode</span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="flex-grow pt-16">
+      
+      <!-- Hero Image -->
+      <div class="article-hero" style="background-image: url('/assets/img/project coursFinder.png');">
+        <div class="article-hero-content fade-in">
+          <span class="inline-block px-3 py-1 mb-3 text-sm font-semibold bg-[#005571] text-white rounded-full">Expérimentation</span>
+          <h1>CoursFinder · Moteur de recherche pour mes cours</h1>
+          <p class="subtitle">Ma première exploration d'Elasticsearch pour indexer et rechercher dans mes documents</p>
+        </div>
+      </div>
+
+      <!-- Back Link -->
+      <div class="max-w-5xl mx-auto px-6 pt-8">
+        <a href="/#projects" class="back-link bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary">
+          <span class="material-symbols-outlined">arrow_back</span>
+          Retour aux projets
+        </a>
+      </div>
+
+      <!-- Article Content -->
+      <article class="article-container">
+        <div class="article-content">
+
+          <!-- Introduction -->
+          <section class="fade-in fade-in-delay-1">
+            <h2>🎯 L'idée de départ</h2>
+            <p>
+              Tout est parti d'une curiosité technique. On m'avait parlé d'<strong>Elasticsearch</strong> comme d'un outil 
+              extraordinaire : un moteur de recherche ultra-puissant capable d'indexer n'importe quel type de données JSON 
+              et de les rendre instantanément recherchables. La promesse était alléchante : <em>"Tu balances tes données, 
+              et Elasticsearch s'occupe du reste."</em>
+            </p>
+            <p>
+              Plutôt que de suivre un tutoriel générique, j'ai voulu appliquer cette technologie à un <strong>problème concret</strong> 
+              que je rencontrais au quotidien : retrouver rapidement une information précise parmi tous mes documents de cours. 
+              Qui n'a jamais passé de longues minutes à chercher "dans quel PDF j'avais vu ce schéma" ou "où était cette définition" ?
+            </p>
+
+            <div class="info-box">
+              <p><strong>🔍 Le concept :</strong> Uploader mes fichiers Word, extraire automatiquement le texte et le titre, 
+              puis pouvoir rechercher n'importe quel mot ou expression à travers l'ensemble de mes cours en une fraction de seconde.</p>
+            </div>
+          </section>
+
+          <!-- Comment ça marche -->
+          <section class="fade-in fade-in-delay-2">
+            <h2>⚙️ Comment ça fonctionne ?</h2>
+            <p>
+              Le principe de CoursFinder est relativement simple, mais son implémentation m'a permis d'explorer 
+              plusieurs concepts intéressants :
+            </p>
+
+            <div class="feature-grid">
+              <div class="feature-card">
+                <div class="icon">📄</div>
+                <h4>Upload de documents</h4>
+                <p>L'interface permet d'uploader des fichiers Word (.docx) contenant mes notes de cours.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">🔤</div>
+                <h4>Extraction de texte</h4>
+                <p>Le contenu textuel est extrait automatiquement, ainsi que le titre du document.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">📊</div>
+                <h4>Indexation Elasticsearch</h4>
+                <p>Les données sont envoyées à Elasticsearch qui les indexe pour une recherche ultra-rapide.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">🔎</div>
+                <h4>Recherche instantanée</h4>
+                <p>Une simple requête permet de retrouver tous les documents contenant un terme précis.</p>
+              </div>
+            </div>
+
+            <!-- Architecture -->
+            <div class="architecture-box">
+              <h3 class="text-lg font-bold mb-4">Flux de données</h3>
+              <div class="architecture-flow">
+                <div class="arch-item bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark">
+                  <div class="icon">📁</div>
+                  <span>Fichier .docx</span>
+                </div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-item bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark">
+                  <div class="icon">🔄</div>
+                  <span>Extraction</span>
+                </div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-item bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark">
+                  <div class="icon">📋</div>
+                  <span>JSON</span>
+                </div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-item elastic-gradient text-white">
+                  <div class="icon">🔍</div>
+                  <span>Elasticsearch</span>
+                </div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-item bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark">
+                  <div class="icon">✨</div>
+                  <span>Résultats</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Technologies -->
+          <section class="fade-in fade-in-delay-3">
+            <h2>🛠️ Stack technique</h2>
+            <p>
+              Pour ce projet d'exploration, j'ai opté pour des technologies que je maîtrisais déjà côté frontend, 
+              afin de me concentrer pleinement sur l'apprentissage d'Elasticsearch.
+            </p>
+
+            <h3>Frontend</h3>
+            <div class="tech-stack">
+              <span class="tech-badge" style="background-color: #4FC08D; color: #0b1f17;">Vue.js</span>
+              <span class="tech-badge" style="background-color: #06B6D4; color: black;">Tailwind CSS</span>
+            </div>
+            <p>
+              Une interface simple et épurée avec <strong>Vue.js</strong> et <strong>Tailwind CSS</strong>. 
+              Pas besoin de fioritures : un champ d'upload, une barre de recherche, et une liste de résultats. 
+              L'objectif était d'avoir un prototype fonctionnel rapidement pour tester Elasticsearch.
+            </p>
+
+            <h3>Backend & Base de données</h3>
+            <div class="tech-stack">
+              <span class="tech-badge" style="background-color: #005571; color: white;">Elasticsearch</span>
+              <span class="tech-badge" style="background-color: #F7DF1E; color: black;">JavaScript</span>
+            </div>
+            <p>
+              <strong>Elasticsearch</strong> est le cœur du projet. C'est un moteur de recherche distribué, 
+              construit sur Apache Lucene, qui excelle dans la recherche full-text. Contrairement à une base 
+              de données relationnelle classique, Elasticsearch est optimisé pour :
+            </p>
+            <ul>
+              <li><strong>La recherche textuelle</strong> : analyse linguistique, stemming, fuzzy matching</li>
+              <li><strong>La rapidité</strong> : résultats en millisecondes même sur de gros volumes</li>
+              <li><strong>La pertinence</strong> : scoring automatique des résultats par relevance</li>
+            </ul>
+          </section>
+
+          <!-- Défis -->
+          <section>
+            <h2>🧗 Le défi : configurer Elasticsearch</h2>
+            <p>
+              Si la partie frontend s'est construite rapidement, la mise en place d'Elasticsearch a été une 
+              tout autre histoire. C'est là que j'ai vraiment appris, et parfois souffert !
+            </p>
+
+            <h3>Les obstacles rencontrés</h3>
+            
+            <div class="info-box warning">
+              <p><strong>⚠️ Paramètres de sécurité :</strong> Les versions récentes d'Elasticsearch activent 
+              par défaut une authentification stricte (HTTPS, certificats, utilisateurs). Désactiver ou configurer 
+              correctement ces options pour un environnement de développement local demande de bien comprendre 
+              la documentation.</p>
+            </div>
+
+            <p>
+              <strong>Incompatibilités de versions</strong> : Elasticsearch évolue rapidement, et les tutoriels 
+              trouvés en ligne référençaient souvent des versions obsolètes. Une commande qui fonctionnait en v7 
+              pouvait échouer en v8. J'ai dû apprendre à naviguer dans la documentation officielle plutôt que 
+              de me fier aux articles de blog périmés.
+            </p>
+
+            <p>
+              <strong>Tutoriels gratuits rares</strong> : Beaucoup de ressources de qualité sont derrière des 
+              paywalls ou orientées vers la version cloud payante. Trouver des guides à jour pour une installation 
+              locale et gratuite a nécessité pas mal de recherches.
+            </p>
+
+            <h3>Ce que j'ai appris</h3>
+            <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+              <div class="feature-card">
+                <div class="icon">📚</div>
+                <h4>Lire la doc officielle</h4>
+                <p>Rien ne vaut la documentation source, surtout pour des outils qui évoluent vite.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">🔧</div>
+                <h4>Configuration fine</h4>
+                <p>Comprendre elasticsearch.yml et les options de sécurité m'a pris du temps mais c'était formateur.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">🧪</div>
+                <h4>Tester, échouer, recommencer</h4>
+                <p>Plusieurs installations ratées avant de trouver la bonne configuration. C'est le jeu !</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Pourquoi Elasticsearch -->
+          <section>
+            <h2>💡 Pourquoi Elasticsearch ?</h2>
+            <p>
+              On pourrait se demander : pourquoi ne pas simplement utiliser une recherche basique dans une base SQL 
+              avec un <code>LIKE '%mot%'</code> ? La réponse tient en plusieurs points :
+            </p>
+
+            <div class="overflow-x-auto my-6">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="border-b border-border-light dark:border-border-dark">
+                    <th class="py-3 px-4 font-semibold">Critère</th>
+                    <th class="py-3 px-4 font-semibold">SQL LIKE</th>
+                    <th class="py-3 px-4 font-semibold">Elasticsearch</th>
+                  </tr>
+                </thead>
+                <tbody class="text-sm">
+                  <tr class="border-b border-border-light dark:border-border-dark">
+                    <td class="py-3 px-4">Vitesse sur gros volumes</td>
+                    <td class="py-3 px-4">🐌 Lent (scan complet)</td>
+                    <td class="py-3 px-4">⚡ Ultra-rapide (index inversé)</td>
+                  </tr>
+                  <tr class="border-b border-border-light dark:border-border-dark">
+                    <td class="py-3 px-4">Fautes de frappe</td>
+                    <td class="py-3 px-4">❌ Pas de tolérance</td>
+                    <td class="py-3 px-4">✅ Fuzzy search intégré</td>
+                  </tr>
+                  <tr class="border-b border-border-light dark:border-border-dark">
+                    <td class="py-3 px-4">Pertinence des résultats</td>
+                    <td class="py-3 px-4">❌ Ordre arbitraire</td>
+                    <td class="py-3 px-4">✅ Scoring par relevance</td>
+                  </tr>
+                  <tr class="border-b border-border-light dark:border-border-dark">
+                    <td class="py-3 px-4">Synonymes / Stemming</td>
+                    <td class="py-3 px-4">❌ Non</td>
+                    <td class="py-3 px-4">✅ Analyseurs linguistiques</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              Pour un moteur de recherche sur du contenu textuel, Elasticsearch est clairement taillé pour le job. 
+              C'est d'ailleurs la technologie utilisée par Wikipedia, GitHub, et de nombreux sites e-commerce pour 
+              leur fonction de recherche.
+            </p>
+          </section>
+
+          <!-- Bilan -->
+          <section>
+            <h2>📝 Bilan du projet</h2>
+            <p>
+              CoursFinder était avant tout un <strong>projet d'apprentissage</strong>. L'objectif n'était pas de 
+              créer une application production-ready, mais de me familiariser avec Elasticsearch et de comprendre 
+              ses mécanismes.
+            </p>
+
+            <div class="info-box tip">
+              <p><strong>✅ Mission accomplie :</strong> J'ai désormais une première expérience concrète avec 
+              Elasticsearch. Je comprends comment fonctionne l'indexation, les mappings, les requêtes de recherche, 
+              et surtout comment configurer l'outil correctement. Cette compétence pourra être réutilisée dans 
+              des projets futurs plus ambitieux.</p>
+            </div>
+
+            <p>
+              Le projet en lui-même reste fonctionnel : je peux uploader mes cours et rechercher dedans. 
+              C'est un outil que j'utilise occasionnellement quand je veux retrouver un concept précis vu 
+              en cours sans avoir à ouvrir chaque fichier un par un.
+            </p>
+          </section>
+
+          <!-- CTA -->
+          <section>
+            <h2>🔗 Voir le projet</h2>
+            <p>
+              Le code source est disponible sur GitHub. N'hésitez pas à y jeter un œil si vous souhaitez 
+              vous lancer dans Elasticsearch !
+            </p>
+
+            <div class="cta-section">
+              <a href="https://github.com/Diogo444/CoursFinder" target="_blank" rel="noopener noreferrer"
+                 class="bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary">
+                <span class="material-symbols-outlined">code</span>
+                Code source sur GitHub
+              </a>
+            </div>
+          </section>
+
+        </div>
+      </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-border-light dark:border-border-dark mt-16">
+      <div class="max-w-5xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center text-sm">
+        <p class="text-text-light/70 dark:text-text-dark/70">© <span id="year"></span> Diogo Andrade. Tous droits réservés.</p>
+        <a class="flex items-center gap-2 mt-4 sm:mt-0 text-text-light/70 dark:text-text-dark/70 hover:text-primary transition-colors" href="/#projects">
+          Voir tous les projets
+          <span class="material-symbols-outlined text-lg">arrow_forward</span>
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Theme detection
+    (function () {
+      var savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+        document.documentElement.classList.toggle('light', savedTheme === 'light');
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.add('light');
+      }
+    })();
+
+    // Year
+    (function () {
+      var span = document.getElementById('year');
+      if (span) span.textContent = new Date().getFullYear();
+    })();
+
+    // Intersection Observer for animations
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in').forEach(function(el) {
+        el.style.animationPlayState = 'paused';
+        observer.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Miam DV – Application de menu accessible pour déficients visuels | Diogo Andrade</title>
+  <meta name="description" content="Découvrez Miam DV, une application web accessible permettant aux personnes déficientes visuelles de consulter le menu de la semaine de leur internat depuis leur smartphone."/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="author" content="Diogo Andrade"/>
+
+  <!-- Canonique -->
+  <link rel="canonical" href="https://diogo-andrade.org/projects/miam-dv.html"/>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Polices -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="Diogo Andrade"/>
+  <meta property="og:title" content="Miam DV – Application de menu accessible pour déficients visuels"/>
+  <meta property="og:description" content="Application web accessible permettant aux personnes déficientes visuelles de consulter le menu de la semaine de leur internat."/>
+  <meta property="og:url" content="https://diogo-andrade.org/projects/miam-dv.html"/>
+  <meta property="og:image" content="https://diogo-andrade.org/assets/img/project%20Miam%20DV.png"/>
+  <meta property="og:locale" content="fr_FR"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+
+  <!-- PWA -->
+  <meta name="theme-color" content="#111827"/>
+  <meta name="color-scheme" content="light dark"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+
+  <!-- Favicons -->
+  <link rel="icon" href="/assets/favicon.ico" sizes="any"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png"/>
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png"/>
+
+  <!-- Données structurées Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Miam DV – Application de menu accessible pour déficients visuels",
+    "description": "Découvrez comment j'ai créé une application web accessible pour permettre aux personnes déficientes visuelles de consulter le menu de leur internat depuis leur smartphone.",
+    "author": {
+      "@type": "Person",
+      "name": "Diogo Andrade",
+      "url": "https://diogo-andrade.org"
+    },
+    "datePublished": "2025-06-01",
+    "dateModified": "2026-02-01",
+    "image": "https://diogo-andrade.org/assets/img/project%20Miam%20DV.png",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://diogo-andrade.org/projects/miam-dv.html"
+    }
+  }
+  </script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#DD0031",
+            "secondary": "#E0234E",
+            "background-light": "#FAFAFA",
+            "background-dark": "#111827",
+            "text-light": "#111827",
+            "text-dark": "#F3F4F6",
+            "card-light": "#FFFFFF",
+            "card-dark": "#1F2937",
+            "border-light": "#E5E7EB",
+            "border-dark": "#374151"
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="/CSS/article.css"/>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #FAFAFA; }
+    .dark body {
+      background-color: #111827;
+      background-image: linear-gradient(135deg, #111827 0%, #46010f 100%);
+    }
+    @media (prefers-color-scheme: dark) {
+      html:not(.light) body {
+        background-color: #111827;
+        background-image: linear-gradient(135deg, #111827 0%, #46010f 100%);
+        color: #F3F4F6;
+      }
+    }
+    @media (prefers-color-scheme: light) {
+      html:not(.dark) body {
+        background-color: #FAFAFA;
+        color: #111827;
+      }
+    }
+    
+    /* NestJS gradient */
+    .nestjs-gradient {
+      background: linear-gradient(135deg, #E0234E 0%, #DD0031 100%);
+    }
+    
+    /* Angular gradient */
+    .angular-gradient {
+      background: linear-gradient(135deg, #DD0031 0%, #C3002F 100%);
+    }
+  </style>
+</head>
+
+<body class="bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark font-display antialiased">
+  <div class="relative w-full overflow-x-hidden min-h-screen flex flex-col">
+    
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-center bg-card-light/80 dark:bg-card-dark/80 backdrop-blur-sm border-b border-border-light dark:border-border-dark">
+      <nav class="flex items-center justify-between w-full max-w-5xl px-6 py-4">
+        <a class="flex items-center gap-3" href="/">
+          <div class="size-6 text-primary">
+            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor"></path>
+            </svg>
+          </div>
+          <h2 class="text-lg font-bold leading-tight">Diogo Andrade</h2>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/#about">À propos</a>
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/#skills">Technologies</a>
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/#projects">Projets</a>
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/#contact">Contact</a>
+        </div>
+        <button class="flex items-center justify-center size-10 rounded-lg bg-background-light dark:bg-card-dark border border-border-light dark:border-border-dark" onclick="(function() { 
+          var html = document.documentElement;
+          var isDark = html.classList.contains('dark');
+          html.classList.toggle('dark');
+          html.classList.toggle('light');
+          localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        })()">
+          <span class="material-symbols-outlined text-xl dark:hidden">dark_mode</span>
+          <span class="material-symbols-outlined text-xl hidden dark:inline">light_mode</span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="flex-grow pt-16">
+      
+      <!-- Hero Image -->
+      <div class="article-hero" style="background-image: url('/assets/img/project Miam DV.png');">
+        <div class="article-hero-content fade-in">
+          <span class="inline-block px-3 py-1 mb-3 text-sm font-semibold bg-primary text-white rounded-full">Projet Associatif</span>
+          <h1>Miam DV · Menu de la semaine accessible</h1>
+          <p class="subtitle">Une application web pour rendre les menus accessibles aux personnes déficientes visuelles</p>
+        </div>
+      </div>
+
+      <!-- Back Link -->
+      <div class="max-w-5xl mx-auto px-6 pt-8">
+        <a href="/#projects" class="back-link bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary">
+          <span class="material-symbols-outlined">arrow_back</span>
+          Retour aux projets
+        </a>
+      </div>
+
+      <!-- Article Content -->
+      <article class="article-container">
+        <div class="article-content">
+
+          <!-- Introduction -->
+          <section class="fade-in fade-in-delay-1">
+            <h2>🎯 Le contexte : un besoin concret</h2>
+            <p>
+              Ce projet est né d'un <strong>besoin réel</strong> au sein du <strong>CRDV</strong> (Centre de Ressources 
+              pour Déficients Visuels), dont je fais partie. Chaque semaine, les résidents de l'internat doivent 
+              pouvoir consulter les menus du midi et du soir. Jusque-là, rien de compliqué... sauf que l'accessibilité 
+              entre en jeu.
+            </p>
+            
+            <div class="info-box">
+              <p><strong>📋 La situation initiale :</strong> Les menus étaient distribués sur papier, en gros caractères 
+              pour les malvoyants et en braille pour les non-voyants. Mais chaque personne a des besoins différents : 
+              certains lisent en police 18, d'autres en police 36, d'autres encore préfèrent le braille intégral ou abrégé...</p>
+            </div>
+
+            <p>
+              <strong>Le problème ?</strong> Il était impossible d'adapter le menu à chaque personne individuellement. 
+              Imprimer des dizaines de versions différentes chaque semaine n'était tout simplement pas viable.
+            </p>
+
+            <p>
+              C'est alors que j'ai eu une idée simple : <strong>tout le monde possède un smartphone</strong>. 
+              Chaque résident sait utiliser son téléphone avec ses propres paramètres d'accessibilité 
+              (zoom, VoiceOver, TalkBack, contraste...). Pourquoi ne pas créer une application web qui affiche 
+              le menu de façon <strong>nativement accessible</strong> ?
+            </p>
+          </section>
+
+          <!-- Fonctionnalités -->
+          <section class="fade-in fade-in-delay-2">
+            <h2>✨ Fonctionnalités de l'application</h2>
+            <p>
+              Miam DV n'est pas qu'un simple affichage de menu. L'application propose plusieurs fonctionnalités 
+              pensées pour faciliter le quotidien des résidents et du personnel :
+            </p>
+
+            <div class="feature-grid">
+              <div class="feature-card">
+                <div class="icon">🍽️</div>
+                <h4>Menu de la semaine</h4>
+                <p>Affichage clair des menus midi et soir, du lundi au vendredi, avec entrée, plat, fromage et dessert.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">📱</div>
+                <h4>100% Accessible</h4>
+                <p>Compatible avec VoiceOver, TalkBack et tous les outils d'accessibilité. Chacun utilise ses réglages personnels.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">💬</div>
+                <h4>Proverbe ou blague</h4>
+                <p>Chaque semaine, un proverbe ou une blague est affiché pour égayer les repas et créer du lien.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">💡</div>
+                <h4>Suggestions</h4>
+                <p>Les utilisateurs peuvent proposer leurs propres proverbes ou blagues pour les semaines suivantes.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">🔐</div>
+                <h4>Administration sécurisée</h4>
+                <p>Interface d'administration avec authentification JWT pour gérer les menus et les suggestions.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">🤖</div>
+                <h4>Serveur MCP</h4>
+                <p>Automatisation de la publication des menus via un serveur Model Context Protocol.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Accessibilité -->
+          <section>
+            <h2>♿ L'accessibilité au cœur du projet</h2>
+            <p>
+              Contrairement à de nombreux projets où l'accessibilité est ajoutée après coup, <strong>Miam DV a été 
+              conçu dès le départ</strong> pour être accessible. C'est la raison d'être même du projet.
+            </p>
+
+            <h3>Pourquoi une application web plutôt qu'une app native ?</h3>
+            <ul>
+              <li><strong>Pas d'installation requise</strong> : un simple lien à ouvrir dans le navigateur</li>
+              <li><strong>Multi-plateforme</strong> : fonctionne sur iOS, Android, Windows, Mac...</li>
+              <li><strong>Toujours à jour</strong> : pas besoin de télécharger des mises à jour</li>
+              <li><strong>Accessibilité native</strong> : les navigateurs respectent les préférences système (zoom, contraste, synthèse vocale)</li>
+            </ul>
+
+            <h3>Les bonnes pratiques appliquées</h3>
+            <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+              <div class="feature-card">
+                <div class="icon">🏷️</div>
+                <h4>HTML sémantique</h4>
+                <p>Utilisation de balises appropriées (header, main, nav, article) pour une navigation logique au lecteur d'écran.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">⌨️</div>
+                <h4>Navigation clavier</h4>
+                <p>Tous les éléments interactifs sont accessibles et navigables au clavier avec un ordre logique.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">🎨</div>
+                <h4>Contrastes suffisants</h4>
+                <p>Les couleurs respectent les ratios WCAG pour être lisibles par les personnes malvoyantes.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">📝</div>
+                <h4>Texte redimensionnable</h4>
+                <p>L'interface s'adapte parfaitement aux agrandissements de texte jusqu'à 200% sans perte d'information.</p>
+              </div>
+            </div>
+
+            <div class="info-box tip">
+              <p><strong>💡 Le pouvoir du smartphone :</strong> En laissant chaque utilisateur consulter l'application 
+              sur son propre appareil, configuré selon ses besoins, on résout élégamment le problème de la personnalisation. 
+              Plus besoin d'imprimer 10 versions différentes du menu !</p>
+            </div>
+          </section>
+
+          <!-- Technologies -->
+          <section class="fade-in fade-in-delay-3">
+            <h2>🛠️ Stack technique</h2>
+            <p>
+              Pour ce projet, j'ai choisi une stack moderne et robuste, capable de gérer l'authentification, 
+              la persistance des données, et un déploiement professionnel.
+            </p>
+
+            <h3>Frontend</h3>
+            <div class="tech-stack">
+              <span class="tech-badge" style="background-color: #DD0031; color: white;">Angular</span>
+              <span class="tech-badge" style="background-color: #06B6D4; color: black;">Tailwind CSS</span>
+              <span class="tech-badge" style="background-color: #3178C6; color: white;">TypeScript</span>
+            </div>
+            <p>
+              Le frontend est développé avec <strong>Angular</strong> en utilisant les <strong>standalone components</strong>, 
+              une approche moderne qui simplifie l'architecture. L'interface est stylée avec <strong>Tailwind CSS</strong> 
+              pour un développement rapide et cohérent.
+            </p>
+            <p>
+              Les <strong>interceptors Angular</strong> gèrent automatiquement l'ajout du token JWT sur chaque requête 
+              et la redirection en cas d'erreur d'authentification.
+            </p>
+
+            <h3>Backend</h3>
+            <div class="tech-stack">
+              <span class="tech-badge" style="background-color: #E0234E; color: white;">NestJS</span>
+              <span class="tech-badge" style="background-color: #336791; color: white;">TypeORM</span>
+              <span class="tech-badge" style="background-color: #00758F; color: white;">MySQL</span>
+            </div>
+            <p>
+              Le backend repose sur <strong>NestJS</strong>, un framework Node.js inspiré d'Angular qui offre une 
+              architecture modulaire et une excellente gestion de la sécurité. <strong>TypeORM</strong> assure la 
+              communication avec la base de données <strong>MySQL</strong>.
+            </p>
+            <p>
+              L'authentification utilise des <strong>tokens JWT</strong> avec un système de versioning : 
+              si un administrateur modifie son mot de passe, son ancien token est automatiquement invalidé.
+            </p>
+
+            <h3>Déploiement</h3>
+            <div class="tech-stack">
+              <span class="tech-badge" style="background-color: #2496ED; color: white;">Docker</span>
+              <span class="tech-badge" style="background-color: #1F88C9; color: white;">Caddy</span>
+              <span class="tech-badge" style="background-color: #326CE5; color: white;">Docker Compose</span>
+            </div>
+            <p>
+              L'application est entièrement containerisée avec <strong>Docker</strong>. <strong>Caddy</strong> sert 
+              de reverse proxy et gère automatiquement les certificats HTTPS. Un simple <code>docker compose up</code> 
+              suffit à déployer l'ensemble de l'infrastructure.
+            </p>
+          </section>
+
+          <!-- Architecture -->
+          <section>
+            <h2>🏗️ Architecture du projet</h2>
+            
+            <div class="architecture-box">
+              <h3 class="text-lg font-bold mb-4">Vue d'ensemble</h3>
+              <div class="architecture-flow">
+                <div class="arch-item bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark">
+                  <div class="icon">📱</div>
+                  <span>Utilisateur</span>
+                </div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-item bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark">
+                  <div class="icon">🌐</div>
+                  <span>Caddy</span>
+                </div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-item angular-gradient text-white">
+                  <div class="icon">🅰️</div>
+                  <span>Angular</span>
+                </div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-item nestjs-gradient text-white">
+                  <div class="icon">🐈</div>
+                  <span>NestJS</span>
+                </div>
+                <span class="arch-arrow">→</span>
+                <div class="arch-item bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark">
+                  <div class="icon">🗄️</div>
+                  <span>MySQL</span>
+                </div>
+              </div>
+            </div>
+
+            <h3>Structure des fichiers</h3>
+            <div class="code-block">
+              <code>
+miam-dv/<br>
+├── src/                    # Frontend Angular<br>
+│   ├── app/<br>
+│   │   ├── components/     # Standalone components<br>
+│   │   ├── services/       # Services (API, Auth)<br>
+│   │   └── interceptors/   # HTTP interceptors<br>
+│   └── environments/<br>
+├── backend/                # Backend NestJS<br>
+│   ├── src/<br>
+│   │   ├── auth/           # Module authentification<br>
+│   │   ├── menus/          # CRUD menus<br>
+│   │   ├── proverbes/      # CRUD proverbes<br>
+│   │   ├── suggestions/    # CRUD suggestions<br>
+│   │   └── admins/         # Gestion administrateurs<br>
+│   └── entities/           # Entités TypeORM<br>
+├── mcp-server/             # Serveur MCP<br>
+├── docker-compose.yml<br>
+└── Caddyfile
+              </code>
+            </div>
+
+            <h3>Le serveur MCP : automatiser la publication</h3>
+            <p>
+              Une fonctionnalité avancée du projet est le <strong>serveur MCP</strong> (Model Context Protocol). 
+              Ce serveur expose des "tools" qui permettent d'automatiser la publication des menus via des 
+              requêtes HTTP structurées.
+            </p>
+
+            <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+              <div class="feature-card">
+                <div class="icon">📤</div>
+                <h4>publish_week_menu</h4>
+                <p>Publie ou remplace le menu d'une semaine complète en une seule requête.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">💭</div>
+                <h4>publish_week_proverb</h4>
+                <p>Publie le proverbe ou la blague de la semaine.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">📝</div>
+                <h4>publish_week_from_text</h4>
+                <p>Parse un bloc de texte en français et extrait automatiquement le menu.</p>
+              </div>
+              <div class="feature-card">
+                <div class="icon">🗑️</div>
+                <h4>clear_week_data</h4>
+                <p>Supprime les données d'une semaine (nécessite confirmation).</p>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <p><strong>🤖 Cas d'usage :</strong> Grâce au serveur MCP, un assistant IA peut directement 
+              publier les menus à partir d'un simple texte copié-collé du planning de la cuisine. 
+              Plus besoin de saisie manuelle !</p>
+            </div>
+          </section>
+
+          <!-- API Reference -->
+          <section>
+            <h2>📡 API REST</h2>
+            <p>
+              Le backend expose une API REST complète pour gérer toutes les ressources de l'application. 
+              Voici les principaux endpoints :
+            </p>
+
+            <div class="overflow-x-auto my-6">
+              <table class="w-full text-left border-collapse text-sm">
+                <thead>
+                  <tr class="border-b border-border-light dark:border-border-dark">
+                    <th class="py-3 px-4 font-semibold">Endpoint</th>
+                    <th class="py-3 px-4 font-semibold">Méthode</th>
+                    <th class="py-3 px-4 font-semibold">Description</th>
+                    <th class="py-3 px-4 font-semibold">Auth</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-border-light dark:border-border-dark">
+                    <td class="py-3 px-4"><code>/api/auth/login</code></td>
+                    <td class="py-3 px-4">POST</td>
+                    <td class="py-3 px-4">Connexion administrateur</td>
+                    <td class="py-3 px-4">❌</td>
+                  </tr>
+                  <tr class="border-b border-border-light dark:border-border-dark">
+                    <td class="py-3 px-4"><code>/api/menus</code></td>
+                    <td class="py-3 px-4">GET</td>
+                    <td class="py-3 px-4">Liste des menus de la semaine</td>
+                    <td class="py-3 px-4">❌</td>
+                  </tr>
+                  <tr class="border-b border-border-light dark:border-border-dark">
+                    <td class="py-3 px-4"><code>/api/menus</code></td>
+                    <td class="py-3 px-4">POST</td>
+                    <td class="py-3 px-4">Créer un menu</td>
+                    <td class="py-3 px-4">✅ Admin</td>
+                  </tr>
+                  <tr class="border-b border-border-light dark:border-border-dark">
+                    <td class="py-3 px-4"><code>/api/proverbes</code></td>
+                    <td class="py-3 px-4">GET</td>
+                    <td class="py-3 px-4">Proverbe/blague de la semaine</td>
+                    <td class="py-3 px-4">❌</td>
+                  </tr>
+                  <tr class="border-b border-border-light dark:border-border-dark">
+                    <td class="py-3 px-4"><code>/api/suggestions</code></td>
+                    <td class="py-3 px-4">POST</td>
+                    <td class="py-3 px-4">Proposer un proverbe/blague</td>
+                    <td class="py-3 px-4">❌</td>
+                  </tr>
+                  <tr class="border-b border-border-light dark:border-border-dark">
+                    <td class="py-3 px-4"><code>/api/suggestions</code></td>
+                    <td class="py-3 px-4">GET</td>
+                    <td class="py-3 px-4">Liste des suggestions</td>
+                    <td class="py-3 px-4">✅ Admin</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              <strong>Nettoyage automatique :</strong> Un cron job supprime automatiquement les menus et proverbes 
+              tous les vendredis à 16h00 (Europe/Paris) pour préparer la semaine suivante.
+            </p>
+          </section>
+
+          <!-- Bilan -->
+          <section>
+            <h2>📝 Bilan et impact</h2>
+            <p>
+              Miam DV est le projet dont je suis le plus fier, car il a un <strong>impact concret et positif</strong> 
+              sur le quotidien de personnes réelles. Ce n'est pas juste un exercice technique : c'est une solution 
+              qui répond à un vrai problème d'accessibilité.
+            </p>
+
+            <div class="info-box tip">
+              <p><strong>🎯 Résultat :</strong> Les résidents de l'internat peuvent désormais consulter le menu 
+              de la semaine depuis leur smartphone, avec leurs propres réglages d'accessibilité. Plus besoin 
+              d'imprimer des dizaines de versions différentes, et tout le monde a accès à la même information.</p>
+            </div>
+
+            <h3>Ce que j'ai appris</h3>
+            <ul>
+              <li><strong>Angular avancé</strong> : standalone components, interceptors, guards, services injectables</li>
+              <li><strong>NestJS</strong> : architecture modulaire, décorateurs, guards, pipes de validation</li>
+              <li><strong>Authentification JWT</strong> : tokens, refresh, invalidation, rôles</li>
+              <li><strong>TypeORM</strong> : entités, relations, migrations</li>
+              <li><strong>Accessibilité</strong> : WCAG, ARIA, tests avec lecteurs d'écran</li>
+              <li><strong>Docker multi-services</strong> : orchestration frontend + backend + base de données</li>
+            </ul>
+          </section>
+
+          <!-- CTA -->
+          <section>
+            <h2>🔗 Voir le projet</h2>
+            <p>
+              Le code source complet est disponible sur GitHub. Le projet inclut une documentation 
+              détaillée pour le déploiement et l'utilisation de l'API.
+            </p>
+
+            <div class="cta-section">
+              <a href="https://github.com/Diogo444/Miam-DV" target="_blank" rel="noopener noreferrer"
+                 class="bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark hover:border-primary">
+                <span class="material-symbols-outlined">code</span>
+                Code source sur GitHub
+              </a>
+            </div>
+          </section>
+
+        </div>
+      </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-border-light dark:border-border-dark mt-16">
+      <div class="max-w-5xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center text-sm">
+        <p class="text-text-light/70 dark:text-text-dark/70">© <span id="year"></span> Diogo Andrade. Tous droits réservés.</p>
+        <a class="flex items-center gap-2 mt-4 sm:mt-0 text-text-light/70 dark:text-text-dark/70 hover:text-primary transition-colors" href="/#projects">
+          Voir tous les projets
+          <span class="material-symbols-outlined text-lg">arrow_forward</span>
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Theme detection
+    (function () {
+      var savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+        document.documentElement.classList.toggle('light', savedTheme === 'light');
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.add('light');
+      }
+    })();
+
+    // Year
+    (function () {
+      var span = document.getElementById('year');
+      if (span) span.textContent = new Date().getFullYear();
+    })();
+
+    // Intersection Observer for animations
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in').forEach(function(el) {
+        el.style.animationPlayState = 'paused';
+        observer.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>
