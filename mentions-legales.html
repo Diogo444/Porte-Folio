@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Mentions légales – Diogo Andrade</title>
+  <meta name="description" content="Mentions légales du site diogo-andrade.org. Informations sur l'éditeur, l'hébergeur, la propriété intellectuelle et les conditions d'utilisation."/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="author" content="Diogo Andrade"/>
+  <meta name="google-adsense-account" content="ca-pub-6031484816129735">
+
+  <!-- Canonique -->
+  <link rel="canonical" href="https://diogo-andrade.org/mentions-legales.html"/>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Polices -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Diogo Andrade"/>
+  <meta property="og:title" content="Mentions légales – Diogo Andrade"/>
+  <meta property="og:description" content="Mentions légales et informations sur le site diogo-andrade.org."/>
+  <meta property="og:url" content="https://diogo-andrade.org/mentions-legales.html"/>
+  <meta property="og:locale" content="fr_FR"/>
+
+  <!-- PWA -->
+  <meta name="theme-color" content="#111827"/>
+  <meta name="color-scheme" content="light dark"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+
+  <!-- Favicons -->
+  <link rel="icon" href="/assets/favicon.ico" sizes="any"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png"/>
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png"/>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#DD0031",
+            "secondary": "#E0234E",
+            "background-light": "#FAFAFA",
+            "background-dark": "#111827",
+            "text-light": "#111827",
+            "text-dark": "#F3F4F6",
+            "card-light": "#FFFFFF",
+            "card-dark": "#1F2937",
+            "border-light": "#E5E7EB",
+            "border-dark": "#374151"
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="/CSS/article.css"/>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #FAFAFA; }
+    .dark body {
+      background-color: #111827;
+      background-image: linear-gradient(135deg, #111827 0%, #46010f 100%);
+    }
+    @media (prefers-color-scheme: dark) {
+      html:not(.light) body {
+        background-color: #111827;
+        background-image: linear-gradient(135deg, #111827 0%, #46010f 100%);
+        color: #F3F4F6;
+      }
+    }
+    @media (prefers-color-scheme: light) {
+      html:not(.dark) body {
+        background-color: #FAFAFA;
+        color: #111827;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark font-display antialiased">
+  <div class="relative w-full overflow-x-hidden min-h-screen flex flex-col">
+    
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-center bg-card-light/80 dark:bg-card-dark/80 backdrop-blur-sm border-b border-border-light dark:border-border-dark">
+      <nav class="flex items-center justify-between w-full max-w-5xl px-6 py-4">
+        <a class="flex items-center gap-3" href="/">
+          <div class="size-6 text-primary">
+            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor"></path>
+            </svg>
+          </div>
+          <h2 class="text-lg font-bold leading-tight">Diogo Andrade</h2>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/a-propos.html">À propos</a>
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/technologies.html">Technologies</a>
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/#projects">Projets</a>
+          <a class="text-sm font-medium hover:text-primary transition-colors" href="/contact.html">Contact</a>
+        </div>
+        <button class="flex items-center justify-center size-10 rounded-lg bg-background-light dark:bg-card-dark border border-border-light dark:border-border-dark" onclick="(function() { 
+          var html = document.documentElement;
+          var isDark = html.classList.contains('dark');
+          html.classList.toggle('dark');
+          html.classList.toggle('light');
+          localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        })()">
+          <span class="material-symbols-outlined text-xl dark:hidden">dark_mode</span>
+          <span class="material-symbols-outlined text-xl hidden dark:inline">light_mode</span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="flex-grow pt-24">
+      
+      <!-- Hero Section -->
+      <section class="max-w-5xl mx-auto px-6 py-12">
+        <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tighter mb-6">Mentions légales</h1>
+        <p class="text-lg text-text-light/80 dark:text-text-dark/80">
+          Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique.
+        </p>
+      </section>
+
+      <!-- Content -->
+      <article class="article-container">
+        <div class="article-content">
+
+          <!-- Éditeur du site -->
+          <section>
+            <h2>📝 Éditeur du site</h2>
+            <p>
+              Le présent site <strong>diogo-andrade.org</strong> est édité par :
+            </p>
+            <ul>
+              <li><strong>Nom :</strong> Diogo Andrade</li>
+              <li><strong>Statut :</strong> Particulier (site personnel à caractère non commercial)</li>
+              <li><strong>Adresse email :</strong> da7822000@gmail.com</li>
+              <li><strong>Site web :</strong> https://diogo-andrade.org</li>
+            </ul>
+            <p>
+              Ce site est un portfolio personnel présentant mes compétences et réalisations en développement web. 
+              Il n'a pas vocation à exercer une activité commerciale directe.
+            </p>
+          </section>
+
+          <!-- Directeur de publication -->
+          <section>
+            <h2>👤 Directeur de la publication</h2>
+            <p>
+              Le directeur de la publication du site est <strong>Diogo Andrade</strong>.
+            </p>
+            <p>
+              En cette qualité, il est responsable du contenu publié sur le site et peut être contacté 
+              à l'adresse email : <strong>da7822000@gmail.com</strong>
+            </p>
+          </section>
+
+          <!-- Hébergement -->
+          <section>
+            <h2>🌐 Hébergement</h2>
+            <p>
+              Le site diogo-andrade.org est hébergé par :
+            </p>
+            <ul>
+              <li><strong>Hébergeur :</strong> GitHub Pages</li>
+              <li><strong>Société :</strong> GitHub, Inc.</li>
+              <li><strong>Adresse :</strong> 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis</li>
+              <li><strong>Site web :</strong> <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">pages.github.com</a></li>
+            </ul>
+            <p>
+              GitHub Pages est un service d'hébergement de sites web statiques fourni par GitHub, 
+              filiale de Microsoft Corporation.
+            </p>
+          </section>
+
+          <!-- Propriété intellectuelle -->
+          <section>
+            <h2>©️ Propriété intellectuelle</h2>
+            <p>
+              L'ensemble du contenu de ce site (textes, images, graphismes, logo, icônes, code source, etc.) 
+              est la propriété exclusive de Diogo Andrade, sauf mention contraire explicite.
+            </p>
+            
+            <h3>Droits d'auteur</h3>
+            <p>
+              Conformément aux dispositions du Code de la propriété intellectuelle, toute reproduction, 
+              représentation, modification, publication, adaptation, totale ou partielle, des éléments du 
+              site est interdite sans autorisation écrite préalable, sauf dans les cas suivants :
+            </p>
+            <ul>
+              <li>Citation courte à des fins d'information, avec mention de la source</li>
+              <li>Usage strictement privé et non commercial</li>
+              <li>Partage sur les réseaux sociaux via les fonctionnalités prévues à cet effet</li>
+            </ul>
+
+            <h3>Code source des projets</h3>
+            <p>
+              Les projets présentés sur ce portfolio peuvent être accompagnés de liens vers leur code source 
+              sur GitHub. Chaque projet dispose de sa propre licence, généralement mentionnée dans le fichier 
+              LICENSE du dépôt correspondant. Veuillez consulter ces licences avant toute réutilisation.
+            </p>
+
+            <h3>Ressources tierces</h3>
+            <p>
+              Ce site utilise des ressources tierces telles que :
+            </p>
+            <ul>
+              <li><strong>Tailwind CSS :</strong> Framework CSS sous licence MIT</li>
+              <li><strong>Google Fonts (Inter) :</strong> Polices sous licence Open Font License</li>
+              <li><strong>Material Symbols :</strong> Icônes Google sous licence Apache 2.0</li>
+            </ul>
+          </section>
+
+          <!-- Conditions d'utilisation -->
+          <section>
+            <h2>📋 Conditions d'utilisation</h2>
+            <p>
+              L'utilisation du site diogo-andrade.org implique l'acceptation pleine et entière des 
+              conditions générales d'utilisation décrites ci-après.
+            </p>
+
+            <h3>Accès au site</h3>
+            <p>
+              Le site est accessible gratuitement à tout utilisateur disposant d'un accès à Internet. 
+              Tous les frais liés à l'accès au site (matériel informatique, connexion Internet, etc.) 
+              sont à la charge de l'utilisateur.
+            </p>
+            <p>
+              Je m'efforce de maintenir le site accessible 24h/24 et 7j/7, mais ne peux garantir une 
+              disponibilité permanente. Le site peut être temporairement indisponible pour des raisons 
+              de maintenance, de mise à jour ou pour toute autre raison technique.
+            </p>
+
+            <h3>Exactitude des informations</h3>
+            <p>
+              Les informations publiées sur ce site sont fournies à titre indicatif et sont susceptibles 
+              d'évoluer. Je m'efforce de maintenir des informations exactes et à jour, mais ne peux 
+              garantir l'absence d'erreurs ou d'omissions.
+            </p>
+
+            <h3>Liens hypertextes</h3>
+            <p>
+              Ce site peut contenir des liens vers des sites externes. Je n'exerce aucun contrôle sur 
+              ces sites et décline toute responsabilité quant à leur contenu, leur politique de 
+              confidentialité ou leurs pratiques.
+            </p>
+          </section>
+
+          <!-- Limitation de responsabilité -->
+          <section>
+            <h2>⚠️ Limitation de responsabilité</h2>
+            <p>
+              L'éditeur du site ne saurait être tenu responsable :
+            </p>
+            <ul>
+              <li>Des éventuels virus qui pourraient infecter l'ordinateur ou tout matériel informatique 
+                  de l'utilisateur, suite à une utilisation, un accès ou un téléchargement provenant du site</li>
+              <li>Des dommages directs ou indirects causés à l'utilisateur lors de l'utilisation du site</li>
+              <li>De l'utilisation frauduleuse du site par un tiers</li>
+              <li>Des interruptions ou dysfonctionnements du site</li>
+              <li>Du contenu des sites externes vers lesquels le site renvoie</li>
+            </ul>
+          </section>
+
+          <!-- Données personnelles -->
+          <section>
+            <h2>🔐 Protection des données personnelles</h2>
+            <p>
+              La collecte et le traitement des données personnelles sur ce site sont régis par notre 
+              <a href="/politique-de-confidentialite.html" class="text-primary hover:underline">Politique de confidentialité</a>, 
+              conformément au Règlement Général sur la Protection des Données (RGPD).
+            </p>
+            <p>
+              Pour toute question relative à vos données personnelles, vous pouvez me contacter à 
+              l'adresse : <strong>da7822000@gmail.com</strong>
+            </p>
+          </section>
+
+          <!-- Cookies -->
+          <section>
+            <h2>🍪 Cookies</h2>
+            <p>
+              Ce site utilise des cookies pour améliorer l'expérience utilisateur et à des fins 
+              statistiques. Pour plus d'informations sur l'utilisation des cookies, consultez notre 
+              <a href="/politique-de-confidentialite.html" class="text-primary hover:underline">Politique de confidentialité</a>.
+            </p>
+          </section>
+
+          <!-- Droit applicable -->
+          <section>
+            <h2>⚖️ Droit applicable et juridiction</h2>
+            <p>
+              Les présentes mentions légales sont régies par le droit français. En cas de litige, 
+              les tribunaux français seront seuls compétents.
+            </p>
+            <p>
+              Avant tout recours contentieux, l'utilisateur s'engage à rechercher une solution amiable 
+              en contactant l'éditeur du site.
+            </p>
+          </section>
+
+          <!-- Crédits -->
+          <section>
+            <h2>🎨 Crédits</h2>
+            <p>
+              Ce site a été conçu et développé par <strong>Diogo Andrade</strong>.
+            </p>
+            <h3>Technologies utilisées</h3>
+            <ul>
+              <li><strong>HTML5 / CSS3 / JavaScript</strong> : Langages de base</li>
+              <li><strong>Tailwind CSS</strong> : Framework CSS utility-first</li>
+              <li><strong>Google Fonts</strong> : Police Inter</li>
+              <li><strong>Material Symbols</strong> : Icônes</li>
+              <li><strong>GitHub Pages</strong> : Hébergement</li>
+            </ul>
+          </section>
+
+          <!-- Contact -->
+          <section>
+            <h2>📬 Contact</h2>
+            <p>
+              Pour toute question concernant ces mentions légales ou le site en général, 
+              vous pouvez me contacter :
+            </p>
+            <ul>
+              <li><strong>Email :</strong> da7822000@gmail.com</li>
+              <li><strong>Page de contact :</strong> <a href="/contact.html" class="text-primary hover:underline">diogo-andrade.org/contact</a></li>
+              <li><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/diogo-andrade-3874b0305" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Diogo Andrade</a></li>
+            </ul>
+          </section>
+
+        </div>
+      </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-border-light dark:border-border-dark mt-16">
+      <div class="max-w-5xl mx-auto px-6 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <h3 class="font-bold mb-4">Navigation</h3>
+            <ul class="space-y-2 text-sm text-text-light/70 dark:text-text-dark/70">
+              <li><a href="/" class="hover:text-primary transition-colors">Accueil</a></li>
+              <li><a href="/a-propos.html" class="hover:text-primary transition-colors">À propos</a></li>
+              <li><a href="/technologies.html" class="hover:text-primary transition-colors">Technologies</a></li>
+              <li><a href="/#projects" class="hover:text-primary transition-colors">Projets</a></li>
+              <li><a href="/contact.html" class="hover:text-primary transition-colors">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold mb-4">Légal</h3>
+            <ul class="space-y-2 text-sm text-text-light/70 dark:text-text-dark/70">
+              <li><a href="/mentions-legales.html" class="hover:text-primary transition-colors">Mentions légales</a></li>
+              <li><a href="/politique-de-confidentialite.html" class="hover:text-primary transition-colors">Politique de confidentialité</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold mb-4">Me suivre</h3>
+            <div class="flex gap-4">
+              <a class="text-text-light dark:text-text-dark hover:text-primary transition-colors" href="https://www.linkedin.com/in/diogo-andrade-3874b0305" target="_blank" rel="noopener noreferrer">
+                <svg aria-hidden="true" class="size-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+              </a>
+              <a class="text-text-light dark:text-text-dark hover:text-primary transition-colors" href="https://github.com/Diogo444" target="_blank" rel="noopener noreferrer">
+                <svg aria-hidden="true" class="size-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.489.5.092.682-.218.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.942.359.31.678.922.678 1.856 0 1.344-.012 2.427-.012 2.753 0 .266.18.577.688.48A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" fill-rule="evenodd"></path></svg>
+              </a>
+              <a class="text-text-light dark:text-text-dark hover:text-primary transition-colors" href="mailto:da7822000@gmail.com">
+                <span class="material-symbols-outlined text-2xl">mail</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="pt-6 border-t border-border-light dark:border-border-dark flex flex-col sm:flex-row justify-between items-center text-sm">
+          <p class="text-text-light/70 dark:text-text-dark/70">© <span id="year"></span> Diogo Andrade. Tous droits réservés.</p>
+          <a class="flex items-center gap-2 mt-4 sm:mt-0 text-text-light/70 dark:text-text-dark/70 hover:text-primary transition-colors" href="#">
+            Retour en haut
+            <span class="material-symbols-outlined text-lg">arrow_upward</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Theme detection
+    (function () {
+      var savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+        document.documentElement.classList.toggle('light', savedTheme === 'light');
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.add('light');
+      }
+    })();
+
+    // Year
+    (function () {
+      var span = document.getElementById('year');
+      if (span) span.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
