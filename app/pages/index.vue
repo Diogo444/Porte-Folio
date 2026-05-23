@@ -1,7 +1,22 @@
+<script setup lang="ts">
+useHead({
+  title: 'Diogo Andrade – Développeur Front-end (Angular, Vue.js, APIs)',
+  meta: [
+    {
+      name: 'description',
+      content:
+        "Portfolio de Diogo Andrade – développeur front-end. Spécialités : Angular, Vue.js, intégration d'APIs (NestJS/Node), déploiement Docker. Interfaces épurées et performantes.",
+    },
+  ],
+})
+</script>
+
 <template>
-    <div class="home">
-        <h1>Welcome to the Home Page</h1>
-        <p>This is the main landing page of the application.</p>
-    </div>
+  <main class="page-main">
+    <HomeHeroSection />
+    <HomeAboutSection />
+    <HomeTechnologiesSection />
+    <HomeProjectsSection />
+    <HomeContactSection />
+  </main>
 </template>
-<script></script>
