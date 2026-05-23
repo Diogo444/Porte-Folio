@@ -21,7 +21,6 @@ export default defineNuxtConfig({
       meta: [
         { name: 'robots', content: 'index,follow' },
         { name: 'author', content: 'Diogo Andrade' },
-        { name: 'theme-color', content: '#111827' },
         { name: 'color-scheme', content: 'light dark' },
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: 'Diogo Andrade' },
