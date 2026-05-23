@@ -12,7 +12,7 @@
      =========================================================
      Change ces valeurs pour modifier le theme global du site.
      En mode clair, le fond utilise --color-background.
-     En cmode sombre, le fond utilise --color-background-dark.
+     En mode sombre, le fond utilise --color-background-dark.
   */
   --color-primary: #dd0031;
   --color-secondary: #e0234e;
