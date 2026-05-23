@@ -6,22 +6,123 @@
 
 :root {
   color-scheme: light;
+
+  /* =========================================================
+     1. DESIGN SYSTEM - COULEURS A MODIFIER
+     =========================================================
+     Change ces valeurs pour modifier le theme global du site.
+     En mode clair, le fond utilise --color-background.
+     En mode sombre, le fond utilise --color-background-dark.
+  */
   --color-primary: #dd0031;
   --color-secondary: #e0234e;
-  --color-soft-pink: #ff6b8a;
+  --color-accent: #ff6b8a;
+  --color-contrast: #caa5a5;
   --color-background: #fafafa;
-  --color-background-dark: #111827;
   --color-text: #111827;
-  --color-text-dark: #f3f4f6;
-  --color-card: #ffffff;
-  --color-card-dark: #1f2937;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f4f4f5;
   --color-border: #e5e7eb;
+
+  --color-background-dark: #111827;
+  --color-background-dark-secondary: #46010f;
+  --color-text-dark: #f3f4f6;
+  --color-surface-dark: #1f2937;
   --color-border-dark: #374151;
+
+  --color-code-background: #1e1e1e;
+  --color-code-text: #d4d4d4;
+
+  /* =========================================================
+     2. COULEURS FIXES
+     ========================================================= */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-transparent: transparent;
+
+  /* =========================================================
+     3. COULEURS DE MARQUES ET TECHNOLOGIES
+     ========================================================= */
+  --brand-linkedin: #0077b5;
+  --tech-angular: #dd0031;
+  --tech-angular-dark: #7d0019;
+  --tech-vue: #4fc08d;
+  --tech-tailwind: #06b6d4;
+  --tech-tailwind-dark: #025b7f;
+  --tech-javascript: #f7df1e;
+  --tech-node: #5fa04e;
+  --tech-node-dark: #2d4a25;
+  --tech-nest: #e0234e;
+  --tech-nest-dark: #701827;
+  --tech-symfony: #000000;
+  --tech-docker: #2496ed;
+  --tech-docker-dark: #084a7b;
+  --tech-elasticsearch: #005571;
+  --tech-typescript: #3178c6;
+  --tech-caddy: #084a7f;
+
+  /* =========================================================
+     4. VARIABLES SEMANTIQUES UTILISEES PAR L'INTERFACE
+     =========================================================
+     Les composants doivent utiliser ces variables, pas des
+     couleurs en dur.
+  */
+  --background-page: var(--color-background);
+  --background-page-image: none;
+  --background-surface: var(--color-surface);
+  --background-surface-soft: color-mix(
+    in srgb,
+    var(--background-surface) 80%,
+    transparent
+  );
+  --background-surface-muted: var(--color-surface-muted);
+  --background-navbar: color-mix(
+    in srgb,
+    var(--background-surface) 80%,
+    transparent
+  );
+  --background-overlay-strong: color-mix(
+    in srgb,
+    var(--color-black) 80%,
+    transparent
+  );
+  --background-overlay-soft: color-mix(
+    in srgb,
+    var(--color-black) 20%,
+    transparent
+  );
+
+  --text-main: var(--color-text);
+  --text-inverse: var(--color-contrast);
+  --text-muted: color-mix(in srgb, var(--text-main) 80%, transparent);
+  --text-muted-strong: color-mix(in srgb, var(--text-main) 85%, transparent);
+  --text-muted-soft: color-mix(in srgb, var(--text-main) 70%, transparent);
+  --text-subtle: color-mix(in srgb, var(--text-main) 60%, transparent);
+
+  --border-default: var(--color-border);
+  --border-soft: color-mix(in srgb, var(--border-default) 60%, transparent);
+  --button-primary-background: var(--color-primary);
+  --button-primary-background-hover: var(--color-secondary);
+  --button-secondary-hover: var(--background-surface-muted);
+  --focus-ring: color-mix(in srgb, var(--color-primary) 30%, transparent);
+
+  --shadow-card-color: color-mix(in srgb, var(--text-main) 12%, transparent);
+  --shadow-hover-color: color-mix(in srgb, var(--color-black) 10%, transparent);
+  --shadow-card: 0 16px 40px var(--shadow-card-color);
+  --shadow-card-hover: 0 10px 40px var(--shadow-hover-color);
+
+  --code-background: var(--color-code-background);
+  --code-text: var(--color-code-text);
+
+  /* =========================================================
+     5. ESPACEMENTS, RAYONS ET TYPOGRAPHIE
+     ========================================================= */
   --container-width: 1024px;
   --radius: 0.75rem;
   --radius-lg: 1rem;
-  --shadow-card: 0 16px 40px rgba(17, 24, 39, 0.12);
-  --font-display: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
 }
 
 html {
@@ -30,21 +131,43 @@ html {
 
 html.dark {
   color-scheme: dark;
+  --background-page: var(--color-background-dark);
+  --background-page-image: linear-gradient(
+    135deg,
+    var(--color-background-dark) 0%,
+    var(--color-background-dark-secondary) 100%
+  );
+  --background-surface: var(--color-surface-dark);
+  --background-surface-soft: color-mix(
+    in srgb,
+    var(--background-surface) 50%,
+    transparent
+  );
+  --background-surface-muted: var(--color-background-dark);
+  --background-navbar: color-mix(
+    in srgb,
+    var(--background-surface) 80%,
+    transparent
+  );
+  --text-main: var(--color-text-dark);
+  --text-inverse: var(--color-white);
+  --border-default: var(--color-border-dark);
+  --border-soft: color-mix(in srgb, var(--border-default) 60%, transparent);
+  --shadow-card-color: color-mix(in srgb, var(--color-black) 20%, transparent);
 }
+
+/* =========================================================
+   BASE
+   ========================================================= */
 
 body {
   min-height: 100vh;
   margin: 0;
-  background: var(--color-background);
-  color: var(--color-text);
+  background-color: var(--background-page);
+  background-image: var(--background-page-image);
+  color: var(--text-main);
   font-family: var(--font-display);
   -webkit-font-smoothing: antialiased;
-}
-
-html.dark body {
-  background-color: var(--color-background-dark);
-  background-image: linear-gradient(135deg, #111827 0%, #46010f 100%);
-  color: var(--color-text-dark);
 }
 
 a {
@@ -63,6 +186,10 @@ textarea,
 select {
   font: inherit;
 }
+
+/* =========================================================
+   STRUCTURE GLOBALE
+   ========================================================= */
 
 .app-shell {
   min-height: 100vh;
@@ -86,15 +213,19 @@ select {
   padding: 3rem 0;
 }
 
+/* =========================================================
+   COMPOSANTS GENERIQUES
+   ========================================================= */
+
 .card {
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
+  background: var(--background-surface);
+  border: 1px solid var(--border-default);
   border-radius: var(--radius-lg);
 }
 
 html.dark .card {
-  background: var(--color-card-dark);
-  border-color: var(--color-border-dark);
+  background: var(--background-surface);
+  border-color: var(--border-default);
 }
 
 .button {
@@ -104,11 +235,16 @@ html.dark .card {
   gap: 0.5rem;
   min-height: 3rem;
   padding: 0.75rem 1.5rem;
-  border: 1px solid transparent;
+  border: 1px solid var(--color-transparent);
   border-radius: 0.5rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, opacity 180ms ease, transform 180ms ease;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
 }
 
 .button:hover {
@@ -116,47 +252,51 @@ html.dark .card {
 }
 
 .button--primary {
-  background: var(--color-primary);
-  color: #ffffff;
+  background: var(--button-primary-background);
+  color: var(--text-inverse);
 }
 
 .button--primary:hover {
-  opacity: 0.9;
+  background: var(--button-primary-background-hover);
 }
 
 .button--secondary {
-  background: var(--color-card);
-  border-color: var(--color-border);
-  color: var(--color-text);
+  background: var(--background-surface);
+  border-color: var(--border-default);
+  color: var(--text-main);
 }
 
 .button--secondary:hover {
-  background: #f4f4f5;
+  background: var(--button-secondary-hover);
 }
 
 html.dark .button--secondary {
-  background: var(--color-card-dark);
-  border-color: var(--color-border-dark);
-  color: var(--color-text-dark);
+  background: var(--background-surface);
+  border-color: var(--border-default);
+  color: var(--text-main);
 }
 
 html.dark .button--secondary:hover {
-  background: var(--color-background-dark);
+  background: var(--button-secondary-hover);
 }
 
 .button--outline {
-  background: transparent;
+  background: var(--color-transparent);
   border-color: var(--color-primary);
   color: var(--color-primary);
 }
 
 .button--outline:hover {
   background: var(--color-primary);
-  color: #ffffff;
+  color: var(--text-inverse);
 }
 
 .material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
   line-height: 1;
 }
 
@@ -168,14 +308,14 @@ html.dark .button--secondary:hover {
   z-index: 50;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid var(--border-default);
+  background: var(--background-navbar);
   backdrop-filter: blur(8px);
 }
 
 html.dark .navbar {
-  border-bottom-color: var(--color-border-dark);
-  background: rgba(31, 41, 55, 0.8);
+  border-bottom-color: var(--border-default);
+  background: var(--background-navbar);
 }
 
 .navbar__inner {
@@ -235,18 +375,18 @@ html.dark .navbar {
   place-items: center;
   width: 2.5rem;
   height: 2.5rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border-default);
   border-radius: 0.5rem;
-  background: var(--color-background);
-  color: var(--color-text);
+  background: var(--background-page);
+  color: var(--text-main);
   cursor: pointer;
 }
 
 html.dark .theme-toggle,
 html.dark .navbar__menu {
-  border-color: var(--color-border-dark);
-  background: var(--color-card-dark);
-  color: var(--color-text-dark);
+  border-color: var(--border-default);
+  background: var(--background-surface);
+  color: var(--text-main);
 }
 
 .navbar__menu {
@@ -256,6 +396,10 @@ html.dark .navbar__menu {
 .navbar__mobile {
   display: none;
 }
+
+/* =========================================================
+   SECTIONS DE LA PAGE D'ACCUEIL
+   ========================================================= */
 
 .hero {
   min-height: calc(100vh - 5rem);
@@ -288,24 +432,24 @@ html.dark .navbar__menu {
   margin: 0;
   font-size: clamp(1.125rem, 2vw, 1.25rem);
   font-weight: 400;
-  color: rgba(17, 24, 39, 0.8);
+  color: var(--text-muted);
 }
 
 html.dark .hero h2 {
-  color: rgba(243, 244, 246, 0.8);
+  color: var(--text-muted);
 }
 
 .hero p,
 .section-card p,
 .muted {
-  color: rgba(17, 24, 39, 0.85);
+  color: var(--text-muted-strong);
   line-height: 1.75;
 }
 
 html.dark .hero p,
 html.dark .section-card p,
 html.dark .muted {
-  color: rgba(243, 244, 246, 0.82);
+  color: var(--text-muted-strong);
 }
 
 .hero__actions,
@@ -323,7 +467,7 @@ html.dark .muted {
   width: min(24rem, 100%);
   aspect-ratio: 1;
   overflow: hidden;
-  border: 4px solid rgba(221, 0, 49, 0.2);
+  border: 4px solid color-mix(in srgb, var(--color-accent) 22%, transparent);
   border-radius: 999px;
   background-position: center;
   background-size: cover;
@@ -365,7 +509,9 @@ html.dark .muted {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: box-shadow 180ms ease, transform 180ms ease;
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .project-card:hover {
@@ -394,13 +540,13 @@ html.dark .muted {
 .project-card p {
   flex: 1;
   margin: 0 0 1rem;
-  color: rgba(17, 24, 39, 0.8);
+  color: var(--text-muted);
   font-size: 0.875rem;
   line-height: 1.6;
 }
 
 html.dark .project-card p {
-  color: rgba(243, 244, 246, 0.8);
+  color: var(--text-muted);
 }
 
 .contact-preview {
@@ -420,12 +566,12 @@ html.dark .project-card p {
 .social-link {
   display: inline-flex;
   align-items: center;
-  color: var(--color-text);
+  color: var(--text-main);
   transition: color 180ms ease;
 }
 
 html.dark .social-link {
-  color: var(--color-text-dark);
+  color: var(--text-main);
 }
 
 .social-link:hover {
@@ -451,13 +597,13 @@ html.dark .social-link {
 .page-hero p {
   max-width: 48rem;
   margin: 0;
-  color: rgba(17, 24, 39, 0.8);
+  color: var(--text-muted);
   font-size: 1.25rem;
   line-height: 1.7;
 }
 
 html.dark .page-hero p {
-  color: rgba(243, 244, 246, 0.8);
+  color: var(--text-muted);
 }
 
 .page-hero--center {
@@ -478,7 +624,7 @@ html.dark .page-hero p {
 .about-hero__avatar {
   width: 12rem;
   aspect-ratio: 1;
-  border: 4px solid rgba(221, 0, 49, 0.2);
+  border: 4px solid color-mix(in srgb, var(--color-accent) 22%, transparent);
   border-radius: 999px;
   background-position: center;
   background-size: cover;
@@ -523,9 +669,13 @@ html.dark .page-hero p {
   margin-bottom: 0.5rem;
 }
 
-.article-content a {
+.article-content a:not(.button):not(.back-link):not(.contact-card) {
   color: var(--color-primary);
 }
+
+/* =========================================================
+   CARTES ET CONTENUS DETAILLES
+   ========================================================= */
 
 .feature-grid,
 .tech-card-grid,
@@ -546,8 +696,8 @@ html.dark .page-hero p {
 .architecture-box,
 .info-box,
 .cta-section {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid var(--color-border);
+  background: var(--background-surface-soft);
+  border: 1px solid var(--border-default);
   border-radius: var(--radius);
 }
 
@@ -557,22 +707,24 @@ html.dark .contact-card,
 html.dark .architecture-box,
 html.dark .info-box,
 html.dark .cta-section {
-  background: rgba(31, 41, 55, 0.5);
-  border-color: rgba(55, 65, 81, 0.6);
+  background: var(--background-surface-soft);
+  border-color: var(--border-soft);
 }
 
 .feature-card,
 .tech-card,
 .contact-card {
   padding: 1.5rem;
-  transition: box-shadow 180ms ease, transform 180ms ease;
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .feature-card:hover,
 .tech-card:hover,
 .contact-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .feature-card .feature-icon {
@@ -584,14 +736,14 @@ html.dark .cta-section {
 .tech-card p,
 .contact-card p {
   margin-bottom: 0;
-  color: rgba(17, 24, 39, 0.8);
+  color: var(--text-muted);
   font-size: 0.95rem;
 }
 
 html.dark .feature-card p,
 html.dark .tech-card p,
 html.dark .contact-card p {
-  color: rgba(243, 244, 246, 0.8);
+  color: var(--text-muted);
 }
 
 .tech-card__head {
@@ -625,11 +777,11 @@ html.dark .contact-card p {
 .tech-card small {
   display: block;
   margin-top: 0.15rem;
-  color: rgba(17, 24, 39, 0.6);
+  color: var(--text-subtle);
 }
 
 html.dark .tech-card small {
-  color: rgba(243, 244, 246, 0.6);
+  color: var(--text-subtle);
 }
 
 .contact-card {
@@ -644,6 +796,26 @@ html.dark .tech-card small {
   height: 4rem;
   margin: 0 auto 1rem;
   border-radius: 999px;
+}
+
+.contact-card__icon--primary {
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  color: var(--color-primary);
+}
+
+.contact-card__icon--linkedin {
+  background: color-mix(in srgb, var(--brand-linkedin) 12%, transparent);
+  color: var(--brand-linkedin);
+}
+
+.contact-card__icon--github {
+  background: color-mix(in srgb, var(--text-main) 10%, transparent);
+  color: var(--text-main);
+}
+
+html.dark .contact-card__icon--github {
+  background: color-mix(in srgb, var(--text-main) 12%, transparent);
+  color: var(--text-main);
 }
 
 .info-box {
@@ -672,14 +844,14 @@ html.dark .tech-card small {
 .arch-item {
   min-width: 7.5rem;
   padding: 1rem 1.5rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border-default);
   border-radius: var(--radius);
   text-align: center;
 }
 
 html.dark .arch-item {
-  border-color: var(--color-border-dark);
-  background: rgba(17, 24, 39, 0.8);
+  border-color: var(--border-default);
+  background: var(--background-surface-soft);
 }
 
 .arch-item .feature-icon {
@@ -697,8 +869,8 @@ html.dark .arch-item {
   margin: 1.5rem 0;
   padding: 1.5rem;
   border-radius: var(--radius);
-  background: #1e1e1e;
-  color: #d4d4d4;
+  background: var(--code-background);
+  color: var(--code-text);
   font-family: Consolas, "Courier New", monospace;
   font-size: 0.9rem;
   line-height: 1.6;
@@ -714,11 +886,20 @@ html.dark .arch-item {
   background-size: cover;
 }
 
+/* =========================================================
+   PAGES PROJET / ARTICLE
+   ========================================================= */
+
 .article-hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2) 50%, transparent);
+  background: linear-gradient(
+    to top,
+    var(--background-overlay-strong),
+    var(--background-overlay-soft) 50%,
+    var(--color-transparent)
+  );
 }
 
 .article-hero__content {
@@ -727,7 +908,7 @@ html.dark .arch-item {
   width: min(900px, calc(100% - 3rem));
   margin-inline: auto;
   padding: 2rem 0;
-  color: #ffffff;
+  color: var(--color-contrast);
 }
 
 .article-hero__tag {
@@ -736,6 +917,7 @@ html.dark .arch-item {
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
   background: var(--color-primary);
+  color: var(--text-inverse);
   font-size: 0.875rem;
   font-weight: 700;
 }
@@ -752,11 +934,13 @@ html.dark .arch-item {
   gap: 0.5rem;
   margin-top: 2rem;
   padding: 0.75rem 1.25rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border-default);
   border-radius: 0.625rem;
-  background: var(--color-card);
+  background: var(--background-surface);
   font-weight: 700;
-  transition: border-color 180ms ease, transform 180ms ease;
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease;
 }
 
 .back-link:hover {
@@ -765,8 +949,8 @@ html.dark .arch-item {
 }
 
 html.dark .back-link {
-  border-color: var(--color-border-dark);
-  background: var(--color-card-dark);
+  border-color: var(--border-default);
+  background: var(--background-surface);
 }
 
 .cta-section {
@@ -777,13 +961,17 @@ html.dark .back-link {
   padding: 2rem;
 }
 
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
 .footer {
   margin-top: 4rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--border-default);
 }
 
 html.dark .footer {
-  border-top-color: var(--color-border-dark);
+  border-top-color: var(--border-default);
 }
 
 .footer__inner {
@@ -811,13 +999,13 @@ html.dark .footer {
 
 .footer a,
 .footer p {
-  color: rgba(17, 24, 39, 0.7);
+  color: var(--text-muted-soft);
   font-size: 0.875rem;
 }
 
 html.dark .footer a,
 html.dark .footer p {
-  color: rgba(243, 244, 246, 0.7);
+  color: var(--text-muted-soft);
 }
 
 .footer a:hover {
@@ -840,16 +1028,20 @@ html.dark .footer p {
   justify-content: space-between;
   gap: 1rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--border-default);
 }
 
 html.dark .footer__bottom {
-  border-top-color: var(--color-border-dark);
+  border-top-color: var(--border-default);
 }
 
 .footer__bottom p {
   margin: 0;
 }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 
 @media (max-width: 900px) {
   .container,
@@ -879,15 +1071,15 @@ html.dark .footer__bottom {
     display: grid;
     gap: 0.25rem;
     padding: 1rem;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--border-default);
     border-radius: var(--radius);
-    background: var(--color-card);
+    background: var(--background-surface);
     box-shadow: var(--shadow-card);
   }
 
   html.dark .navbar__mobile {
-    border-color: var(--color-border-dark);
-    background: var(--color-card-dark);
+    border-color: var(--border-default);
+    background: var(--background-surface);
   }
 
   .navbar__mobile a {
@@ -896,7 +1088,7 @@ html.dark .footer__bottom {
   }
 
   .navbar__mobile a:hover {
-    background: rgba(221, 0, 49, 0.08);
+    background: color-mix(in srgb, var(--color-primary) 8%, transparent);
     color: var(--color-primary);
   }
 

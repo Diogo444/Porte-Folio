@@ -73,7 +73,7 @@ useHead(() => ({
           <section>
             <h2>Stack technique</h2>
             <div class="tech-pills">
-              <span v-for="tag in project.tags" :key="tag" class="tech-badge" style="background-color: #dd0031; color: white">{{ tag }}</span>
+              <span v-for="tag in project.tags" :key="tag" class="tech-badge button--primary">{{ tag }}</span>
             </div>
             <p>
               Le backend Node.js avec Express sert de proxy entre le frontend et l'API officielle Ginko.

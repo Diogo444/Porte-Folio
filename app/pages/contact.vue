@@ -37,7 +37,7 @@ useHead({
 
           <div class="contact-card-grid">
             <a class="contact-card" :href="`mailto:${site.email}`">
-              <div class="contact-card__icon" style="background-color: rgba(221, 0, 49, 0.12); color: #dd0031">
+              <div class="contact-card__icon contact-card__icon--primary">
                 <span class="material-symbols-outlined">mail</span>
               </div>
               <h3>Email</h3>
@@ -53,7 +53,10 @@ useHead({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div class="contact-card__icon" style="background-color: rgba(0, 119, 181, 0.12)">
+              <div
+                class="contact-card__icon"
+                :class="social.icon === 'linkedin' ? 'contact-card__icon--linkedin' : 'contact-card__icon--github'"
+              >
                 <span v-if="social.icon === 'linkedin'">in</span>
                 <span v-else class="material-symbols-outlined">code</span>
               </div>
@@ -117,7 +120,7 @@ useHead({
           </p>
           <BaseButton :href="`mailto:${site.email}`">
             <span class="material-symbols-outlined" aria-hidden="true">mail</span>
-            Envoyer un email
+            <span>Envoyer un email</span>
           </BaseButton>
         </section>
       </div>
