@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { projects } from '~/data/portfolio'
+import { projects, site } from '~/data/portfolio'
 import BaseButton from '../../components/ui/BaseButton.vue'
 
 const route = useRoute()
@@ -10,15 +10,28 @@ if (!project.value) {
   throw createError({ statusCode: 404, statusMessage: 'Projet introuvable' })
 }
 
-useHead(() => ({
-  title: `${project.value?.title || 'Projet'} | Diogo Andrade`,
-  meta: [
-    {
-      name: 'description',
-      content: project.value?.summary || 'Page projet de Diogo Andrade.',
-    },
-  ],
-}))
+usePageSeo({
+  title: () => `${project.value?.cardTitle || 'Projet'} - Étude de cas`,
+  description: () => project.value?.summary || 'Page projet de Diogo Andrade.',
+  path: () => (project.value ? `/projects/${project.value.slug}` : route.path),
+  image: () => project.value?.image || site.ogImage,
+  type: 'article',
+})
+
+useJsonLd('project-page-structured-data', () => {
+  if (!project.value) {
+    return []
+  }
+
+  return [
+    createBreadcrumbJsonLd([
+      { name: 'Accueil', path: '/' },
+      { name: 'Projets', path: '/#projects' },
+      { name: project.value.cardTitle, path: `/projects/${project.value.slug}` },
+    ]),
+    createProjectJsonLd(project.value),
+  ]
+})
 </script>
 
 <template>

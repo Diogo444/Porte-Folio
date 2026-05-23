@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { site } from '~/data/portfolio'
 
-useHead({
-  title: 'Mentions légales – Diogo Andrade',
-  meta: [
-    {
-      name: 'description',
-      content:
-        "Mentions légales du site diogo-andrade.org. Informations sur l'éditeur, l'hébergeur, la propriété intellectuelle et les conditions d'utilisation.",
-    },
-  ],
+usePageSeo({
+  title: 'Mentions légales',
+  description:
+    "Mentions légales du site diogo-andrade.org : éditeur, hébergement, propriété intellectuelle, conditions d'utilisation et contact.",
+  path: '/mentions-legales',
 })
+
+useJsonLd('legal-breadcrumbs', createBreadcrumbJsonLd([
+  { name: 'Accueil', path: '/' },
+  { name: 'Mentions légales', path: '/mentions-legales' },
+]))
 </script>
 
 <template>

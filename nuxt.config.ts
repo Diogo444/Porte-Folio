@@ -3,6 +3,33 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css: ['~/assets/css/global.css'],
+  hooks: {
+    'pages:extend'(pages) {
+      const technologiesPage = pages.find((page) => page.file?.replace(/\\/g, '/').endsWith('/pages/Technologies.vue'))
+
+      if (technologiesPage) {
+        technologiesPage.name = 'technologies'
+        technologiesPage.path = '/technologies'
+      }
+    },
+  },
+  nitro: {
+    prerender: {
+      routes: [
+        '/',
+        '/a-propos',
+        '/technologies',
+        '/contact',
+        '/mentions-legales',
+        '/politique-de-confidentialite',
+        '/projects/ginku',
+        '/projects/coursfinder',
+        '/projects/miam-dv',
+        '/projects/qrela',
+        '/sitemap.xml',
+      ],
+    },
+  },
   routeRules: {
     '/a-propos.html': { redirect: '/a-propos' },
     '/technologies.html': { redirect: '/technologies' },
@@ -16,16 +43,26 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      htmlAttrs: { lang: 'fr' },
+      htmlAttrs: { lang: 'fr-FR' },
       title: 'Diogo Andrade – Développeur Front-end',
       meta: [
+        {
+          name: 'description',
+          content:
+            "Portfolio de Diogo Andrade, développeur front-end spécialisé en Angular, Vue.js, accessibilité numérique, APIs NestJS/Node et déploiement Docker.",
+        },
         { name: 'robots', content: 'index,follow' },
         { name: 'author', content: 'Diogo Andrade' },
+        { name: 'application-name', content: 'Diogo Andrade – Portfolio' },
+        { name: 'apple-mobile-web-app-title', content: 'Diogo Andrade' },
         { name: 'color-scheme', content: 'light dark' },
+        { name: 'theme-color', content: '#111111' },
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: 'Diogo Andrade' },
         { property: 'og:locale', content: 'fr_FR' },
+        { property: 'og:image', content: 'https://diogo-andrade.org/assets/img/android-chrome-512x512.png' },
         { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:image', content: 'https://diogo-andrade.org/assets/img/android-chrome-512x512.png' },
       ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },

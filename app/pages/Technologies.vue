@@ -3,16 +3,29 @@ import { technologies } from '~/data/portfolio'
 import BaseButton from '../components/ui/BaseButton.vue'
 import TechCard from '../components/ui/TechCard.vue'
 
-useHead({
-  title: 'Technologies – Diogo Andrade | Stack technique et compétences',
-  meta: [
-    {
-      name: 'description',
-      content:
-        "Découvrez les technologies maîtrisées par Diogo Andrade : Angular, Vue.js, NestJS, Node.js, Docker, Elasticsearch et bien d'autres.",
-    },
-  ],
+usePageSeo({
+  title: 'Technologies - Stack Angular, Vue.js, NestJS et Docker',
+  description:
+    "Découvrez les technologies maîtrisées par Diogo Andrade : Angular, Vue.js, TypeScript, NestJS, Node.js, Symfony, Docker, Caddy et Elasticsearch.",
+  path: '/technologies',
 })
+
+useJsonLd('technologies-page-structured-data', [
+  createBreadcrumbJsonLd([
+    { name: 'Accueil', path: '/' },
+    { name: 'Technologies', path: '/technologies' },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': absoluteSiteUrl('/technologies#technologies-page'),
+    url: absoluteSiteUrl('/technologies'),
+    name: 'Technologies et compétences de Diogo Andrade',
+    description: 'Stack front-end, back-end et déploiement utilisée par Diogo Andrade.',
+    inLanguage: 'fr-FR',
+    about: technologies.map((tech) => tech.name),
+  },
+])
 </script>
 
 <template>

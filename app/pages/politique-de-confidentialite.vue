@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { site } from '~/data/portfolio'
 
-useHead({
-  title: 'Politique de confidentialité – Diogo Andrade',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Politique de confidentialité du site diogo-andrade.org. Informations sur la collecte de données, les cookies et vos droits RGPD.',
-    },
-  ],
+usePageSeo({
+  title: 'Politique de confidentialité',
+  description:
+    'Politique de confidentialité du site diogo-andrade.org : données collectées, cookies, Google AdSense, sécurité et droits RGPD.',
+  path: '/politique-de-confidentialite',
 })
+
+useJsonLd('privacy-breadcrumbs', createBreadcrumbJsonLd([
+  { name: 'Accueil', path: '/' },
+  { name: 'Politique de confidentialité', path: '/politique-de-confidentialite' },
+]))
 </script>
 
 <template>

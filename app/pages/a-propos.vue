@@ -2,16 +2,18 @@
 import { site } from '~/data/portfolio'
 import BaseButton from '../components/ui/BaseButton.vue'
 
-useHead({
-  title: 'À propos – Diogo Andrade | Développeur Front-end passionné',
-  meta: [
-    {
-      name: 'description',
-      content:
-        "Découvrez le parcours de Diogo Andrade, développeur front-end spécialisé en Angular, Vue.js et APIs NestJS/Node. Un engagement pour l'accessibilité et les interfaces performantes.",
-    },
-  ],
+usePageSeo({
+  title: 'À propos - Développeur front-end accessible',
+  description:
+    "Découvrez le parcours de Diogo Andrade, développeur front-end spécialisé en Angular, Vue.js, APIs NestJS/Node, accessibilité numérique et interfaces performantes.",
+  path: '/a-propos',
+  type: 'profile',
 })
+
+useJsonLd('about-breadcrumbs', createBreadcrumbJsonLd([
+  { name: 'Accueil', path: '/' },
+  { name: 'À propos', path: '/a-propos' },
+]))
 </script>
 
 <template>

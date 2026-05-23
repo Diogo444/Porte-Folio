@@ -2,16 +2,30 @@
 import { site, socialLinks } from '~/data/portfolio'
 import BaseButton from '../components/ui/BaseButton.vue'
 
-useHead({
-  title: 'Contact – Diogo Andrade | Développeur Front-end',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Contactez Diogo Andrade pour discuter de votre projet web. Développeur front-end spécialisé en Angular, Vue.js et accessibilité.',
-    },
-  ],
+usePageSeo({
+  title: 'Contact - Projet web, accessibilité et front-end',
+  description:
+    'Contactez Diogo Andrade pour un projet web, une application Angular ou Vue.js, une interface accessible, une refonte UX ou une intégration API.',
+  path: '/contact',
 })
+
+useJsonLd('contact-page-structured-data', [
+  createBreadcrumbJsonLd([
+    { name: 'Accueil', path: '/' },
+    { name: 'Contact', path: '/contact' },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    '@id': absoluteSiteUrl('/contact#contact-page'),
+    url: absoluteSiteUrl('/contact'),
+    name: 'Contact Diogo Andrade',
+    description: 'Page de contact pour discuter de projets web front-end, accessibilité et APIs.',
+    mainEntity: {
+      '@id': absoluteSiteUrl('/#person'),
+    },
+  },
+])
 </script>
 
 <template>
