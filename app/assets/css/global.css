@@ -302,15 +302,18 @@ html.dark .button--secondary:hover {
 
 .navbar {
   position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  left: 50%;
   z-index: 50;
   display: flex;
   justify-content: center;
+  width: min(var(--container-width), calc(100% - 2rem));
   border-bottom: 1px solid var(--border-default);
   background: var(--background-navbar);
   backdrop-filter: blur(8px);
+  -webkit-box-shadow: 0px 4px 15px 5px #0000;
+  box-shadow: 0px 4px 15px 5px #0000;
 }
 
 html.dark .navbar {
@@ -322,7 +325,8 @@ html.dark .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: min(var(--container-width), 100%);
+  gap: 2rem;
+  width: 100%;
   padding: 1rem 1.5rem;
 }
 
@@ -334,7 +338,8 @@ html.dark .navbar {
 }
 
 .navbar__brand {
-  gap: 0.75rem;
+  flex: 0 0 auto;
+  gap: 1rem;
 }
 
 .navbar__logo {
@@ -351,6 +356,8 @@ html.dark .navbar {
 }
 
 .navbar__links {
+  flex: 1 1 auto;
+  justify-content: center;
   gap: 2rem;
 }
 
@@ -362,11 +369,12 @@ html.dark .navbar {
 
 .navbar__link:hover,
 .navbar__link--active {
-  color: var(--color-primary);
+  color: var(--color-contrast);
 }
 
 .navbar__actions {
-  gap: 0.75rem;
+  flex: 0 0 auto;
+  gap: 1.5rem;
 }
 
 .theme-toggle,
