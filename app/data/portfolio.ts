@@ -250,7 +250,7 @@ export const projects: Project[] = [
       "Une alternative accessible pour consulter les horaires de bus et tramway à Besançon",
     summary:
       "Interface Vue.js pour horaires temps réel et itinéraires, backend Node.js et intégration API Ginko. Déploiement containerisé.",
-    image: "/assets/img/project ginku.webp",
+    image: "/assets/img/project-ginku.webp",
     tags: [
       "Vue.js 3",
       "Vite",
@@ -278,7 +278,7 @@ export const projects: Project[] = [
       "Première expérience concrète avec Elasticsearch, Vue.js et Tailwind CSS",
     summary:
       "Première expérience avec Elasticsearch, Vue.js et Tailwind CSS. Indexation de mes cours et recherche par mots-clés via une interface simple et rapide.",
-    image: "/assets/img/project coursFinder.png",
+    image: "/assets/img/project-coursfinder.png",
     tags: ["Vue.js", "Tailwind CSS", "Elasticsearch", "JavaScript"],
     links: [
       { label: "Code source", href: "https://github.com/Diogo444/CoursFinder" },
@@ -293,7 +293,7 @@ export const projects: Project[] = [
       "Une application pour consulter les menus de l'internat en format accessible",
     summary:
       "Application web affichant le menu de la semaine de l'internat, pensée pour être accessible aux jeunes malvoyants et non-voyants.",
-    image: "/assets/img/project Miam DV.webp",
+    image: "/assets/img/project-miam-dv.webp",
     tags: [
       "Angular",
       "Tailwind CSS",
@@ -316,7 +316,7 @@ export const projects: Project[] = [
       "Un outil Vite.js sans inscription, personnalisable, avec export PNG/SVG",
     summary:
       "Générateur de QR code gratuit, sans inscription, personnalisable et développé avec Vite.js.",
-    image: "/assets/img/project qrela.webp",
+    image: "/assets/img/project-qrela.webp",
     tags: ["Vite.js", "JavaScript", "Tailwind CSS", "qr-code-styling"],
     links: [
       {
