@@ -111,8 +111,13 @@ export const createSiteJsonLd = () => [
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": absoluteSiteUrl("/#website"),
-    name: `${site.name} - Portfolio`,
-    url: site.url,
+    name: site.name,
+    alternateName: [
+      `${site.name} Portfolio`,
+      `${site.name} Développeur Web`,
+      "diogo-andrade.org",
+    ],
+    url: absoluteSiteUrl("/"),
     inLanguage: "fr-FR",
     description: site.description,
     publisher: {

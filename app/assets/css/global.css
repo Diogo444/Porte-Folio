@@ -366,7 +366,7 @@ html.dark .navbar {
   font-weight: 600;
   transition: color 180ms ease;
 }
-
++
 .navbar__link:hover,
 .navbar__link--active {
   color: var(--color-contrast);
