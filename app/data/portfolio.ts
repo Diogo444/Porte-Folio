@@ -43,7 +43,7 @@ export const site = {
   tagline: "Développeur Front-end · Angular, Vue.js & APIs NestJS/Node",
   description:
     "Portfolio de Diogo Andrade, développeur front-end spécialisé en Angular, Vue.js, accessibilité numérique, APIs NestJS/Node et déploiement Docker.",
-  email: "da7822000@gmail.com",
+  email: "contact@diogo-andrade.org",
   avatar: "/assets/img/android-chrome-192x192.png",
   ogImage: "/assets/img/android-chrome-512x512.png",
   cv: "/assets/CV/CV - Andrade Diogo.pdf",
