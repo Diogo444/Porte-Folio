@@ -120,6 +120,11 @@ export const createSiteJsonLd = () => [
     url: absoluteSiteUrl("/"),
     inLanguage: "fr-FR",
     description: site.description,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${absoluteSiteUrl("/")}?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
     publisher: {
       "@id": absoluteSiteUrl("/#person"),
     },
@@ -133,6 +138,10 @@ export const createSiteJsonLd = () => [
     url: site.url,
     image: absoluteImageUrl(site.avatar),
     email: site.email,
+    logo: {
+      "@type": "ImageObject",
+      url: absoluteImageUrl(site.ogImage),
+    },
     sameAs: socialLinks
       .filter((link) => link.icon !== "mail")
       .map((link) => link.href),
