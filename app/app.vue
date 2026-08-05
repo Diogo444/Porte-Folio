@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import CookieConsent from './components/CookieConsent.vue'
 import AppFooter from './components/layout/AppFooter.vue'
 import AppNavbar from './components/layout/AppNavbar.vue'
 import { site } from '~/data/portfolio'
@@ -36,6 +37,7 @@ onMounted(() => {
     <div class="app-shell">
         <AppNavbar />
         <NuxtPage />
+        <CookieConsent />
         <AppFooter />
     </div>
 </template>
