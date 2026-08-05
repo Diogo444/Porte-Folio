@@ -125,7 +125,7 @@ export default defineNuxtConfig({
   modules: ["nuxt-gtag"],
   gtag: {
     id: "G-GNVRFR1HQR",
-    enabled: false,
+    enabled: true,
     initMode: "manual",
   },
 });
