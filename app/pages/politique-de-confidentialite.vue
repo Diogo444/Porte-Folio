@@ -4,7 +4,7 @@ import { site } from '~/data/portfolio'
 usePageSeo({
   title: 'Politique de confidentialité',
   description:
-    'Politique de confidentialité du site diogo-andrade.org : données collectées, cookies, Google AdSense, sécurité et droits RGPD.',
+    'Politique de confidentialité du site diogo-andrade.org : données collectées, cookies, Google Analytics, Google AdSense, sécurité et droits RGPD.',
   path: '/politique-de-confidentialite',
 })
 
@@ -19,7 +19,7 @@ useJsonLd('privacy-breadcrumbs', createBreadcrumbJsonLd([
     <section class="page-hero">
       <div class="container">
         <h1>Politique de confidentialité</h1>
-        <p>Dernière mise à jour : Février 2026</p>
+        <p>Dernière mise à jour : 5 août 2026</p>
       </div>
     </section>
 
@@ -67,6 +67,15 @@ useJsonLd('privacy-breadcrumbs', createBreadcrumbJsonLd([
             Le site utilise un cookie fonctionnel, stocké localement, pour mémoriser votre préférence d'affichage
             en mode sombre ou clair. Ce cookie est nécessaire au confort d'utilisation.
           </p>
+
+          <h3>Google Analytics</h3>
+          <p>
+            Avec votre accord, le site utilise Google Analytics afin de mesurer de manière agrégée la fréquentation
+            et les pages consultées. Aucun script Google Analytics n'est chargé avant votre acceptation des cookies
+            statistiques. Votre choix est enregistré localement dans votre navigateur et vous pouvez le modifier en
+            supprimant les données du site dans les paramètres de votre navigateur.
+          </p>
+
           <h3>Gestion des cookies</h3>
           <p>
             Vous pouvez à tout moment modifier vos préférences en matière de cookies via les paramètres de votre
