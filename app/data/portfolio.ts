@@ -46,7 +46,7 @@ export const site = {
   email: "contact@diogo-andrade.org",
   avatar: "/assets/img/android-chrome-192x192.png",
   ogImage: "/assets/img/android-chrome-512x512.png",
-  cv: "/assets/CV/CV - Andrade Diogo.pdf",
+  cv: "/assets/CV/CV-Andrade-Diogo-HTML.pdf",
   url: "https://diogo-andrade.org",
 };
 

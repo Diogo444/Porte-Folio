@@ -31,7 +31,7 @@ const isExternal = computed(() => {
     class="button"
     :class="`button--${variant}`"
     :href="href"
-    :download="download || undefined"
+    :download="download ? '' : undefined"
     :target="isExternal ? '_blank' : undefined"
     :rel="isExternal ? 'noopener noreferrer' : undefined"
   >
