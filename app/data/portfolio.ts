@@ -282,16 +282,21 @@ export const projects: Project[] = [
   },
   {
     slug: "miam-dv",
-    title: "Miam DV · Menu de la semaine accessible",
+    title: "Miam DV — Consulter les menus de l’internat plus simplement",
     cardTitle: "Miam DV — Menus accessibles",
     category: "Projet Personnel",
     subtitle:
-      "Une application pour consulter les menus de l'internat en format accessible",
+      "Une application Angular pour consulter et administrer les menus d’un internat",
     summary:
-      "Une application créée pour faciliter la consultation des menus de l’internat par des jeunes malvoyants et non-voyants.",
+      "Une application Angular et NestJS conçue pour consulter et administrer les menus d’un internat en tenant compte de l’accessibilité.",
     image: "/assets/img/project-miam-dv.webp",
-    tags: ["Angular", "Node.js", "Accessibilité"],
+    tags: ["Angular", "NestJS", "MySQL", "Accessibilité"],
     links: [
+      {
+        label: "Voir l’application",
+        href: "https://miamdv.diogo-andrade.org/",
+        primary: true,
+      },
       { label: "Consulter le code source", href: "https://github.com/Diogo444/Miam-DV" },
     ],
   },

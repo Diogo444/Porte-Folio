@@ -13,9 +13,13 @@ if (!project.value) {
 usePageSeo({
   title: () => project.value?.slug === 'ginku'
     ? 'Ginku : application web et Android pour les transports de Besançon | Diogo Andrade'
+    : project.value?.slug === 'miam-dv'
+      ? 'Miam DV : menus d’internat accessibles avec Angular | Diogo Andrade'
     : `${project.value?.cardTitle || 'Projet'} - Étude de cas`,
   description: () => project.value?.slug === 'ginku'
     ? 'Découvrez Ginku, mon application Vue.js et Android pour consulter les horaires, les arrêts proches et les informations du réseau de transport de Besançon.'
+    : project.value?.slug === 'miam-dv'
+      ? 'Découvrez Miam DV, une application Angular et NestJS conçue pour consulter et administrer les menus d’un internat en tenant compte de l’accessibilité.'
     : project.value?.summary || 'Page projet de Diogo Andrade.',
   path: () => (project.value ? `/projects/${project.value.slug}` : route.path),
   image: () => project.value?.image || site.ogImage,
@@ -67,6 +71,32 @@ useJsonLd('project-page-structured-data', () => {
       </div>
     </section>
 
+    <section v-else-if="project.slug === 'miam-dv'" class="miam-hero">
+      <div class="container miam-hero__grid">
+        <div class="miam-hero__content">
+          <p class="eyebrow">Projet personnel</p>
+          <h1>Miam DV — Consulter les menus de l’internat plus simplement</h1>
+          <p>Miam DV est une application web que j’ai créée à partir d’un besoin rencontré dans mon quotidien à l’internat du CRDV. Elle permet de consulter les menus de la semaine depuis un téléphone ou un ordinateur, dans une interface conçue pour rester compréhensible et utilisable par des personnes malvoyantes ou non-voyantes.</p>
+          <p>Le projet a progressivement évolué vers une application complète, avec une interface publique développée sous Angular, une administration protégée, une API NestJS, une base de données MySQL et un serveur MCP facilitant la publication des menus.</p>
+          <div class="miam-actions">
+            <BaseButton href="https://miamdv.diogo-andrade.org/">Voir l’application</BaseButton>
+            <BaseButton href="https://github.com/Diogo444/Miam-DV" variant="secondary">Consulter le code source</BaseButton>
+          </div>
+        </div>
+        <aside class="miam-facts card" aria-label="Informations principales sur Miam DV">
+          <dl>
+            <div><dt>Rôle</dt><dd>Conception et développement du front-end, de l’API, de l’administration et du déploiement</dd></div>
+            <div><dt>Technologie principale</dt><dd>Angular et TypeScript</dd></div>
+            <div><dt>Backend</dt><dd>NestJS, TypeORM et MySQL</dd></div>
+            <div><dt>Déploiement</dt><dd>Docker et Caddy</dd></div>
+          </dl>
+        </aside>
+      </div>
+      <div class="container">
+        <img class="miam-hero__image" :src="project.image" alt="Page d’accueil de Miam DV présentant les menus de plusieurs jours de la semaine">
+      </div>
+    </section>
+
     <section v-else class="article-hero" :style="{ backgroundImage: `url('${project.image}')` }">
       <div class="article-hero__content">
         <span class="article-hero__tag">{{ project.category }}</span>
@@ -82,7 +112,13 @@ useJsonLd('project-page-structured-data', () => {
       </NuxtLink>
     </div>
 
-    <article class="article-container" :class="{ 'ginku-article': project.slug === 'ginku' }">
+    <article
+      class="article-container"
+      :class="{
+        'ginku-article': project.slug === 'ginku',
+        'miam-article': project.slug === 'miam-dv',
+      }"
+    >
       <div class="article-content">
         <template v-if="project.slug === 'ginku'">
           <section class="ginku-facts" aria-labelledby="ginku-facts-title">
@@ -241,39 +277,108 @@ useJsonLd('project-page-structured-data', () => {
         </template>
 
         <template v-else-if="project.slug === 'miam-dv'">
-          <section>
-            <h2>Le contexte : un besoin concret</h2>
-            <p>
-              <strong>Miam DV</strong> répond à un besoin du CRDV : rendre le menu de la semaine de l'internat
-              plus simple à consulter, surtout pour les jeunes malvoyants et non-voyants.
-            </p>
-            <div class="info-box">
-              <p><strong>La situation initiale :</strong> les menus étaient distribués sur papier, en gros caractères et avec plusieurs adaptations.</p>
+          <section class="miam-section">
+            <p class="eyebrow">Le besoin de départ</p>
+            <h2>Un projet né d’un besoin concret</h2>
+            <p>À l’internat, les menus étaient principalement communiqués sur papier. Des adaptations pouvaient être proposées, notamment avec des caractères agrandis, mais ce format n’était pas toujours pratique à consulter ou disponible au moment où l’on en avait besoin.</p>
+            <p>J’ai donc imaginé une application permettant de retrouver les menus de la semaine depuis n’importe quel appareil. Mon objectif n’était pas uniquement de reproduire le document papier à l’écran, mais d’organiser les informations de manière plus claire : un jour, un repas et une catégorie de plat à la fois.</p>
+            <p>Miam DV reste un projet personnel. Il s’inspire directement de situations que je connais en tant que personne malvoyante et de mes échanges avec d’autres personnes déficientes visuelles.</p>
+          </section>
+
+          <section class="miam-section">
+            <p class="eyebrow">Fonctionnement</p>
+            <h2>Consulter et gérer les menus</h2>
+            <p>L’interface publique présente les menus du lundi au vendredi. Pour chaque journée, les repas du midi et du soir sont séparés, avec les différentes parties du menu : entrée, plat, fromage et dessert.</p>
+            <p>L’affichage s’adapte à la taille de l’écran. Sur mobile, les journées peuvent être parcourues sous forme de cartes. Sur un écran plus large, plusieurs jours sont visibles simultanément.</p>
+            <p>L’application propose également une blague ou un proverbe de la semaine. Les utilisateurs peuvent envoyer leurs propres suggestions depuis un formulaire public. Ces propositions ne sont pas publiées immédiatement : elles doivent d’abord être examinées et acceptées depuis l’espace d’administration.</p>
+            <div class="miam-feature-grid">
+              <article class="miam-feature card"><h3>Consultation des menus</h3><p>Les menus sont classés par jour et par période afin de retrouver rapidement le repas recherché.</p></article>
+              <article class="miam-feature card"><h3>Suggestions des utilisateurs</h3><p>Un formulaire permet de proposer une blague ou un proverbe, qui sera ensuite soumis à modération.</p></article>
+              <article class="miam-feature card"><h3>Administration</h3><p>Une interface protégée permet d’ajouter, de modifier ou de supprimer les menus, de traiter les suggestions et de gérer les comptes administrateurs.</p></article>
+              <article class="miam-feature card"><h3>Mise à jour hebdomadaire</h3><p>Les anciennes données sont automatiquement supprimées chaque vendredi à 16 heures afin de préparer la publication de la semaine suivante.</p></article>
+              <article class="miam-feature card"><h3>Préférences d’affichage</h3><p>L’utilisateur peut choisir le thème de l’interface. Sa préférence est conservée dans le navigateur.</p></article>
             </div>
           </section>
 
-          <section>
-            <h2>Fonctionnalités de l'application</h2>
-            <div class="feature-grid">
-              <article class="feature-card"><div class="feature-icon">🍽️</div><h4>Menu de la semaine</h4><p>Affichage clair des menus midi et soir, du lundi au vendredi.</p></article>
-              <article class="feature-card"><div class="feature-icon">♿</div><h4>100% Accessible</h4><p>Compatible avec VoiceOver, TalkBack et les outils d'accessibilité.</p></article>
-              <article class="feature-card"><div class="feature-icon">💬</div><h4>Proverbe ou blague</h4><p>Chaque semaine, un proverbe ou une blague est affiché pour créer du lien.</p></article>
-              <article class="feature-card"><div class="feature-icon">🔐</div><h4>Administration sécurisée</h4><p>Interface d'administration avec authentification JWT pour gérer les menus.</p></article>
+          <section class="miam-section miam-accessibility">
+            <div>
+              <p class="eyebrow">Accessibilité</p>
+              <h2>Une accessibilité intégrée au développement</h2>
+              <p>L’accessibilité a été prise en compte dès la conception du projet. L’objectif est de proposer une interface dont la structure et les retours restent compréhensibles avec différents moyens de navigation.</p>
+              <p>Ce travail améliore l’utilisation de l’application avec un lecteur d’écran ou sans souris. Il ne remplace toutefois pas un audit RGAA complet : je présente donc Miam DV comme une application conçue en tenant compte de l’accessibilité, et non comme une application certifiée ou « 100 % accessible ».</p>
             </div>
-          </section>
-
-          <section>
-            <h2>L'accessibilité au cœur du projet</h2>
-            <p>
-              L'application web permet de laisser chaque utilisateur utiliser ses propres réglages :
-              zoom, contraste, synthèse vocale et navigation clavier.
-            </p>
-            <ul>
-              <li><strong>HTML sémantique</strong> pour une navigation logique au lecteur d'écran.</li>
-              <li><strong>Navigation clavier</strong> sur tous les éléments interactifs.</li>
-              <li><strong>Contrastes suffisants</strong> pour respecter les ratios WCAG.</li>
-              <li><strong>Texte redimensionnable</strong> jusqu'à 200% sans perte d'information.</li>
+            <ul class="miam-points">
+              <li>Séparation claire des jours et des repas</li>
+              <li>Champs associés à leurs intitulés</li>
+              <li>Erreurs et confirmations annoncées par des zones de statut</li>
+              <li>Intitulés descriptifs pour les actions</li>
+              <li>États de chargement et messages d’erreur</li>
+              <li>Utilisation au clavier des formulaires et de l’administration</li>
+              <li>Adaptation aux petits écrans et aux préférences visuelles</li>
             </ul>
+          </section>
+
+          <section class="miam-section">
+            <p class="eyebrow">Architecture</p>
+            <h2>Une application répartie en plusieurs services</h2>
+            <p>Le front-end est développé avec Angular, TypeScript, Angular Material et Tailwind CSS. Il récupère les menus, les proverbes et les suggestions auprès d’une API REST réalisée avec NestJS.</p>
+            <p>L’API utilise TypeORM pour communiquer avec une base de données MySQL. Elle gère les menus, les suggestions, les contenus publiés et les comptes administrateurs.</p>
+            <p>L’espace d’administration est protégé par une authentification JWT. Le rôle de l’utilisateur et une version du jeton sont vérifiés par le backend. Lorsqu’un compte administrateur est modifié ou supprimé, ses anciens jetons peuvent être invalidés.</p>
+            <div class="miam-architecture" aria-label="Architecture de Miam DV reliant Angular, l’API NestJS, MySQL et le serveur MCP">
+              <div>Front-end Angular</div><span aria-hidden="true">→</span><div>API NestJS</div><span aria-hidden="true">→</span><div>Base MySQL</div><span aria-hidden="true">←</span><div>Serveur MCP</div>
+            </div>
+            <p>L’ensemble est réparti dans plusieurs services Docker. Caddy sert de reverse proxy et achemine les requêtes vers le front-end Angular, l’API NestJS, la base de données MySQL et le serveur MCP.</p>
+          </section>
+
+          <section class="miam-section miam-technical-grid">
+            <div>
+              <p class="eyebrow">Administration</p>
+              <h2>Une interface protégée pour gérer les contenus</h2>
+              <p>L’administration permet d’ajouter, de modifier et de supprimer les menus, de modérer les suggestions reçues et de gérer les comptes administrateurs.</p>
+              <p>La séparation entre l’interface publique et cet espace plus dense m’a amené à concevoir deux parcours différents, tout en conservant des retours clairs pour les chargements, les erreurs et les confirmations.</p>
+            </div>
+            <div>
+              <p class="eyebrow">Model Context Protocol</p>
+              <h2>Faciliter la publication avec MCP</h2>
+              <p>La saisie manuelle de tous les repas d’une semaine peut être répétitive. J’ai donc ajouté un serveur MCP afin d’automatiser une partie de la publication.</p>
+              <ul>
+                <li>Publier ou remplacer le menu d’une semaine</li>
+                <li>Publier le proverbe ou la blague de la semaine</li>
+                <li>Transformer un menu textuel en données structurées</li>
+                <li>Supprimer les données d’une semaine déterminée</li>
+              </ul>
+              <p>Le serveur transmet les informations à l’API NestJS avec des permissions limitées et une limitation du nombre de requêtes. Cette partie m’a permis de travailler sur la transformation de données textuelles, leur validation et la communication entre plusieurs services.</p>
+            </div>
+          </section>
+
+          <section class="miam-section">
+            <p class="eyebrow">Défis techniques</p>
+            <h2>Principales difficultés</h2>
+            <div class="miam-challenges">
+              <article><h3>Structurer les menus</h3><p>Il fallait représenter plusieurs journées, deux périodes par jour et différentes catégories de plats, tout en conservant un affichage simple à parcourir.</p></article>
+              <article><h3>Concevoir deux interfaces différentes</h3><p>L’interface publique doit rester très simple, tandis que l’administration rassemble davantage d’actions, de formulaires et d’états.</p></article>
+              <article><h3>Gérer les retours dynamiques</h3><p>Les chargements, les erreurs, les confirmations et les résultats d’une modération doivent être visibles sans perturber la navigation, y compris avec une technologie d’assistance.</p></article>
+              <article><h3>Protéger l’administration</h3><p>J’ai mis en place l’authentification, les rôles et l’invalidation des anciens jetons lorsqu’un compte administrateur est modifié.</p></article>
+              <article><h3>Déployer plusieurs services</h3><p>Docker m’a permis de séparer le front-end, l’API, la base de données et le serveur MCP tout en facilitant leur déploiement.</p></article>
+            </div>
+          </section>
+
+          <section class="miam-section">
+            <p class="eyebrow">Enseignements</p>
+            <h2>Ce que ce projet m’a appris</h2>
+            <p>Miam DV m’a permis d’approfondir Angular sur une application répondant à un besoin réel. J’ai travaillé sur les composants standalone, les formulaires, les appels vers une API, la gestion des états et la création d’interfaces adaptées à différents écrans.</p>
+            <p>J’ai également progressé avec NestJS, TypeORM et l’authentification JWT. Même si mon orientation reste le développement front-end, comprendre le fonctionnement du backend m’aide à mieux structurer les échanges de données et à concevoir des interfaces plus cohérentes avec l’API.</p>
+            <p>Enfin, le projet m’a appris qu’une interface accessible ne repose pas sur une seule fonctionnalité. Elle demande de vérifier la structure des pages, les intitulés, les messages dynamiques, la navigation et les différents parcours utilisateur tout au long du développement.</p>
+          </section>
+
+          <section class="miam-final card">
+            <h2>Découvrir Miam DV</h2>
+            <p>Le code du front-end, du backend et du serveur MCP est disponible sur GitHub.</p>
+            <div class="miam-actions">
+              <BaseButton href="https://miamdv.diogo-andrade.org/">Voir l’application</BaseButton>
+              <BaseButton href="https://github.com/Diogo444/Miam-DV" variant="secondary">Consulter le dépôt GitHub</BaseButton>
+              <BaseButton to="/#projects" variant="outline">Découvrir mes autres projets</BaseButton>
+            </div>
           </section>
         </template>
 
@@ -321,7 +426,7 @@ useJsonLd('project-page-structured-data', () => {
           </section>
         </template>
 
-        <section v-if="project.slug !== 'ginku'">
+        <section v-if="project.slug !== 'ginku' && project.slug !== 'miam-dv'">
           <h2>Voir le projet</h2>
           <p>Le projet est disponible en ligne ou sur GitHub selon les liens ci-dessous.</p>
           <div class="cta-section">
