@@ -43,9 +43,11 @@ const year = new Date().getFullYear()
 
       <div class="footer__bottom">
         <p>© {{ year }} {{ site.name }}. Tous droits réservés.</p>
-        <NuxtLink to="/#home">
-          Retour en haut
-          <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+        <NuxtLink class="footer__back-to-top" to="/#home" aria-label="Retourner en haut de la page">
+          <span>Retour en haut</span>
+          <span class="footer__back-to-top-icon" aria-hidden="true">
+            <span class="material-symbols-outlined">arrow_upward</span>
+          </span>
         </NuxtLink>
       </div>
     </div>
