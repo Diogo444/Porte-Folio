@@ -1377,6 +1377,276 @@ html.dark .back-link {
 }
 
 /* =========================================================
+   PAGE TECHNOLOGIES
+   ========================================================= */
+
+.technologies-hero {
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+}
+
+.technologies-hero .container {
+  display: grid;
+  justify-items: start;
+  max-width: var(--container-width);
+}
+
+.technologies-hero h1 {
+  max-width: 52rem;
+}
+
+.technologies-hero p:not(.eyebrow) {
+  max-width: 50rem;
+  margin-bottom: 1rem;
+  font-size: 1.075rem;
+}
+
+.technologies-hero .button {
+  margin-top: 1rem;
+}
+
+.technologies-page {
+  padding-bottom: 5rem;
+}
+
+.technologies-primary {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(17rem, 0.65fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  padding: clamp(2rem, 6vw, 4rem);
+  border-color: color-mix(in srgb, var(--color-primary) 55%, var(--border-default));
+  background: color-mix(in srgb, var(--color-primary) 7%, var(--background-surface));
+}
+
+.technologies-primary h2,
+.technologies-section__heading h2,
+.technologies-cta h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.technologies-primary__content > p:not(.eyebrow),
+.technologies-section__heading > p:not(.eyebrow),
+.technology-skill-card p,
+.technology-tool p,
+.technologies-cta p {
+  color: var(--text-muted-strong);
+  line-height: 1.75;
+}
+
+.technologies-primary__content > p:not(.eyebrow) {
+  margin: 0 0 1rem;
+}
+
+.technologies-checklist,
+.technologies-points,
+.technologies-pills {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.technologies-checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.technologies-checklist li {
+  position: relative;
+  padding-left: 1.4rem;
+  line-height: 1.5;
+}
+
+.technologies-checklist li::before {
+  position: absolute;
+  top: 0.58em;
+  left: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--timeline-accent);
+  content: '';
+}
+
+.technologies-primary__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.technologies-primary__aside > img {
+  width: min(11rem, 60%);
+  height: auto;
+}
+
+.technologies-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.technologies-primary__aside .technologies-pills {
+  justify-content: center;
+}
+
+.technologies-pills li,
+.technologies-points li {
+  border: 1px solid var(--border-default);
+  border-radius: 999px;
+  background: var(--background-surface);
+  color: var(--text-main);
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+
+.technologies-pills li {
+  padding: 0.55rem 0.85rem;
+}
+
+.technologies-section {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.technologies-section__heading {
+  max-width: 52rem;
+  margin-bottom: 2.5rem;
+}
+
+.technologies-section__heading > p:not(.eyebrow) {
+  margin: 0 0 1rem;
+}
+
+.technologies-card-grid,
+.technologies-tools {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.technology-skill-card,
+.technology-tool {
+  padding: 1.75rem;
+}
+
+.technology-skill-card h3,
+.technology-tool h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.technology-skill-card p,
+.technology-tool p {
+  margin: 0;
+}
+
+.technologies-accessibility {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.technologies-accessibility .technologies-section__heading {
+  margin-bottom: 0;
+}
+
+.technologies-points {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.technologies-points li {
+  padding: 0.75rem 1rem;
+  border-radius: 0.65rem;
+}
+
+.technologies-backend {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.technologies-backend .technologies-section__heading {
+  margin-bottom: 0;
+}
+
+.technologies-table-wrapper {
+  max-width: 100%;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  background: var(--background-surface);
+}
+
+.technologies-table-wrapper:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.technologies-table {
+  width: 100%;
+  min-width: 48rem;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.technologies-table th,
+.technologies-table td {
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid var(--border-default);
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+.technologies-table thead th {
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--background-surface));
+  color: var(--text-main);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.technologies-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.technologies-table tbody th a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+html.dark .technologies-table tbody th a {
+  color: var(--timeline-accent);
+}
+
+.technologies-cta {
+  margin-top: clamp(4rem, 8vw, 7rem);
+  padding: clamp(2rem, 6vw, 4rem);
+  background: color-mix(in srgb, var(--color-primary) 7%, var(--background-surface));
+}
+
+.technologies-cta p {
+  max-width: 48rem;
+}
+
+.technologies-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* =========================================================
    FOOTER
    ========================================================= */
 
@@ -1556,8 +1826,16 @@ html.dark .footer__bottom {
 
   .hero__grid,
   .about-hero,
-  .about-page-hero__grid {
+  .about-page-hero__grid,
+  .technologies-primary,
+  .technologies-accessibility,
+  .technologies-backend {
     grid-template-columns: 1fr;
+  }
+
+  .hero__grid,
+  .about-hero,
+  .about-page-hero__grid {
     text-align: center;
   }
 
@@ -1589,6 +1867,8 @@ html.dark .footer__bottom {
   .technology-groups,
   .about-preview,
   .about-strengths,
+  .technologies-card-grid,
+  .technologies-tools,
   .feature-grid,
   .tech-card-grid,
   .contact-card-grid,
@@ -1641,14 +1921,20 @@ html.dark .footer__bottom {
   .hero__actions,
   .contact-preview__actions,
   .about-page-hero__actions,
-  .about-objective__actions {
+  .about-objective__actions,
+  .technologies-cta__actions {
     display: grid;
     width: 100%;
   }
 
   .about-page-hero__actions .button,
-  .about-objective__actions .button {
+  .about-objective__actions .button,
+  .technologies-cta__actions .button {
     width: 100%;
+  }
+
+  .technologies-checklist {
+    grid-template-columns: 1fr;
   }
 
   .about-timeline::before,
