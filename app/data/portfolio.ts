@@ -51,7 +51,7 @@ export const site = {
 };
 
 export const navLinks: NavLink[] = [
-  { label: "À propos", to: "/#about" },
+  { label: "À propos", to: "/a-propos" },
   { label: "Technologies", to: "/#skills" },
   { label: "Projets", to: "/#projects" },
   { label: "Contact", to: "/contact" },

@@ -105,6 +105,7 @@
   --button-primary-background-hover: var(--color-secondary);
   --button-secondary-hover: var(--background-surface-muted);
   --focus-ring: color-mix(in srgb, var(--color-primary) 30%, transparent);
+  --timeline-accent: var(--color-primary);
 
   --shadow-card-color: color-mix(in srgb, var(--text-main) 12%, transparent);
   --shadow-hover-color: color-mix(in srgb, var(--color-black) 10%, transparent);
@@ -153,6 +154,7 @@ html.dark {
   --text-inverse: var(--color-white);
   --border-default: var(--color-border-dark);
   --border-soft: color-mix(in srgb, var(--border-default) 60%, transparent);
+  --timeline-accent: #fb923c;
   --shadow-card-color: color-mix(in srgb, var(--color-black) 20%, transparent);
 }
 
@@ -1140,6 +1142,241 @@ html.dark .back-link {
 }
 
 /* =========================================================
+   PAGE À PROPOS
+   ========================================================= */
+
+.about-page-hero {
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+  background: color-mix(in srgb, var(--color-primary) 5%, transparent);
+}
+
+.about-page-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.75fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.about-page-hero__content > p:not(.eyebrow) {
+  max-width: 46rem;
+  margin-bottom: 1rem;
+  font-size: 1.075rem;
+}
+
+.about-page-hero__actions,
+.about-objective__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.about-summary {
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.about-summary h2 {
+  margin: 0 0 1.5rem;
+  font-size: 1.35rem;
+}
+
+.about-summary dl,
+.about-summary dd {
+  margin: 0;
+}
+
+.about-summary dl {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.about-summary dl > div {
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.about-summary dl > div:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.about-summary dt {
+  margin-bottom: 0.2rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.about-summary dd {
+  color: var(--text-main);
+  font-weight: 750;
+  line-height: 1.45;
+}
+
+.about-page {
+  padding-top: 1rem;
+  padding-bottom: 5rem;
+}
+
+.about-page__section {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.about-page__heading {
+  max-width: 50rem;
+  margin-bottom: 2.5rem;
+}
+
+.about-page__heading h2,
+.about-objective h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.about-page__heading > p:not(.eyebrow),
+.about-page__prose p,
+.about-strength p,
+.about-project p,
+.about-objective > p:not(.eyebrow) {
+  color: var(--text-muted-strong);
+  line-height: 1.75;
+}
+
+.about-page__prose {
+  max-width: 54rem;
+}
+
+.about-page__prose p {
+  margin: 0 0 1.25rem;
+}
+
+.about-strengths {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.about-strength,
+.about-project {
+  padding: 1.5rem;
+}
+
+.about-strength h3,
+.about-project h3,
+.about-timeline__content h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.about-strength p,
+.about-project p,
+.about-timeline__content p {
+  margin: 0;
+}
+
+.about-timeline {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-timeline::before {
+  position: absolute;
+  top: 0.55rem;
+  bottom: 0.55rem;
+  left: 10rem;
+  width: 2px;
+  background: var(--border-default);
+  content: '';
+}
+
+.about-timeline li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: 3rem;
+}
+
+.about-timeline li::before {
+  position: absolute;
+  top: 0.4rem;
+  left: calc(10rem - 0.4rem + 1px);
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 3px solid var(--background-page);
+  border-radius: 50%;
+  background: var(--timeline-accent);
+  box-shadow: 0 0 0 1px var(--timeline-accent);
+  content: '';
+}
+
+.about-timeline__date {
+  margin: 0;
+  color: var(--timeline-accent);
+  font-size: 0.9rem;
+  font-weight: 850;
+  line-height: 1.5;
+}
+
+.about-timeline__content {
+  padding: 0 0 0.5rem;
+}
+
+.about-timeline__content > p:not(.about-timeline__place) {
+  color: var(--text-muted-strong);
+  line-height: 1.7;
+}
+
+.about-timeline__content .about-timeline__place {
+  margin: -0.2rem 0 0.65rem;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-weight: 750;
+}
+
+.about-timeline--experiences {
+  gap: 2.75rem;
+}
+
+.about-projects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.about-project h3 a {
+  color: var(--text-main);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
+  text-underline-offset: 0.25em;
+}
+
+.about-project h3 a:hover {
+  color: var(--color-primary);
+}
+
+.about-objective {
+  margin-top: clamp(4rem, 8vw, 7rem);
+  padding: clamp(2rem, 6vw, 4rem);
+  background: color-mix(in srgb, var(--color-primary) 7%, var(--background-surface));
+}
+
+.about-objective > p:not(.eyebrow) {
+  max-width: 52rem;
+  margin: 0 0 1rem;
+}
+
+/* =========================================================
    FOOTER
    ========================================================= */
 
@@ -1318,9 +1555,24 @@ html.dark .footer__bottom {
   }
 
   .hero__grid,
-  .about-hero {
+  .about-hero,
+  .about-page-hero__grid {
     grid-template-columns: 1fr;
     text-align: center;
+  }
+
+  .about-page-hero__content > p:not(.eyebrow) {
+    margin-inline: auto;
+  }
+
+  .about-page-hero__actions {
+    justify-content: center;
+  }
+
+  .about-summary {
+    width: min(100%, 36rem);
+    margin-inline: auto;
+    text-align: left;
   }
 
   .hero__actions,
@@ -1336,6 +1588,7 @@ html.dark .footer__bottom {
   .project-grid,
   .technology-groups,
   .about-preview,
+  .about-strengths,
   .feature-grid,
   .tech-card-grid,
   .contact-card-grid,
@@ -1386,9 +1639,34 @@ html.dark .footer__bottom {
   }
 
   .hero__actions,
-  .contact-preview__actions {
+  .contact-preview__actions,
+  .about-page-hero__actions,
+  .about-objective__actions {
     display: grid;
     width: 100%;
+  }
+
+  .about-page-hero__actions .button,
+  .about-objective__actions .button {
+    width: 100%;
+  }
+
+  .about-timeline::before,
+  .about-timeline li::before {
+    display: none;
+  }
+
+  .about-timeline li {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 1.25rem;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius);
+    background: var(--background-surface-soft);
+  }
+
+  .about-projects {
+    grid-template-columns: 1fr;
   }
 
   .hero__portrait {
