@@ -7,16 +7,18 @@ import BaseButton from '../ui/BaseButton.vue'
   <section id="home" class="hero">
     <div class="container hero__grid">
       <div class="hero__content">
-        <h1>{{ site.name }}</h1>
-        <h2>{{ site.tagline }}</h2>
+        <p class="eyebrow">Développeur front-end basé à Besançon</p>
+        <h1>Diogo Andrade, développeur front-end Angular</h1>
         <p>
-          Développeur front-end passionné par les interfaces épurées et performantes.
-          Je travaille surtout avec Angular et Vue.js, et j'aime connecter le tout à des APIs
-          NestJS/Node, avec un déploiement propre via Docker.
+          Je conçois des applications web accessibles et structurées, principalement avec Angular
+          et TypeScript. Je travaille également avec Vue.js et je possède des compétences en
+          Node.js et NestJS pour intégrer des API et comprendre le fonctionnement d’une application
+          dans son ensemble.
         </p>
+        <p class="hero__availability">Je recherche actuellement un CDI en tant que développeur front-end.</p>
 
         <div class="hero__actions">
-          <BaseButton to="/#projects">Voir mes projets</BaseButton>
+          <BaseButton to="/#projects">Découvrir mes projets</BaseButton>
           <BaseButton :href="site.cv" variant="secondary" download>
             <span class="material-symbols-outlined" aria-hidden="true">download</span>
             Télécharger mon CV
@@ -28,7 +30,7 @@ import BaseButton from '../ui/BaseButton.vue'
         class="hero__portrait"
         :style="{ backgroundImage: `url('${site.avatar}')` }"
         role="img"
-        :aria-label="`Photo de ${site.name}`"
+        :aria-label="`Logo de ${site.name}`"
       />
     </div>
   </section>

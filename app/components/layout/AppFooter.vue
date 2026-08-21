@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { footerLinks, legalLinks, site, socialLinks } from '~/data/portfolio'
-import SocialIcon from '../ui/SocialIcon.vue'
 
 const year = new Date().getFullYear()
 </script>
@@ -9,6 +8,11 @@ const year = new Date().getFullYear()
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__grid">
+        <div class="footer__identity">
+          <h3>{{ site.name }}</h3>
+          <p>Développeur front-end Angular basé à Besançon.</p>
+        </div>
+
         <div>
           <h3>Navigation</h3>
           <ul>
@@ -19,7 +23,7 @@ const year = new Date().getFullYear()
         </div>
 
         <div>
-          <h3>Légal</h3>
+          <h3>Informations</h3>
           <ul>
             <li v-for="link in legalLinks" :key="link.to">
               <NuxtLink :to="link.to">{{ link.label }}</NuxtLink>
@@ -28,16 +32,12 @@ const year = new Date().getFullYear()
         </div>
 
         <div>
-          <h3>Me suivre</h3>
-          <div class="footer__socials">
-            <SocialIcon
-              v-for="social in socialLinks"
-              :key="social.href"
-              :href="social.href"
-              :label="social.label"
-              :icon="social.icon"
-            />
-          </div>
+          <h3>Réseaux</h3>
+          <ul>
+            <li v-for="social in socialLinks" :key="social.href">
+              <a :href="social.href" :target="social.href.startsWith('http') ? '_blank' : undefined" :rel="social.href.startsWith('http') ? 'noopener noreferrer' : undefined">{{ social.label }}</a>
+            </li>
+          </ul>
         </div>
       </div>
 

@@ -12,6 +12,10 @@ const isActive = (to: string) => {
 
     return route.path === to
 }
+
+watch(() => route.fullPath, () => {
+    menuOpen.value = false
+})
 </script>
 
 <template>
@@ -31,9 +35,10 @@ const isActive = (to: string) => {
 
             <div class="navbar__actions">
                 <ThemeTooggle />
+                <a class="button button--primary navbar__cv" :href="site.cv" download>Télécharger mon CV</a>
                 <button class="navbar__menu" type="button" :aria-expanded="menuOpen" aria-controls="mobile-menu"
                     @click="menuOpen = !menuOpen">
-                    <span class="material-symbols-outlined">{{ menuOpen ? 'close' : 'menu' }}</span>
+                    <span class="material-symbols-outlined" aria-hidden="true">{{ menuOpen ? 'close' : 'menu' }}</span>
                 </button>
             </div>
         </nav>
@@ -42,6 +47,7 @@ const isActive = (to: string) => {
             <NuxtLink v-for="link in navLinks" :key="link.to" :to="link.to" @click="menuOpen = false">
                 {{ link.label }}
             </NuxtLink>
+            <a class="button button--primary" :href="site.cv" download>Télécharger mon CV</a>
         </div>
     </header>
 </template>

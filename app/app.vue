@@ -20,7 +20,10 @@ useSeoMeta({
 })
 
 useHead({
-    titleTemplate: (titleChunk) => titleChunk ? `${titleChunk} | ${site.name}` : `${site.name} - ${site.role}`,
+    titleTemplate: (titleChunk) => {
+        if (!titleChunk) return `${site.name} - ${site.role}`
+        return titleChunk.includes(site.name) ? titleChunk : `${titleChunk} | ${site.name}`
+    },
     templateParams: {
         siteName: site.name,
     },

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 usePageSeo({
-  title: 'Développeur Front-end Angular, Vue.js et APIs',
+  title: 'Développeur front-end Angular à Besançon | Diogo Andrade',
   description:
-    "Portfolio de Diogo Andrade, développeur front-end spécialisé en Angular, Vue.js, accessibilité numérique, intégration d'APIs NestJS/Node et déploiement Docker.",
+    "Développeur front-end Angular basé à Besançon, je recherche un CDI. Découvrez mes projets en Angular, Vue.js, accessibilité numérique et API Node.js.",
   path: '/',
 })
 
@@ -11,9 +11,9 @@ useJsonLd('home-page-structured-data', {
   '@type': 'ProfilePage',
   '@id': absoluteSiteUrl('/#profile-page'),
   url: absoluteSiteUrl('/'),
-  name: 'Portfolio de Diogo Andrade',
+  name: 'Diogo Andrade, développeur front-end Angular à Besançon',
   description:
-    "Développeur front-end spécialisé en interfaces accessibles, Angular, Vue.js, APIs NestJS/Node et Docker.",
+    "Développeur front-end Angular basé à Besançon, spécialisé en interfaces accessibles, Vue.js et intégration d'API Node.js.",
   inLanguage: 'fr-FR',
   mainEntity: {
     '@id': absoluteSiteUrl('/#person'),

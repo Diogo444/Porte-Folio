@@ -1,5 +1,5 @@
 export const useTheme = () => {
-  const isDark = useState<boolean>("portfolio-theme-dark", () => false);
+  const isDark = useState<boolean>("portfolio-theme-dark", () => true);
 
   const applyTheme = (dark: boolean) => {
     isDark.value = dark;
@@ -21,10 +21,7 @@ export const useTheme = () => {
     }
 
     const storedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-    applyTheme(storedTheme ? storedTheme === "dark" : prefersDark);
+    applyTheme(storedTheme ? storedTheme === "dark" : true);
   };
 
   const toggleTheme = () => {
