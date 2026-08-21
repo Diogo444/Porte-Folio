@@ -2,7 +2,7 @@
 usePageSeo({
   title: 'Développeur front-end Angular à Besançon | Diogo Andrade',
   description:
-    "Développeur front-end Angular basé à Besançon, je recherche un CDI. Découvrez mes projets en Angular, Vue.js, accessibilité numérique et API Node.js.",
+    "Développeur front-end Angular à Besançon, je termine mon BTS CIEL en juillet 2027 et recherche un CDI. Découvrez mes projets web accessibles.",
   path: '/',
 })
 

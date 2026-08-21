@@ -15,7 +15,9 @@ import BaseButton from '../ui/BaseButton.vue'
           Node.js et NestJS pour intégrer des API et comprendre le fonctionnement d’une application
           dans son ensemble.
         </p>
-        <p class="hero__availability">Je recherche actuellement un CDI en tant que développeur front-end.</p>
+        <p class="hero__availability">
+          Je termine actuellement mon BTS CIEL et serai disponible à partir de juillet 2027 pour un CDI en tant que développeur front-end.
+        </p>
 
         <div class="hero__actions">
           <BaseButton to="/#projects">Découvrir mes projets</BaseButton>
