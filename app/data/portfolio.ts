@@ -39,10 +39,10 @@ export type Project = {
 
 export const site = {
   name: "Diogo Andrade",
-  role: "Développeur Front-end",
-  tagline: "Développeur Front-end · Angular, Vue.js & APIs NestJS/Node",
+  role: "Développeur front-end Angular à Besançon",
+  tagline: "Développeur front-end basé à Besançon",
   description:
-    "Portfolio de Diogo Andrade, développeur front-end spécialisé en Angular, Vue.js, accessibilité numérique, APIs NestJS/Node et déploiement Docker.",
+    "Développeur front-end Angular basé à Besançon, spécialisé en interfaces accessibles, Vue.js et intégration d'API Node.js.",
   email: "contact@diogo-andrade.org",
   avatar: "/assets/img/android-chrome-192x192.png",
   ogImage: "/assets/img/android-chrome-512x512.png",
@@ -243,88 +243,81 @@ export const technologies: Technology[] = [
 export const projects: Project[] = [
   {
     slug: "ginku",
-    title: "Ginku · Application de transports accessible",
-    cardTitle: "Ginku · App transports Besançon",
+    title: "Ginku — Consulter les transports de Besançon sur le Web et Android",
+    cardTitle: "Ginku — Transports à Besançon",
     category: "Projet Personnel",
     subtitle:
-      "Une alternative accessible pour consulter les horaires de bus et tramway à Besançon",
+      "Une application Vue.js disponible sur le Web et Android pour consulter les informations du réseau Ginko",
     summary:
-      "Interface Vue.js pour horaires temps réel et itinéraires, backend Node.js et intégration API Ginko. Déploiement containerisé.",
-    image: "/assets/img/project-ginku.webp",
-    tags: [
-      "Vue.js 3",
-      "Vite",
-      "Tailwind CSS",
-      "Node.js",
-      "Express",
-      "Docker",
-      "Caddy",
-    ],
+      "Une application Vue.js et Android permettant de consulter les horaires, les arrêts proches et les informations du réseau de transport de Besançon.",
+    image: "/projets/ginku/accueil-favoris.png",
+    tags: ["Vue.js", "Node.js", "Capacitor", "Docker"],
     links: [
       {
-        label: "Voir la démo",
+        label: "Ouvrir l’application",
         href: "https://ginku.diogo-andrade.org",
         primary: true,
       },
-      { label: "Code source", href: "https://github.com/Diogo444/Ginku" },
+      {
+        label: "Télécharger l’application Android",
+        href: "https://github.com/Diogo444/Ginku/releases/latest",
+      },
+      { label: "Consulter le code source", href: "https://github.com/Diogo444/Ginku" },
     ],
   },
   {
     slug: "coursfinder",
     title: "CoursFinder · Moteur de recherche pour mes cours",
-    cardTitle: "CoursFinder · Moteur de recherche pour mes cours",
+    cardTitle: "CoursFinder — Recherche dans mes cours",
     category: "Projet Personnel",
     subtitle:
       "Première expérience concrète avec Elasticsearch, Vue.js et Tailwind CSS",
     summary:
-      "Première expérience avec Elasticsearch, Vue.js et Tailwind CSS. Indexation de mes cours et recherche par mots-clés via une interface simple et rapide.",
+      "Un moteur de recherche permettant d’importer des documents Word, d’en extraire le contenu et de l’indexer avec Elasticsearch.",
     image: "/assets/img/project-coursfinder.png",
     tags: ["Vue.js", "Tailwind CSS", "Elasticsearch", "JavaScript"],
     links: [
-      { label: "Code source", href: "https://github.com/Diogo444/CoursFinder" },
+      { label: "Consulter le code source", href: "https://github.com/Diogo444/CoursFinder" },
     ],
   },
   {
     slug: "miam-dv",
-    title: "Miam DV · Menu de la semaine accessible",
-    cardTitle: "Miam DV · Menu de la semaine",
+    title: "Miam DV — Consulter les menus de l’internat plus simplement",
+    cardTitle: "Miam DV — Menus accessibles",
     category: "Projet Personnel",
     subtitle:
-      "Une application pour consulter les menus de l'internat en format accessible",
+      "Une application Angular pour consulter et administrer les menus d’un internat",
     summary:
-      "Application web affichant le menu de la semaine de l'internat, pensée pour être accessible aux jeunes malvoyants et non-voyants.",
+      "Une application Angular et NestJS conçue pour consulter et administrer les menus d’un internat en tenant compte de l’accessibilité.",
     image: "/assets/img/project-miam-dv.webp",
-    tags: [
-      "Angular",
-      "Tailwind CSS",
-      "TypeScript",
-      "NestJS",
-      "TypeORM",
-      "MySQL",
-      "Docker",
-    ],
+    tags: ["Angular", "NestJS", "MySQL", "Accessibilité"],
     links: [
-      { label: "Code source", href: "https://github.com/Diogo444/Miam-DV" },
+      {
+        label: "Voir l’application",
+        href: "https://miamdv.diogo-andrade.org/",
+        primary: true,
+      },
+      { label: "Consulter le code source", href: "https://github.com/Diogo444/Miam-DV" },
     ],
   },
   {
     slug: "qrela",
     title: "Qrela · Générateur de QR code gratuit",
-    cardTitle: "Qrela · Générateur de QR code gratuit",
+    cardTitle: "Qrela — Générateur de QR codes",
     category: "Projet Produit",
     subtitle:
       "Un outil Vite.js sans inscription, personnalisable, avec export PNG/SVG",
     summary:
-      "Générateur de QR code gratuit, sans inscription, personnalisable et développé avec Vite.js.",
+      "Un outil gratuit et sans inscription permettant de créer, personnaliser et exporter des QR codes en PNG ou en SVG.",
     image: "/assets/img/project-qrela.webp",
-    tags: ["Vite.js", "JavaScript", "Tailwind CSS", "qr-code-styling"],
+    tags: ["Vite.js", "JavaScript", "Tailwind CSS"],
     links: [
       {
-        label: "Voir la démo",
+        label: "Voir la démonstration",
         href: "https://qrela.diogo-andrade.org/",
         primary: true,
       },
-      { label: "Code source", href: "https://github.com/Diogo444/Qrela" },
+      { label: "Consulter le code source", href: "https://github.com/Diogo444/Qrela" },
     ],
   },
 ];
