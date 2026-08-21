@@ -243,20 +243,24 @@ export const technologies: Technology[] = [
 export const projects: Project[] = [
   {
     slug: "ginku",
-    title: "Ginku · Application de transports accessible",
+    title: "Ginku — Consulter les transports de Besançon sur le Web et Android",
     cardTitle: "Ginku — Transports à Besançon",
     category: "Projet Personnel",
     subtitle:
-      "Une alternative accessible pour consulter les horaires de bus et tramway à Besançon",
+      "Une application Vue.js disponible sur le Web et Android pour consulter les informations du réseau Ginko",
     summary:
-      "Une application Vue.js permettant de consulter les lignes, les arrêts et les horaires du réseau Ginko. L’interface est conçue avec une attention particulière portée à la navigation au lecteur d’écran.",
-    image: "/assets/img/project-ginku.webp",
-    tags: ["Vue.js", "Node.js", "Docker"],
+      "Une application Vue.js et Android permettant de consulter les horaires, les arrêts proches et les informations du réseau de transport de Besançon.",
+    image: "/projets/ginku/accueil-favoris.png",
+    tags: ["Vue.js", "Node.js", "Capacitor", "Docker"],
     links: [
       {
-        label: "Voir la démonstration",
+        label: "Ouvrir l’application",
         href: "https://ginku.diogo-andrade.org",
         primary: true,
+      },
+      {
+        label: "Télécharger l’application Android",
+        href: "https://github.com/Diogo444/Ginku/releases/latest",
       },
       { label: "Consulter le code source", href: "https://github.com/Diogo444/Ginku" },
     ],
