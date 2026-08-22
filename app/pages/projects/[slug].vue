@@ -148,7 +148,7 @@ useJsonLd('project-page-structured-data', () => {
         </div>
         <figure class="qrela-hero__figure">
           <img
-            src="/projets/qrela/acceuil Contenu.png"
+            src="/projets/qrela/contenu.png"
             width="1920"
             height="1080"
             fetchpriority="high"
@@ -594,7 +594,7 @@ useJsonLd('project-page-structured-data', () => {
           <section class="qrela-section qrela-customization">
             <figure class="qrela-figure">
               <img
-                src="/projets/qrela/acceuil Apparence.png"
+                src="/projets/qrela/apparence.png"
                 width="1920"
                 height="1080"
                 loading="lazy"

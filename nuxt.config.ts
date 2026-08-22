@@ -63,17 +63,6 @@ export default defineNuxtConfig({
         "Cache-Control": "public, max-age=604800, stale-while-revalidate=86400",
       },
     },
-    "/a-propos.html": { redirect: "/a-propos" },
-    "/technologies.html": { redirect: "/technologies" },
-    "/contact.html": { redirect: "/contact" },
-    "/mentions-legales.html": { redirect: "/mentions-legales" },
-    "/politique-de-confidentialite.html": {
-      redirect: "/politique-de-confidentialite",
-    },
-    "/projects/ginku.html": { redirect: "/projects/ginku" },
-    "/projects/coursfinder.html": { redirect: "/projects/coursfinder" },
-    "/projects/miam-dv.html": { redirect: "/projects/miam-dv" },
-    "/projects/qrela.html": { redirect: "/projects/qrela" },
   },
 
   app: {
