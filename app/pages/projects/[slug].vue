@@ -17,6 +17,8 @@ usePageSeo({
       ? 'Miam DV : menus d’internat accessibles avec Angular | Diogo Andrade'
       : project.value?.slug === 'coursfinder'
         ? 'CoursFinder : projet Elasticsearch et Vue.js | Diogo Andrade'
+        : project.value?.slug === 'qrela'
+          ? 'Qrela : générateur de QR code gratuit | Diogo Andrade'
     : `${project.value?.cardTitle || 'Projet'} - Étude de cas`,
   description: () => project.value?.slug === 'ginku'
     ? 'Découvrez Ginku, mon application Vue.js et Android pour consulter les horaires, les arrêts proches et les informations du réseau de transport de Besançon.'
@@ -24,6 +26,8 @@ usePageSeo({
       ? 'Découvrez Miam DV, une application Angular et NestJS conçue pour consulter et administrer les menus d’un internat en tenant compte de l’accessibilité.'
       : project.value?.slug === 'coursfinder'
         ? 'Découvrez CoursFinder, un projet expérimental créé pour apprendre Elasticsearch en indexant des cours Word et en les recherchant depuis Vue.js.'
+        : project.value?.slug === 'qrela'
+          ? 'Découvrez Qrela, mon générateur de QR code gratuit et personnalisable, développé en JavaScript et utilisable sans inscription ni envoi de données.'
     : project.value?.summary || 'Page projet de Diogo Andrade.',
   path: () => (project.value ? `/projects/${project.value.slug}` : route.path),
   image: () => project.value?.image || site.ogImage,
@@ -117,6 +121,34 @@ useJsonLd('project-page-structured-data', () => {
       </div>
     </section>
 
+    <section v-else-if="project.slug === 'qrela'" class="qrela-hero">
+      <div class="container qrela-hero__grid">
+        <div class="qrela-hero__content">
+          <p class="eyebrow">Outil web</p>
+          <h1>Qrela : créer un QR code gratuitement et sans inscription</h1>
+          <p>Un générateur personnalisable qui fonctionne directement dans le navigateur, sans compte et sans envoyer les données saisies à un serveur.</p>
+          <ul class="qrela-tags" aria-label="Technologies principales">
+            <li>JavaScript</li>
+            <li>Vite</li>
+            <li>Tailwind CSS</li>
+            <li>Docker</li>
+          </ul>
+          <div class="qrela-actions">
+            <BaseButton href="https://qrela.diogo-andrade.org/">Créer un QR code</BaseButton>
+            <BaseButton href="https://github.com/Diogo444/Qrela" variant="outline">Voir le code source</BaseButton>
+          </div>
+        </div>
+        <figure class="qrela-hero__figure">
+          <img
+            src="/projets/qrela/acceuil Contenu.png"
+            width="1920"
+            height="1080"
+            alt="Interface de Qrela avec l’aperçu d’un QR code et les options permettant de modifier son contenu."
+          >
+        </figure>
+      </div>
+    </section>
+
     <section v-else class="article-hero" :style="{ backgroundImage: `url('${project.image}')` }">
       <div class="article-hero__content">
         <span class="article-hero__tag">{{ project.category }}</span>
@@ -138,6 +170,7 @@ useJsonLd('project-page-structured-data', () => {
         'ginku-article': project.slug === 'ginku',
         'miam-article': project.slug === 'miam-dv',
         'coursfinder-article': project.slug === 'coursfinder',
+        'qrela-article': project.slug === 'qrela',
       }"
     >
       <div class="article-content">
@@ -520,51 +553,133 @@ useJsonLd('project-page-structured-data', () => {
           </section>
         </template>
 
-        <template v-else>
-          <section>
-            <h2>Objectif du projet</h2>
-            <p>
-              <strong>Qrela</strong> est un générateur de QR code conçu pour rester <strong>gratuit</strong>,
-              <strong> sans inscription</strong>, <strong>sans abonnement</strong> et <strong>entièrement personnalisable</strong>.
-            </p>
-            <p>
-              Ce projet a aussi une dimension pragmatique : tester un modèle simple avec Google AdSense pour aider
-              à financer l'infrastructure qui héberge mes outils web.
-            </p>
-          </section>
-
-          <section>
-            <h2>Ce que Qrela permet</h2>
-            <div class="feature-grid">
-              <article class="feature-card"><div class="feature-icon">🔗</div><h4>Types de contenu</h4><p>URL, texte, email, téléphone, SMS et Wi-Fi, avec validation des champs.</p></article>
-              <article class="feature-card"><div class="feature-icon">🖼️</div><h4>Export PNG / SVG</h4><p>Téléchargement immédiat en PNG pour le web ou SVG pour l'impression.</p></article>
-              <article class="feature-card"><div class="feature-icon">🎨</div><h4>Personnalisation avancée</h4><p>Taille, marge, correction d'erreur, styles de points et couleurs.</p></article>
-              <article class="feature-card"><div class="feature-icon">🔒</div><h4>Confidentialité</h4><p>Génération locale dans le navigateur, sans envoi du contenu saisi au serveur.</p></article>
+        <template v-else-if="project.slug === 'qrela'">
+          <section class="qrela-section qrela-origin">
+            <p class="eyebrow">L’origine</p>
+            <h2>Un outil né d’un besoin personnel</h2>
+            <div class="qrela-origin__prose">
+              <p>Qrela est né d’un besoin assez simple : je cherchais un moyen de créer rapidement un QR code sans devoir ouvrir un compte ou découvrir, au moment du téléchargement, que certaines fonctions étaient payantes.</p>
+              <p>J’aurais pu utiliser l’un des nombreux générateurs déjà disponibles, mais j’ai préféré créer mon propre outil. Cela me permettait de répondre à mon besoin tout en travaillant davantage avec JavaScript vanilla, sans utiliser Angular ou Vue pour gérer l’interface.</p>
+              <p>Le projet a ensuite évolué pour devenir un outil public. L’objectif était de proposer un générateur gratuit, utilisable immédiatement et suffisamment complet pour ne pas se limiter à une simple URL.</p>
             </div>
           </section>
 
-          <section>
-            <h2>Stack technique et architecture</h2>
-            <p>
-              Qrela est développé avec une stack front-end légère : <strong>Vite.js</strong>,
-              <strong> JavaScript vanilla</strong>, <strong>Tailwind CSS</strong> et
-              <strong> qr-code-styling</strong>.
-            </p>
-            <div class="architecture-box">
-              <div class="architecture-flow">
-                <div class="arch-item"><div class="feature-icon">👤</div><span>Utilisateur</span></div>
-                <span class="arch-arrow">→</span>
-                <div class="arch-item"><div class="feature-icon">⚡</div><span>App Vite.js</span></div>
-                <span class="arch-arrow">→</span>
-                <div class="arch-item"><div class="feature-icon">🧠</div><span>QR Engine</span></div>
-                <span class="arch-arrow">→</span>
-                <div class="arch-item"><div class="feature-icon">📤</div><span>PNG / SVG</span></div>
+          <section class="qrela-section">
+            <p class="eyebrow">Contenus</p>
+            <h2>Plusieurs types de contenus dans un même générateur</h2>
+            <p class="qrela-section__lead">Chaque choix adapte les champs affichés dans le formulaire. L’aperçu est mis à jour directement pendant la saisie, sans avoir à relancer la génération.</p>
+            <div class="qrela-types">
+              <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">link</span><div><h3>URL</h3><p>Ouvrir un site ou une page</p></div></article>
+              <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">notes</span><div><h3>Texte</h3><p>Afficher un contenu libre</p></div></article>
+              <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">mail</span><div><h3>E-mail</h3><p>Préparer un message</p></div></article>
+              <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">call</span><div><h3>Téléphone</h3><p>Composer un numéro</p></div></article>
+              <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">sms</span><div><h3>SMS</h3><p>Préparer un SMS</p></div></article>
+              <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">wifi</span><div><h3>Wi-Fi</h3><p>Partager les informations d’un réseau</p></div></article>
+            </div>
+            <div class="qrela-export">
+              <span class="material-symbols-outlined" aria-hidden="true">download</span>
+              <p>Une fois le QR code terminé, il peut être téléchargé en <strong>PNG</strong> pour une utilisation courante ou en <strong>SVG</strong> pour conserver une image nette lors d’une impression ou d’un agrandissement.</p>
+            </div>
+          </section>
+
+          <section class="qrela-section qrela-customization">
+            <figure class="qrela-figure">
+              <img
+                src="/projets/qrela/acceuil Apparence.png"
+                width="1920"
+                height="1080"
+                loading="lazy"
+                alt="Options de personnalisation de Qrela avec le choix des couleurs, du style des points, des coins et l’ajout d’un logo."
+              >
+              <figcaption>Les réglages d’apparence permettent d’ajuster précisément le rendu du QR code.</figcaption>
+            </figure>
+            <div class="qrela-prose">
+              <p class="eyebrow">Personnalisation</p>
+              <h2>Personnaliser le QR code sans compliquer son utilisation</h2>
+              <p>Je ne voulais pas limiter Qrela à la génération d’un carré noir et blanc. L’outil propose plusieurs réglages pour adapter le résultat à un site, une affiche ou un document.</p>
+              <p>Il est possible de modifier la taille, la marge, le style des points, la forme des coins et les couleurs. Qrela prend également en charge les dégradés, les fonds transparents et l’ajout d’une image ou d’un logo au centre.</p>
+              <p>J’ai ajouté plusieurs presets pour obtenir rapidement un style classique, sombre, coloré ou avec un contraste renforcé. Les réglages plus précis restent disponibles pour les personnes qui souhaitent créer leur propre apparence.</p>
+              <p>La personnalisation doit néanmoins conserver un QR code lisible. L’interface explique donc le rôle de la marge, du contraste et du niveau de correction d’erreur.</p>
+            </div>
+          </section>
+
+          <section class="qrela-section qrela-privacy">
+            <p class="eyebrow">Confidentialité</p>
+            <h2>Une génération locale, sans compte</h2>
+            <p>Qrela fonctionne entièrement dans le navigateur. Le texte, le mot de passe Wi-Fi ou toute autre information saisie n’est pas envoyé à un serveur pour produire l’image.</p>
+            <div class="qrela-privacy__grid">
+              <article><span class="material-symbols-outlined" aria-hidden="true">person_off</span><h3>Aucune inscription</h3><p>Pas de compte utilisateur, de tableau de bord ni de stockage des QR codes générés.</p></article>
+              <article><span class="material-symbols-outlined" aria-hidden="true">shield_lock</span><h3>Données conservées localement</h3><p>Le contenu est transformé en QR code directement dans le navigateur.</p></article>
+              <article><span class="material-symbols-outlined" aria-hidden="true">all_inclusive</span><h3>Aucune limite de scans</h3><p>Le lien n’est pas redirigé et Qrela ne suit pas le nombre d’utilisations.</p></article>
+            </div>
+            <p class="qrela-privacy__note"><strong>À savoir :</strong> les QR codes créés sont statiques. Une fois téléchargés, leur contenu ne peut plus être modifié. Pour changer une adresse ou un texte, il faut en générer un nouveau.</p>
+          </section>
+
+          <section class="qrela-section qrela-code">
+            <div class="qrela-prose">
+              <p class="eyebrow">Développement</p>
+              <h2>Construire l’interface en JavaScript vanilla</h2>
+              <p>J’ai volontairement développé Qrela en JavaScript vanilla avec Vite. Ce choix m’a permis de travailler directement sur la gestion des événements, l’état de l’interface et la mise à jour du QR code, sans m’appuyer sur le système de composants d’un framework.</p>
+              <p>La bibliothèque <code>qr-code-styling</code> prend en charge la génération et la personnalisation du QR code. Tailwind CSS permet de conserver une présentation cohérente sur ordinateur comme sur mobile.</p>
+              <p>Cette organisation était importante, car l’application possède de nombreux réglages qui doivent rester synchronisés. Une modification de couleur, de contenu ou de taille doit immédiatement être visible dans l’aperçu sans provoquer une régénération inutile à chaque frappe.</p>
+            </div>
+            <div class="qrela-code__map" aria-label="Organisation du code de Qrela">
+              <article><span>01</span><h3>Génération et export</h3><p>Création du QR code et téléchargement en PNG ou SVG.</p></article>
+              <article><span>02</span><h3>Gestion de l’interface</h3><p>Événements du formulaire et mise à jour de l’aperçu.</p></article>
+              <article><span>03</span><h3>État de l’application</h3><p>Synchronisation du contenu et des réglages visuels.</p></article>
+              <article><span>04</span><h3>Validation et presets</h3><p>Contrôle des données et styles prêts à utiliser.</p></article>
+            </div>
+          </section>
+
+          <section class="qrela-section qrela-deployment">
+            <div>
+              <p class="eyebrow">Mise en ligne</p>
+              <h2>Un outil déployé et mis à jour automatiquement</h2>
+              <p>Qrela est construit avec Vite puis servi par Nginx dans un conteneur Docker. Le conteneur rejoint le réseau utilisé par Caddy, qui rend ensuite l’application accessible depuis son sous-domaine.</p>
+              <p>Le déploiement est automatisé avec GitHub Actions. Lorsqu’une modification est envoyée sur la branche principale, le workflow se connecte à mon VPS, récupère la nouvelle version du dépôt et reconstruit le conteneur.</p>
+              <p>Cette partie du projet m’a permis d’aller au-delà de la création de l’interface. Qrela est un véritable outil public que je peux corriger et faire évoluer sans effectuer manuellement toutes les étapes du déploiement.</p>
+            </div>
+            <div class="qrela-deployment__flow" aria-label="Chaîne de déploiement de Qrela">
+              <div><strong>GitHub Actions</strong><span>Automatisation</span></div>
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span>
+              <div><strong>Docker + Nginx</strong><span>Construction et service</span></div>
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span>
+              <div><strong>Caddy + VPS</strong><span>Mise à disposition publique</span></div>
+            </div>
+          </section>
+
+          <section class="qrela-section qrela-learnings">
+            <p class="eyebrow">Bilan</p>
+            <h2>Ce que je retiens de Qrela</h2>
+            <div class="qrela-learnings__grid">
+              <div class="qrela-prose">
+                <p>Qrela m’a permis de revenir aux bases du développement front-end en construisant une interface dynamique avec JavaScript vanilla.</p>
+                <p>J’ai travaillé sur la transformation de plusieurs types de données, la synchronisation d’un formulaire avec un aperçu en temps réel, la personnalisation d’un rendu graphique et l’export dans plusieurs formats.</p>
+                <p>Le projet m’a également appris à réfléchir à ce qui se passe après le développement : confidentialité des données, pages d’aide, référencement, déploiement et maintenance.</p>
               </div>
+              <blockquote>Aujourd’hui, Qrela est disponible gratuitement et peut être utilisé sans créer de compte. Il répond toujours au besoin qui m’avait poussé à le développer, tout en étant accessible à d’autres personnes.</blockquote>
+            </div>
+          </section>
+
+          <section class="qrela-final card">
+            <p class="eyebrow">À vous de créer</p>
+            <h2>Créer votre QR code avec Qrela</h2>
+            <p>L’outil est disponible gratuitement, sans inscription et directement depuis votre navigateur.</p>
+            <div class="qrela-actions">
+              <BaseButton href="https://qrela.diogo-andrade.org/">Essayer Qrela</BaseButton>
+              <BaseButton to="/#projects" variant="outline">Voir mes autres projets</BaseButton>
             </div>
           </section>
         </template>
 
-        <section v-if="project.slug !== 'ginku' && project.slug !== 'miam-dv'">
+        <template v-else>
+          <section>
+            <h2>Présentation du projet</h2>
+            <p>{{ project.summary }}</p>
+          </section>
+        </template>
+
+        <section v-if="project.slug !== 'ginku' && project.slug !== 'miam-dv' && project.slug !== 'qrela' && project.slug !== 'coursfinder'">
           <h2>Voir le projet</h2>
           <p>Le projet est disponible en ligne ou sur GitHub selon les liens ci-dessous.</p>
           <div class="cta-section">

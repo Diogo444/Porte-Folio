@@ -302,15 +302,15 @@ export const projects: Project[] = [
   },
   {
     slug: "qrela",
-    title: "Qrela · Générateur de QR code gratuit",
-    cardTitle: "Qrela — Générateur de QR codes",
-    category: "Projet Produit",
+    title: "Qrela : créer un QR code gratuitement et sans inscription",
+    cardTitle: "Qrela — Générateur de QR code",
+    category: "Outil web",
     subtitle:
-      "Un outil Vite.js sans inscription, personnalisable, avec export PNG/SVG",
+      "Un générateur personnalisable qui fonctionne directement dans le navigateur, sans compte",
     summary:
-      "Un outil gratuit et sans inscription permettant de créer, personnaliser et exporter des QR codes en PNG ou en SVG.",
+      "Générateur de QR code gratuit et personnalisable développé en JavaScript vanilla. Création locale, sans inscription, avec export PNG ou SVG.",
     image: "/assets/img/project-qrela.webp",
-    tags: ["Vite.js", "JavaScript", "Tailwind CSS"],
+    tags: ["JavaScript", "Vite", "Tailwind CSS", "qr-code-styling", "Docker"],
     links: [
       {
         label: "Voir la démonstration",

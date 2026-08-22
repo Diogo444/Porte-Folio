@@ -1951,6 +1951,554 @@ html.dark .back-link {
 }
 
 /* =========================================================
+   ÉTUDE DE CAS QRELA
+   ========================================================= */
+
+.qrela-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  background:
+    linear-gradient(125deg, color-mix(in srgb, var(--color-primary) 10%, transparent), transparent 55%),
+    var(--background-page);
+}
+
+.qrela-hero::after {
+  position: absolute;
+  top: 8%;
+  right: -8rem;
+  width: 24rem;
+  height: 24rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 4rem color-mix(in srgb, var(--color-primary) 3%, transparent),
+    0 0 0 8rem color-mix(in srgb, var(--color-primary) 2%, transparent);
+  content: '';
+  pointer-events: none;
+}
+
+.qrela-hero__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(28rem, 1.1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.qrela-hero h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.qrela-hero__content > p:not(.eyebrow) {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--text-muted-strong);
+  font-size: 1.075rem;
+  line-height: 1.75;
+}
+
+.qrela-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.qrela-tags li {
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--border-default);
+  border-radius: 999px;
+  background: var(--background-surface);
+  color: var(--text-main);
+  font-size: 0.875rem;
+  font-weight: 750;
+}
+
+.qrela-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+.qrela-hero__figure,
+.qrela-figure {
+  margin: 0;
+}
+
+.qrela-hero__figure {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 35%, var(--border-default));
+  border-radius: var(--radius-lg);
+  background: var(--background-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.qrela-hero__figure::before {
+  display: block;
+  height: 2rem;
+  border-bottom: 1px solid var(--border-default);
+  background:
+    radial-gradient(circle at 1rem 50%, var(--color-primary) 0 0.22rem, transparent 0.24rem),
+    radial-gradient(circle at 1.8rem 50%, color-mix(in srgb, var(--color-primary) 55%, transparent) 0 0.22rem, transparent 0.24rem),
+    radial-gradient(circle at 2.6rem 50%, color-mix(in srgb, var(--color-primary) 28%, transparent) 0 0.22rem, transparent 0.24rem),
+    var(--background-surface-muted);
+  content: '';
+}
+
+.qrela-hero__figure img {
+  width: 135%;
+  max-width: none;
+  height: auto;
+  margin-left: -17.5%;
+}
+
+.article-container.qrela-article {
+  width: min(var(--container-width), calc(100% - 3rem));
+  padding-top: 1rem;
+}
+
+.qrela-article .article-content {
+  font-size: 1rem;
+}
+
+.qrela-section {
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.qrela-section > h2,
+.qrela-section > div > h2,
+.qrela-prose h2,
+.qrela-final h2 {
+  max-width: 56rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.qrela-section p,
+.qrela-final p {
+  color: var(--text-muted-strong);
+  line-height: 1.75;
+}
+
+.qrela-section code {
+  padding: 0.12em 0.38em;
+  border-radius: 0.3rem;
+  background: color-mix(in srgb, var(--color-primary) 10%, var(--background-surface-muted));
+  color: var(--text-main);
+  font-size: 0.9em;
+}
+
+.qrela-section__lead {
+  max-width: 52rem;
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.qrela-origin {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.55fr) minmax(0, 1.45fr);
+  gap: clamp(2rem, 6vw, 6rem);
+}
+
+.qrela-origin > .eyebrow {
+  grid-column: 1;
+  margin-bottom: -0.5rem;
+}
+
+.qrela-origin > h2 {
+  grid-column: 1;
+}
+
+.qrela-origin__prose {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  padding-left: clamp(1.5rem, 4vw, 3rem);
+  border-left: 2px solid var(--color-primary);
+}
+
+.qrela-origin__prose p,
+.qrela-prose p {
+  margin: 0 0 1.15rem;
+}
+
+.qrela-types {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.qrela-type {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+  padding: 1.25rem;
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.qrela-type:hover {
+  border-color: color-mix(in srgb, var(--color-primary) 55%, var(--border-default));
+  transform: translateY(-2px);
+}
+
+.qrela-type > .material-symbols-outlined {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--color-primary) 11%, transparent);
+  color: var(--color-primary);
+}
+
+.qrela-type h3 {
+  margin: 0 0 0.2rem;
+  font-size: 1rem;
+}
+
+.qrela-type p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.qrela-export {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--color-primary) 5%, var(--background-surface));
+}
+
+.qrela-export .material-symbols-outlined {
+  flex: 0 0 auto;
+  color: var(--color-primary);
+  font-size: 2rem;
+}
+
+.qrela-export p {
+  margin: 0;
+}
+
+.qrela-customization {
+  display: grid;
+  grid-template-columns: minmax(24rem, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.qrela-figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background: var(--background-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.qrela-figure figcaption {
+  margin-top: 0.8rem;
+  color: var(--text-muted-soft);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.qrela-privacy {
+  margin: clamp(3rem, 6vw, 5rem) 0;
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 35%, var(--border-default));
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 9%, transparent), transparent 65%),
+    var(--background-surface);
+}
+
+.qrela-privacy > p:not(.eyebrow) {
+  max-width: 54rem;
+}
+
+.qrela-privacy__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 2.5rem;
+  overflow: hidden;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  background: var(--border-default);
+}
+
+.qrela-privacy__grid article {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--background-surface);
+}
+
+.qrela-privacy__grid .material-symbols-outlined {
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+  font-size: 2rem;
+}
+
+.qrela-privacy__grid h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1.05rem;
+}
+
+.qrela-privacy__grid p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.qrela-privacy .qrela-privacy__note {
+  margin: 2rem 0 0;
+  padding: 1.15rem 1.35rem;
+  border-left: 3px solid var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 7%, var(--background-surface));
+  font-size: 0.9rem;
+}
+
+.qrela-code {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.95fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.qrela-code__map {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.qrela-code__map article {
+  min-height: 12rem;
+  padding: 1.35rem;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  background: var(--background-surface-soft);
+}
+
+.qrela-code__map article > span {
+  display: block;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+}
+
+.qrela-code__map h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.qrela-code__map p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.qrela-deployment {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(17rem, 0.7fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.qrela-deployment > div:first-child > p:not(.eyebrow) {
+  max-width: 54rem;
+  margin: 0 0 1.15rem;
+}
+
+.qrela-deployment__flow {
+  display: grid;
+  justify-items: stretch;
+  gap: 0.75rem;
+}
+
+.qrela-deployment__flow > div {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  background: var(--background-surface);
+  text-align: center;
+}
+
+.qrela-deployment__flow > div strong {
+  color: var(--text-main);
+}
+
+.qrela-deployment__flow > div span {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.qrela-deployment__flow > .material-symbols-outlined {
+  justify-self: center;
+  color: var(--color-primary);
+}
+
+.qrela-learnings__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.qrela-learnings blockquote {
+  margin: 0;
+  padding: 2rem;
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: color-mix(in srgb, var(--color-primary) 7%, var(--background-surface));
+  color: var(--text-main);
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  font-weight: 750;
+  line-height: 1.65;
+}
+
+.qrela-final {
+  position: relative;
+  overflow: hidden;
+  margin-top: clamp(4rem, 8vw, 7rem);
+  padding: clamp(2rem, 6vw, 4rem);
+  border-color: color-mix(in srgb, var(--color-primary) 38%, var(--border-default));
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--background-surface));
+}
+
+.qrela-final::after {
+  position: absolute;
+  right: -4rem;
+  bottom: -5rem;
+  width: 13rem;
+  height: 13rem;
+  border: 2rem solid color-mix(in srgb, var(--color-primary) 5%, transparent);
+  border-radius: 2rem;
+  content: '';
+  transform: rotate(12deg);
+  pointer-events: none;
+}
+
+.qrela-final > * {
+  position: relative;
+  z-index: 1;
+}
+
+.qrela-final > p:not(.eyebrow) {
+  max-width: 48rem;
+}
+
+@media (max-width: 1000px) {
+  .qrela-hero__grid,
+  .qrela-origin,
+  .qrela-customization,
+  .qrela-code,
+  .qrela-deployment,
+  .qrela-learnings__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .qrela-hero__content {
+    max-width: 48rem;
+  }
+
+  .qrela-hero__figure {
+    width: 100%;
+    max-width: 52rem;
+  }
+
+  .qrela-origin > .eyebrow,
+  .qrela-origin > h2,
+  .qrela-origin__prose {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .qrela-origin__prose {
+    padding-left: 1.5rem;
+  }
+
+  .qrela-types,
+  .qrela-privacy__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .qrela-customization .qrela-figure {
+    order: 2;
+  }
+
+  .qrela-deployment__flow {
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
+  }
+
+  .qrela-deployment__flow > .material-symbols-outlined {
+    transform: rotate(-90deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .qrela-hero {
+    padding: 4rem 0;
+  }
+
+  .qrela-hero h1 {
+    font-size: clamp(2.25rem, 11vw, 3.2rem);
+  }
+
+  .qrela-types,
+  .qrela-privacy__grid,
+  .qrela-code__map {
+    grid-template-columns: 1fr;
+  }
+
+  .qrela-privacy__grid {
+    gap: 1px;
+  }
+
+  .qrela-deployment__flow {
+    grid-template-columns: 1fr;
+  }
+
+  .qrela-deployment__flow > .material-symbols-outlined {
+    transform: none;
+  }
+
+  .qrela-actions {
+    display: grid;
+    width: 100%;
+  }
+
+  .qrela-actions .button {
+    width: 100%;
+  }
+}
+
+/* =========================================================
    ÉTUDE DE CAS MIAM DV
    ========================================================= */
 
