@@ -53,7 +53,7 @@ export const usePageSeo = (seo: PageSeoInput) => {
     ogImage: getImage,
     twitterTitle: getTitle,
     twitterDescription: getDescription,
-    twitterCard: "summary_large_image",
+    twitterCard: "summary",
     twitterImage: getImage,
   });
 
@@ -120,11 +120,6 @@ export const createSiteJsonLd = () => [
     url: absoluteSiteUrl("/"),
     inLanguage: "fr-FR",
     description: site.description,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${absoluteSiteUrl("/")}?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
     publisher: {
       "@id": absoluteSiteUrl("/#person"),
     },

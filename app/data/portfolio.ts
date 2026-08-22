@@ -33,6 +33,7 @@ export type Project = {
   subtitle: string;
   summary: string;
   image: string;
+  cardImage?: string;
   links: ProjectLink[];
   tags: string[];
 };
@@ -188,7 +189,7 @@ export const technologies: Technology[] = [
     name: "NestJS",
     family: "Framework Node.js",
     description:
-      "Framework Node.js inspiré d'Angular avec une architecture modulaire. Parfait pour créer des APIs REST robustes avec authentification JWT, validation, et documentation Swagger.",
+      "Framework Node.js inspiré d'Angular avec une architecture modulaire. Parfait pour créer des API REST robustes avec authentification JWT, validation et documentation Swagger.",
     color: "var(--tech-nest-dark)",
     textColor: "var(--color-white)",
     icon: "/assets/SVG/NestJS.svg",
@@ -197,7 +198,7 @@ export const technologies: Technology[] = [
     name: "Node.js",
     family: "Runtime JavaScript",
     description:
-      "Runtime JavaScript côté serveur pour des applications performantes et évolutives. Idéal pour les APIs, les serveurs temps réel, et les outils de build.",
+      "Runtime JavaScript côté serveur pour des applications performantes et évolutives. Idéal pour les API, les serveurs temps réel et les outils de build.",
     color: "var(--tech-node-dark)",
     textColor: "var(--color-white)",
     icon: "/assets/SVG/nodejs.svg",
@@ -245,12 +246,13 @@ export const projects: Project[] = [
     slug: "ginku",
     title: "Ginku — Consulter les transports de Besançon sur le Web et Android",
     cardTitle: "Ginku — Transports à Besançon",
-    category: "Projet Personnel",
+    category: "Projet personnel",
     subtitle:
       "Une application Vue.js disponible sur le Web et Android pour consulter les informations du réseau Ginko",
     summary:
       "Une application Vue.js et Android permettant de consulter les horaires, les arrêts proches et les informations du réseau de transport de Besançon.",
     image: "/projets/ginku/accueil-favoris.png",
+    cardImage: "/assets/img/project-ginku.webp",
     tags: ["Vue.js", "Node.js", "Capacitor", "Docker"],
     links: [
       {
@@ -284,7 +286,7 @@ export const projects: Project[] = [
     slug: "miam-dv",
     title: "Miam DV — Consulter les menus de l’internat plus simplement",
     cardTitle: "Miam DV — Menus accessibles",
-    category: "Projet Personnel",
+    category: "Projet personnel",
     subtitle:
       "Une application Angular pour consulter et administrer les menus d’un internat",
     summary:

@@ -1,7 +1,7 @@
 {
   "name": "Diogo Andrade – Portfolio",
   "short_name": "Diogo Andrade",
-  "description": "Portfolio de Diogo Andrade – Développeur front-end (Angular, Vue.js, APIs).",
+  "description": "Portfolio de Diogo Andrade – Développeur front-end (Angular, Vue.js, API).",
   "icons": [
     { "src": "/assets/img/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/assets/img/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }

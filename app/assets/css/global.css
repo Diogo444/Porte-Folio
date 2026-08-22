@@ -14,8 +14,8 @@
      En mode clair, le fond utilise --color-background.
      En mode sombre, le fond utilise --color-background-dark.
   */
-  --color-primary: #ea580c;
-  --color-secondary: #c2410c;
+  --color-primary: #c2410c;
+  --color-secondary: #9a3412;
   --color-accent: #f97316;
   --color-contrast: #ffffff;
   --color-background: #fafafa;
@@ -122,7 +122,7 @@
   --radius: 0.75rem;
   --radius-lg: 1rem;
   --font-display:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
 }
 
@@ -132,6 +132,9 @@ html {
 
 html.dark {
   color-scheme: dark;
+  --color-primary: #fb923c;
+  --button-primary-background: #c2410c;
+  --button-primary-background-hover: #9a3412;
   --background-page: var(--color-background-dark);
   --background-page-image: linear-gradient(
     135deg,
@@ -313,12 +316,20 @@ html.dark .button--secondary:hover {
 }
 
 .material-symbols-outlined {
+  display: inline-flex;
+  flex: 0 0 1em;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
   font-variation-settings:
     "FILL" 0,
     "wght" 400,
     "GRAD" 0,
     "opsz" 24;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .navbar {
@@ -960,6 +971,7 @@ html.dark .contact-card p {
   object-fit: contain;
 }
 
+.feature-card h3,
 .tech-card h3,
 .contact-card h3 {
   margin: 0;
@@ -3288,7 +3300,8 @@ html.dark .footer {
 }
 
 .footer a,
-.footer p {
+.footer p,
+.footer__link-button {
   color: var(--text-muted-soft);
   font-size: 0.875rem;
 }
@@ -3299,6 +3312,17 @@ html.dark .footer p {
 }
 
 .footer a:hover {
+  color: var(--color-primary);
+}
+
+.footer__link-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.footer__link-button:hover {
   color: var(--color-primary);
 }
 

@@ -2,6 +2,10 @@
 import { footerLinks, legalLinks, site, socialLinks } from '~/data/portfolio'
 
 const year = new Date().getFullYear()
+
+const openCookiePreferences = () => {
+  window.dispatchEvent(new CustomEvent('open-cookie-preferences'))
+}
 </script>
 
 <template>
@@ -28,6 +32,11 @@ const year = new Date().getFullYear()
             <li v-for="link in legalLinks" :key="link.to">
               <NuxtLink :to="link.to">{{ link.label }}</NuxtLink>
             </li>
+            <li>
+              <button class="footer__link-button" type="button" @click="openCookiePreferences">
+                Gérer mes cookies
+              </button>
+            </li>
           </ul>
         </div>
 
@@ -43,7 +52,7 @@ const year = new Date().getFullYear()
 
       <div class="footer__bottom">
         <p>© {{ year }} {{ site.name }}. Tous droits réservés.</p>
-        <NuxtLink class="footer__back-to-top" to="/#home" aria-label="Retourner en haut de la page">
+        <NuxtLink class="footer__back-to-top" to="/#home">
           <span>Retour en haut</span>
           <span class="footer__back-to-top-icon" aria-hidden="true">
             <span class="material-symbols-outlined">arrow_upward</span>

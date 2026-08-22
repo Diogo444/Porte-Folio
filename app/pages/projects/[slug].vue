@@ -12,7 +12,7 @@ if (!project.value) {
 
 usePageSeo({
   title: () => project.value?.slug === 'ginku'
-    ? 'Ginku : application web et Android pour les transports de Besançon | Diogo Andrade'
+    ? 'Ginku : transports de Besançon sur Web et Android | Diogo Andrade'
     : project.value?.slug === 'miam-dv'
       ? 'Miam DV : menus d’internat accessibles avec Angular | Diogo Andrade'
       : project.value?.slug === 'coursfinder'
@@ -74,6 +74,7 @@ useJsonLd('project-page-structured-data', () => {
           :src="project.image"
           width="1920"
           height="1032"
+          fetchpriority="high"
           alt="Accueil de Ginku avec la recherche et les prochains passages enregistrés en favoris"
         >
       </div>
@@ -101,7 +102,14 @@ useJsonLd('project-page-structured-data', () => {
         </aside>
       </div>
       <div class="container">
-        <img class="miam-hero__image" :src="project.image" alt="Page d’accueil de Miam DV présentant les menus de plusieurs jours de la semaine">
+        <img
+          class="miam-hero__image"
+          :src="project.image"
+          width="1375"
+          height="1600"
+          fetchpriority="high"
+          alt="Page d’accueil de Miam DV présentant les menus de plusieurs jours de la semaine"
+        >
       </div>
     </section>
 
@@ -143,6 +151,7 @@ useJsonLd('project-page-structured-data', () => {
             src="/projets/qrela/acceuil Contenu.png"
             width="1920"
             height="1080"
+            fetchpriority="high"
             alt="Interface de Qrela avec l’aperçu d’un QR code et les options permettant de modifier son contenu."
           >
         </figure>
@@ -431,7 +440,7 @@ useJsonLd('project-page-structured-data', () => {
               <h2>Ce que cette expérimentation m’a appris</h2>
               <p>CoursFinder m’a offert une première approche concrète d’Elasticsearch. J’ai pu découvrir le principe d’un index, l’enregistrement de documents et la recherche plein texte sur plusieurs champs.</p>
               <p>Le projet m’a également permis de relier plusieurs étapes souvent présentées séparément : lire des fichiers Word, en extraire le texte, préparer les données, les indexer puis les exploiter depuis une interface web.</p>
-              <p>Avec le recul, je construirais différemment une application destinée à être réellement utilisée. J’ajouterais notamment une API entre le frontend et Elasticsearch, une configuration sécurisée, une meilleure gestion des erreurs et une véritable consultation des documents trouvés.</p>
+              <p>Avec le recul, je construirais différemment une application destinée à être réellement utilisée. J’ajouterais notamment une API entre le front-end et Elasticsearch, une configuration sécurisée, une meilleure gestion des erreurs et une véritable consultation des documents trouvés.</p>
             </div>
             <blockquote>CoursFinder n’est pas un produit terminé, mais il m’a permis de comprendre toute la chaîne située entre un document Word et un résultat de recherche.</blockquote>
           </section>
@@ -571,7 +580,7 @@ useJsonLd('project-page-structured-data', () => {
             <div class="qrela-types">
               <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">link</span><div><h3>URL</h3><p>Ouvrir un site ou une page</p></div></article>
               <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">notes</span><div><h3>Texte</h3><p>Afficher un contenu libre</p></div></article>
-              <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">mail</span><div><h3>E-mail</h3><p>Préparer un message</p></div></article>
+              <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">mail</span><div><h3>Email</h3><p>Préparer un message</p></div></article>
               <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">call</span><div><h3>Téléphone</h3><p>Composer un numéro</p></div></article>
               <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">sms</span><div><h3>SMS</h3><p>Préparer un SMS</p></div></article>
               <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">wifi</span><div><h3>Wi-Fi</h3><p>Partager les informations d’un réseau</p></div></article>

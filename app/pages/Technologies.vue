@@ -159,7 +159,7 @@ useJsonLd('technologies-page-structured-data', [
               <tr><th scope="row"><NuxtLink to="/projects/miam-dv">Miam DV</NuxtLink></th><td>Angular, Angular Material</td><td>Node.js</td><td>Docker</td></tr>
               <tr><th scope="row"><NuxtLink to="/projects/ginku">Ginku</NuxtLink></th><td>Vue.js</td><td>Node.js, API Ginko</td><td>Docker, Caddy</td></tr>
               <tr><th scope="row"><NuxtLink to="/projects/coursfinder">CoursFinder</NuxtLink></th><td>Vue.js, Tailwind CSS</td><td>Elasticsearch</td><td>Docker</td></tr>
-              <tr><th scope="row"><NuxtLink to="/projects/qrela">Qrela</NuxtLink></th><td>JavaScript, Vite.js, Tailwind CSS</td><td>Traitement dans le navigateur</td><td>Déploiement web</td></tr>
+              <tr><th scope="row"><NuxtLink to="/projects/qrela">Qrela</NuxtLink></th><td>JavaScript, Vite, Tailwind CSS</td><td>Traitement dans le navigateur</td><td>Déploiement web</td></tr>
             </tbody>
           </table>
         </div>

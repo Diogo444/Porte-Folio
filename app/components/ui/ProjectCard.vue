@@ -16,7 +16,13 @@ const actionLabels: Record<string, string> = {
 
 <template>
   <article class="project-card card">
-    <img class="project-card__image" :src="project.image" :alt="`Capture du projet ${project.cardTitle}`" loading="lazy">
+    <img
+      class="project-card__image"
+      :src="project.cardImage || project.image"
+      :alt="`Capture du projet ${project.cardTitle}`"
+      loading="lazy"
+      decoding="async"
+    >
 
     <div class="project-card__body">
       <h3>{{ project.cardTitle }}</h3>

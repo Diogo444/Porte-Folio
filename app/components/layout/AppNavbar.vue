@@ -37,6 +37,7 @@ watch(() => route.fullPath, () => {
                 <ThemeTooggle />
                 <a class="button button--primary navbar__cv" :href="site.cv" download>Télécharger mon CV</a>
                 <button class="navbar__menu" type="button" :aria-expanded="menuOpen" aria-controls="mobile-menu"
+                    :aria-label="menuOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation'"
                     @click="menuOpen = !menuOpen">
                     <span class="material-symbols-outlined" aria-hidden="true">{{ menuOpen ? 'close' : 'menu' }}</span>
                 </button>
