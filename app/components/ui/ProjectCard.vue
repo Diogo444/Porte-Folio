@@ -30,7 +30,7 @@ const actionLabels: Record<string, string> = {
       <p class="project-card__technologies">{{ project.tags.slice(0, 3).join(' · ') }}</p>
 
       <div class="project-card__actions">
-        <BaseButton :to="`/projects/${project.slug}`">{{ actionLabels[project.slug] }}</BaseButton>
+        <BaseButton :to="`/projects/${project.slug}/`">{{ actionLabels[project.slug] }}</BaseButton>
         <div v-if="project.links.length" class="project-card__secondary-links">
           <a v-for="link in project.links" :key="link.href" :href="link.href" target="_blank" rel="noopener noreferrer">
             {{ link.label }}

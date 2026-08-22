@@ -149,7 +149,7 @@ useJsonLd('privacy-breadcrumbs', createBreadcrumbJsonLd([
           <p>Pour toute question concernant cette politique de confidentialité :</p>
           <ul>
             <li><strong>Email :</strong> {{ site.email }}</li>
-            <li><strong>Page de contact :</strong> <NuxtLink to="/contact">diogo-andrade.org/contact</NuxtLink></li>
+            <li><strong>Page de contact :</strong> <NuxtLink to="/contact/">diogo-andrade.org/contact</NuxtLink></li>
           </ul>
         </section>
       </div>

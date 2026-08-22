@@ -25,8 +25,15 @@ export const absoluteSiteUrl = (path = "/") => {
   }
 
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  const [pathAndQuery, hash] = normalizedPath.split("#", 2);
+  const [pathname, query] = pathAndQuery.split("?", 2);
+  const hasFileExtension = /\/[^/]+\.[^/]+$/.test(pathname);
+  const publicPath =
+    pathname !== "/" && !pathname.endsWith("/") && !hasFileExtension
+      ? `${pathname}/`
+      : pathname;
 
-  return `${site.url}${normalizedPath}`;
+  return `${site.url}${publicPath}${query ? `?${query}` : ""}${hash ? `#${hash}` : ""}`;
 };
 
 const absoluteImageUrl = (path?: string) => absoluteSiteUrl(path || site.ogImage);

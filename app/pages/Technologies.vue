@@ -64,7 +64,7 @@ useJsonLd('technologies-page-structured-data', [
             <li>TypeScript</li>
             <li>Angular Material</li>
           </ul>
-          <NuxtLink class="text-link" to="/projects/miam-dv">Voir un projet développé avec Angular</NuxtLink>
+          <NuxtLink class="text-link" to="/projects/miam-dv/">Voir un projet développé avec Angular</NuxtLink>
         </div>
       </section>
 
@@ -156,10 +156,10 @@ useJsonLd('technologies-page-structured-data', [
           <table class="technologies-table">
             <thead><tr><th scope="col">Projet</th><th scope="col">Front-end</th><th scope="col">Backend et données</th><th scope="col">Déploiement</th></tr></thead>
             <tbody>
-              <tr><th scope="row"><NuxtLink to="/projects/miam-dv">Miam DV</NuxtLink></th><td>Angular, Angular Material</td><td>Node.js</td><td>Docker</td></tr>
-              <tr><th scope="row"><NuxtLink to="/projects/ginku">Ginku</NuxtLink></th><td>Vue.js</td><td>Node.js, API Ginko</td><td>Docker, Caddy</td></tr>
-              <tr><th scope="row"><NuxtLink to="/projects/coursfinder">CoursFinder</NuxtLink></th><td>Vue.js, Tailwind CSS</td><td>Elasticsearch</td><td>Docker</td></tr>
-              <tr><th scope="row"><NuxtLink to="/projects/qrela">Qrela</NuxtLink></th><td>JavaScript, Vite, Tailwind CSS</td><td>Traitement dans le navigateur</td><td>Déploiement web</td></tr>
+              <tr><th scope="row"><NuxtLink to="/projects/miam-dv/">Miam DV</NuxtLink></th><td>Angular, Angular Material</td><td>Node.js</td><td>Docker</td></tr>
+              <tr><th scope="row"><NuxtLink to="/projects/ginku/">Ginku</NuxtLink></th><td>Vue.js</td><td>Node.js, API Ginko</td><td>Docker, Caddy</td></tr>
+              <tr><th scope="row"><NuxtLink to="/projects/coursfinder/">CoursFinder</NuxtLink></th><td>Vue.js, Tailwind CSS</td><td>Elasticsearch</td><td>Docker</td></tr>
+              <tr><th scope="row"><NuxtLink to="/projects/qrela/">Qrela</NuxtLink></th><td>JavaScript, Vite, Tailwind CSS</td><td>Traitement dans le navigateur</td><td>Déploiement web</td></tr>
             </tbody>
           </table>
         </div>
@@ -171,7 +171,7 @@ useJsonLd('technologies-page-structured-data', [
         <p>Je terminerai mon BTS CIEL en juillet 2027 et souhaite ensuite rejoindre une entreprise en CDI en tant que développeur front-end Angular.</p>
         <div class="technologies-cta__actions">
           <BaseButton :href="site.cv" download><span class="material-symbols-outlined" aria-hidden="true">download</span>Consulter mon CV</BaseButton>
-          <BaseButton to="/contact" variant="secondary">Me contacter</BaseButton>
+          <BaseButton to="/contact/" variant="secondary">Me contacter</BaseButton>
         </div>
       </section>
     </article>

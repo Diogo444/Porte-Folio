@@ -103,7 +103,7 @@ useJsonLd('legal-breadcrumbs', createBreadcrumbJsonLd([
           <h2>Protection des données personnelles</h2>
           <p>
             La collecte et le traitement des données personnelles sont régis par la
-            <NuxtLink to="/politique-de-confidentialite">Politique de confidentialité</NuxtLink>,
+            <NuxtLink to="/politique-de-confidentialite/">Politique de confidentialité</NuxtLink>,
             conformément au Règlement Général sur la Protection des Données (RGPD).
           </p>
         </section>
@@ -113,7 +113,7 @@ useJsonLd('legal-breadcrumbs', createBreadcrumbJsonLd([
           <p>Pour toute question concernant ces mentions légales ou le site en général :</p>
           <ul>
             <li><strong>Email :</strong> {{ site.email }}</li>
-            <li><strong>Page de contact :</strong> <NuxtLink to="/contact">diogo-andrade.org/contact</NuxtLink></li>
+            <li><strong>Page de contact :</strong> <NuxtLink to="/contact/">diogo-andrade.org/contact</NuxtLink></li>
             <li><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/diogo-andrade-3874b0305" target="_blank" rel="noopener noreferrer">Diogo Andrade</a></li>
           </ul>
         </section>

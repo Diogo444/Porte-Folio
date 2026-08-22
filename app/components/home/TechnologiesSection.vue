@@ -21,7 +21,7 @@ const technologyGroups = [
           </ul>
         </article>
       </div>
-      <NuxtLink class="text-link section-link" to="/technologies">
+      <NuxtLink class="text-link section-link" to="/technologies/">
         Voir toutes mes compétences
         <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
       </NuxtLink>

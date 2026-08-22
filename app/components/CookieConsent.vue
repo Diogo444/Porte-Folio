@@ -141,7 +141,7 @@ onBeforeUnmount(() => {
 
           <NuxtLink
             class="cookie-consent__link"
-            to="/politique-de-confidentialite"
+            to="/politique-de-confidentialite/"
           >
             En savoir plus
             <span aria-hidden="true">→</span>

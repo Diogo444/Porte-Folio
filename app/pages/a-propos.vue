@@ -153,10 +153,10 @@ useJsonLd('about-breadcrumbs', createBreadcrumbJsonLd([
           <p>En parallèle de ma formation et de mes expériences professionnelles, je développe des applications à partir de difficultés ou de besoins que je rencontre réellement. Ces projets me permettent d’expérimenter librement, de prendre des décisions techniques et d’assurer moi-même leur déploiement.</p>
         </div>
         <div class="about-projects">
-          <article class="about-project card"><h3><NuxtLink to="/projects/ginku">Ginku</NuxtLink></h3><p>Une application Vue.js et Node.js facilitant la consultation des lignes, des arrêts et des horaires du réseau de transport de Besançon.</p></article>
-          <article class="about-project card"><h3><NuxtLink to="/projects/miam-dv">Miam DV</NuxtLink></h3><p>Une application Angular et NestJS permettant aux jeunes déficients visuels de consulter plus facilement les menus de leur internat.</p></article>
-          <article class="about-project card"><h3><NuxtLink to="/projects/coursfinder">CoursFinder</NuxtLink></h3><p>Un moteur de recherche qui extrait le contenu de documents Word et l’indexe dans Elasticsearch afin de retrouver rapidement une information dans mes cours.</p></article>
-          <article class="about-project card"><h3><NuxtLink to="/projects/qrela">Qrela</NuxtLink></h3><p>Un générateur de QR codes personnalisables fonctionnant directement dans le navigateur, sans inscription ni envoi des données vers un serveur.</p></article>
+          <article class="about-project card"><h3><NuxtLink to="/projects/ginku/">Ginku</NuxtLink></h3><p>Une application Vue.js et Node.js facilitant la consultation des lignes, des arrêts et des horaires du réseau de transport de Besançon.</p></article>
+          <article class="about-project card"><h3><NuxtLink to="/projects/miam-dv/">Miam DV</NuxtLink></h3><p>Une application Angular et NestJS permettant aux jeunes déficients visuels de consulter plus facilement les menus de leur internat.</p></article>
+          <article class="about-project card"><h3><NuxtLink to="/projects/coursfinder/">CoursFinder</NuxtLink></h3><p>Un moteur de recherche qui extrait le contenu de documents Word et l’indexe dans Elasticsearch afin de retrouver rapidement une information dans mes cours.</p></article>
+          <article class="about-project card"><h3><NuxtLink to="/projects/qrela/">Qrela</NuxtLink></h3><p>Un générateur de QR codes personnalisables fonctionnant directement dans le navigateur, sans inscription ni envoi des données vers un serveur.</p></article>
         </div>
         <BaseButton to="/#projects" variant="secondary">Voir tous mes projets</BaseButton>
       </section>
@@ -168,7 +168,7 @@ useJsonLd('about-breadcrumbs', createBreadcrumbJsonLd([
         <p>Je recherche un environnement dans lequel je pourrai contribuer à des applications concrètes, travailler avec d’autres développeurs et continuer à approfondir mes compétences techniques et mes connaissances en accessibilité numérique.</p>
         <div class="about-objective__actions">
           <BaseButton :href="site.cv" download><span class="material-symbols-outlined" aria-hidden="true">download</span>Télécharger mon CV</BaseButton>
-          <BaseButton to="/contact" variant="secondary">Me contacter</BaseButton>
+          <BaseButton to="/contact/" variant="secondary">Me contacter</BaseButton>
         </div>
       </section>
     </article>

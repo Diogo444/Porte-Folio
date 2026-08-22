@@ -52,10 +52,10 @@ export const site = {
 };
 
 export const navLinks: NavLink[] = [
-  { label: "À propos", to: "/a-propos" },
-  { label: "Technologies", to: "/technologies" },
+  { label: "À propos", to: "/a-propos/" },
+  { label: "Technologies", to: "/technologies/" },
   { label: "Projets", to: "/#projects" },
-  { label: "Contact", to: "/contact" },
+  { label: "Contact", to: "/contact/" },
 ];
 
 export const footerLinks: NavLink[] = [
@@ -64,10 +64,10 @@ export const footerLinks: NavLink[] = [
 ];
 
 export const legalLinks: NavLink[] = [
-  { label: "Mentions légales", to: "/mentions-legales" },
+  { label: "Mentions légales", to: "/mentions-legales/" },
   {
     label: "Politique de confidentialité",
-    to: "/politique-de-confidentialite",
+    to: "/politique-de-confidentialite/",
   },
 ];
 
