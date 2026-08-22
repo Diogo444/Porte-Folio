@@ -56,14 +56,15 @@ useJsonLd('legal-breadcrumbs', createBreadcrumbJsonLd([
           <h2>Hébergement</h2>
           <p>Le site diogo-andrade.org est hébergé par :</p>
           <ul>
-            <li><strong>Hébergeur :</strong> GitHub Pages</li>
-            <li><strong>Société :</strong> GitHub, Inc.</li>
-            <li><strong>Adresse :</strong> 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis</li>
-            <li><strong>Site web :</strong> <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">pages.github.com</a></li>
+            <li><strong>Service :</strong> Cloudflare Workers et Cloudflare Workers Static Assets</li>
+            <li><strong>Société :</strong> Cloudflare, Inc.</li>
+            <li><strong>Adresse :</strong> 101 Townsend St, San Francisco, CA 94107, États-Unis</li>
+            <li><strong>Site web :</strong> <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">workers.cloudflare.com</a></li>
           </ul>
           <p>
-            GitHub Pages est un service d'hébergement de sites web statiques fourni par GitHub,
-            filiale de Microsoft Corporation.
+            Cloudflare distribue les pages et les ressources statiques du site depuis son réseau mondial.
+            Des informations techniques liées aux requêtes peuvent être traitées pour assurer la diffusion,
+            la sécurité et la disponibilité du service.
           </p>
         </section>
 
@@ -81,7 +82,6 @@ useJsonLd('legal-breadcrumbs', createBreadcrumbJsonLd([
           </p>
           <h3>Ressources tierces</h3>
           <ul>
-            <li><strong>Google Fonts (Inter)</strong> : polices sous licence Open Font License.</li>
             <li><strong>Material Symbols</strong> : icônes Google sous licence Apache 2.0.</li>
             <li><strong>Nuxt</strong> : framework Vue sous licence MIT.</li>
           </ul>

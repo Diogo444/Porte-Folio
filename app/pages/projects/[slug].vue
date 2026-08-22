@@ -12,14 +12,22 @@ if (!project.value) {
 
 usePageSeo({
   title: () => project.value?.slug === 'ginku'
-    ? 'Ginku : application web et Android pour les transports de Besançon | Diogo Andrade'
+    ? 'Ginku : transports de Besançon sur Web et Android | Diogo Andrade'
     : project.value?.slug === 'miam-dv'
       ? 'Miam DV : menus d’internat accessibles avec Angular | Diogo Andrade'
+      : project.value?.slug === 'coursfinder'
+        ? 'CoursFinder : projet Elasticsearch et Vue.js | Diogo Andrade'
+        : project.value?.slug === 'qrela'
+          ? 'Qrela : générateur de QR code gratuit | Diogo Andrade'
     : `${project.value?.cardTitle || 'Projet'} - Étude de cas`,
   description: () => project.value?.slug === 'ginku'
     ? 'Découvrez Ginku, mon application Vue.js et Android pour consulter les horaires, les arrêts proches et les informations du réseau de transport de Besançon.'
     : project.value?.slug === 'miam-dv'
       ? 'Découvrez Miam DV, une application Angular et NestJS conçue pour consulter et administrer les menus d’un internat en tenant compte de l’accessibilité.'
+      : project.value?.slug === 'coursfinder'
+        ? 'Découvrez CoursFinder, un projet expérimental créé pour apprendre Elasticsearch en indexant des cours Word et en les recherchant depuis Vue.js.'
+        : project.value?.slug === 'qrela'
+          ? 'Découvrez Qrela, mon générateur de QR code gratuit et personnalisable, développé en JavaScript et utilisable sans inscription ni envoi de données.'
     : project.value?.summary || 'Page projet de Diogo Andrade.',
   path: () => (project.value ? `/projects/${project.value.slug}` : route.path),
   image: () => project.value?.image || site.ogImage,
@@ -66,6 +74,7 @@ useJsonLd('project-page-structured-data', () => {
           :src="project.image"
           width="1920"
           height="1032"
+          fetchpriority="high"
           alt="Accueil de Ginku avec la recherche et les prochains passages enregistrés en favoris"
         >
       </div>
@@ -93,7 +102,59 @@ useJsonLd('project-page-structured-data', () => {
         </aside>
       </div>
       <div class="container">
-        <img class="miam-hero__image" :src="project.image" alt="Page d’accueil de Miam DV présentant les menus de plusieurs jours de la semaine">
+        <img
+          class="miam-hero__image"
+          :src="project.image"
+          width="1375"
+          height="1600"
+          fetchpriority="high"
+          alt="Page d’accueil de Miam DV présentant les menus de plusieurs jours de la semaine"
+        >
+      </div>
+    </section>
+
+    <section v-else-if="project.slug === 'coursfinder'" class="coursfinder-hero">
+      <div class="container coursfinder-hero__content">
+        <p class="eyebrow">Projet expérimental</p>
+        <h1>CoursFinder : découvrir Elasticsearch avec mes documents de cours</h1>
+        <p class="coursfinder-hero__lead">Un prototype local créé pour comprendre l’indexation de documents Word et la recherche plein texte avec Elasticsearch.</p>
+        <ul class="coursfinder-tags" aria-label="Technologies principales">
+          <li>Elasticsearch</li>
+          <li>Vue.js</li>
+          <li>Node.js</li>
+          <li>Docker</li>
+        </ul>
+        <BaseButton href="https://github.com/Diogo444/CoursFinder">Voir le code source sur GitHub</BaseButton>
+        <span class="material-symbols-outlined coursfinder-hero__icon" aria-hidden="true">search</span>
+      </div>
+    </section>
+
+    <section v-else-if="project.slug === 'qrela'" class="qrela-hero">
+      <div class="container qrela-hero__grid">
+        <div class="qrela-hero__content">
+          <p class="eyebrow">Outil web</p>
+          <h1>Qrela : créer un QR code gratuitement et sans inscription</h1>
+          <p>Un générateur personnalisable qui fonctionne directement dans le navigateur, sans compte et sans envoyer les données saisies à un serveur.</p>
+          <ul class="qrela-tags" aria-label="Technologies principales">
+            <li>JavaScript</li>
+            <li>Vite</li>
+            <li>Tailwind CSS</li>
+            <li>Docker</li>
+          </ul>
+          <div class="qrela-actions">
+            <BaseButton href="https://qrela.diogo-andrade.org/">Créer un QR code</BaseButton>
+            <BaseButton href="https://github.com/Diogo444/Qrela" variant="outline">Voir le code source</BaseButton>
+          </div>
+        </div>
+        <figure class="qrela-hero__figure">
+          <img
+            src="/projets/qrela/acceuil Contenu.png"
+            width="1920"
+            height="1080"
+            fetchpriority="high"
+            alt="Interface de Qrela avec l’aperçu d’un QR code et les options permettant de modifier son contenu."
+          >
+        </figure>
       </div>
     </section>
 
@@ -117,6 +178,8 @@ useJsonLd('project-page-structured-data', () => {
       :class="{
         'ginku-article': project.slug === 'ginku',
         'miam-article': project.slug === 'miam-dv',
+        'coursfinder-article': project.slug === 'coursfinder',
+        'qrela-article': project.slug === 'qrela',
       }"
     >
       <div class="article-content">
@@ -238,41 +301,158 @@ useJsonLd('project-page-structured-data', () => {
         </template>
 
         <template v-else-if="project.slug === 'coursfinder'">
-          <section>
-            <h2>L'idée de départ</h2>
-            <p>
-              <strong>CoursFinder</strong> est né d'un besoin très simple : retrouver rapidement une information
-              dans mes fichiers de cours. L'objectif était d'uploader mes documents Word, d'extraire le texte,
-              puis de chercher dedans avec Elasticsearch.
-            </p>
-            <div class="info-box">
-              <p><strong>Le concept :</strong> uploader mes fichiers Word, extraire automatiquement le texte et le titre, puis indexer le tout pour une recherche rapide.</p>
+          <section class="coursfinder-section coursfinder-intro">
+            <div class="coursfinder-prose">
+              <h2>Un projet conçu pour expérimenter</h2>
+              <p>CoursFinder est un petit projet personnel que j’ai développé pour découvrir Elasticsearch autrement qu’en suivant uniquement de la documentation ou quelques exemples isolés.</p>
+              <p>Je voulais comprendre comment des documents pouvaient être transformés en données interrogeables par un moteur de recherche. Pour donner un cas concret à cette expérimentation, j’ai utilisé mes propres fichiers de cours au format Word.</p>
+              <p>L’objectif n’était pas de construire une application destinée à être mise en ligne ou maintenue sur le long terme. Je souhaitais surtout mettre en place une chaîne complète, depuis l’importation d’un document jusqu’à l’affichage des résultats dans une interface web.</p>
+            </div>
+            <aside class="coursfinder-facts card" aria-label="Informations principales sur CoursFinder">
+              <dl>
+                <div><dt>Type</dt><dd>Projet personnel expérimental</dd></div>
+                <div><dt>Objectif</dt><dd>Découvrir Elasticsearch</dd></div>
+                <div><dt>Utilisation</dt><dd>Prototype local</dd></div>
+                <div><dt>État</dt><dd>Expérimentation terminée</dd></div>
+                <div><dt>Démonstration</dt><dd>Non disponible</dd></div>
+              </dl>
+            </aside>
+          </section>
+
+          <section class="coursfinder-section">
+            <h2>Des documents Word aux résultats de recherche</h2>
+            <div class="coursfinder-flow" aria-label="Fonctionnement général de CoursFinder">
+              <article>
+                <span class="material-symbols-outlined" aria-hidden="true">description</span>
+                <p class="coursfinder-flow__step">01</p>
+                <h3>Document Word</h3>
+                <p>Dépôt d’un fichier <code>.docx</code></p>
+              </article>
+              <span class="material-symbols-outlined coursfinder-flow__arrow" aria-hidden="true">arrow_forward</span>
+              <article>
+                <span class="material-symbols-outlined" aria-hidden="true">text_snippet</span>
+                <p class="coursfinder-flow__step">02</p>
+                <h3>Extraction du texte</h3>
+                <p>Lecture du contenu avec Mammoth</p>
+              </article>
+              <span class="material-symbols-outlined coursfinder-flow__arrow" aria-hidden="true">arrow_forward</span>
+              <article>
+                <span class="material-symbols-outlined" aria-hidden="true">database</span>
+                <p class="coursfinder-flow__step">03</p>
+                <h3>Indexation</h3>
+                <p>Enregistrement dans Elasticsearch</p>
+              </article>
+              <span class="material-symbols-outlined coursfinder-flow__arrow" aria-hidden="true">arrow_forward</span>
+              <article>
+                <span class="material-symbols-outlined" aria-hidden="true">search</span>
+                <p class="coursfinder-flow__step">04</p>
+                <h3>Recherche</h3>
+                <p>Affichage des résultats avec Vue.js</p>
+              </article>
             </div>
           </section>
 
-          <section>
-            <h2>Comment ça fonctionne ?</h2>
-            <div class="feature-grid">
-              <article class="feature-card"><div class="feature-icon">📄</div><h4>Upload de documents</h4><p>L'interface permet d'uploader des fichiers Word (.docx) contenant mes notes de cours.</p></article>
-              <article class="feature-card"><div class="feature-icon">🧾</div><h4>Extraction de texte</h4><p>Le contenu textuel est extrait automatiquement, ainsi que le titre du document.</p></article>
-              <article class="feature-card"><div class="feature-icon">🔎</div><h4>Indexation Elasticsearch</h4><p>Les données sont envoyées à Elasticsearch qui les indexe pour une recherche rapide.</p></article>
-              <article class="feature-card"><div class="feature-icon">⚡</div><h4>Recherche instantanée</h4><p>Une simple requête permet de retrouver tous les documents contenant un terme précis.</p></article>
+          <section class="coursfinder-section coursfinder-split">
+            <div class="coursfinder-prose">
+              <h2>Transformer des fichiers Word en données recherchables</h2>
+              <p>La première étape consistait à récupérer le contenu de mes documents <code>.docx</code>.</p>
+              <p>J’ai créé un script Node.js qui parcourt un dossier contenant les fichiers à traiter. La bibliothèque Mammoth extrait leur texte brut, sans conserver leur mise en page ni leurs images. Le nom du fichier devient ensuite le titre du document, tandis que le texte extrait constitue son contenu.</p>
+              <p>Ces deux informations sont enregistrées dans un index Elasticsearch nommé <code>cours</code>. Cette partie du projet m’a permis de mieux comprendre qu’un moteur de recherche ne travaille pas directement avec les fichiers d’origine : il faut d’abord en extraire les informations utiles et les organiser sous une forme qu’il pourra indexer.</p>
+            </div>
+            <aside class="coursfinder-technical card" aria-labelledby="coursfinder-data-title">
+              <p class="eyebrow">Structure de l’index</p>
+              <h3 id="coursfinder-data-title">Données envoyées à Elasticsearch</h3>
+              <dl>
+                <div><dt><code>title</code></dt><dd>Nom du fichier Word</dd></div>
+                <div><dt><code>content</code></dt><dd>Texte extrait du document</dd></div>
+                <div><dt>Index utilisé</dt><dd><code>cours</code></dd></div>
+              </dl>
+              <p class="coursfinder-note">Après son indexation, chaque document est déplacé dans un dossier d’archive pour éviter qu’il soit traité une seconde fois.</p>
+            </aside>
+          </section>
+
+          <section class="coursfinder-section coursfinder-search">
+            <div class="coursfinder-result-wrap">
+              <div class="coursfinder-result card" aria-label="Exemple de la structure d’un résultat de recherche">
+                <span class="material-symbols-outlined" aria-hidden="true">description</span>
+                <div>
+                  <h3>Cours de réseau.docx</h3>
+                  <p>Aperçu du contenu du document correspondant à la recherche…</p>
+                  <p class="coursfinder-result__score">Score de pertinence : <strong>4,72</strong></p>
+                </div>
+              </div>
+              <p class="coursfinder-caption">Exemple représentant la structure d’un résultat, et non une capture de l’application.</p>
+            </div>
+            <div class="coursfinder-prose">
+              <h2>Rechercher dans le contenu depuis Vue.js</h2>
+              <p>Pour tester les données indexées, j’ai développé une petite interface avec Vue.js et Tailwind CSS.</p>
+              <p>L’utilisateur saisit un mot ou une expression, puis l’application interroge Elasticsearch sur deux champs : le titre du document et son contenu. La recherche utilise une requête <code>multi_match</code>, ce qui permet de rechercher le même terme dans ces deux zones.</p>
+              <p>Les résultats affichent le nom du fichier, un aperçu des premières lignes de son contenu ainsi que le score de pertinence calculé par Elasticsearch. L’interface propose également quelques suggestions et permet de relancer une requête depuis la page des résultats.</p>
+              <p>Le projet reste volontairement simple : le bouton prévu pour ouvrir un cours n’a notamment pas été finalisé.</p>
             </div>
           </section>
 
-          <section>
-            <h2>Le défi : configurer Elasticsearch</h2>
-            <p>
-              La partie la plus formatrice du projet a été la configuration d'Elasticsearch : paramètres de sécurité,
-              ports, index, mapping et requêtes. Plusieurs essais ont été nécessaires avant d'obtenir une configuration
-              stable.
-            </p>
-            <h3>Ce que j'ai appris</h3>
-            <ul>
-              <li><strong>Lire la doc officielle</strong> reste indispensable pour des outils qui évoluent vite.</li>
-              <li><strong>Configuration fine</strong> : comprendre elasticsearch.yml et les options de sécurité.</li>
-              <li><strong>Tester, échouer, recommencer</strong> : plusieurs installations ratées avant la bonne configuration.</li>
-            </ul>
+          <section class="coursfinder-section coursfinder-limits">
+            <p class="eyebrow">Périmètre du projet</p>
+            <h2>Un prototype pensé pour fonctionner localement</h2>
+            <p>Elasticsearch est lancé dans un conteneur Docker en mode nœud unique. Les données de l’index sont conservées dans un volume local afin de les retrouver après le redémarrage du conteneur.</p>
+            <p>Dans cette première version, l’interface Vue communique directement avec Elasticsearch sur <code>localhost</code>. La sécurité du moteur et les restrictions CORS ont été désactivées pour simplifier les essais. Cette configuration convient à une expérimentation sur mon ordinateur, mais ne serait pas adaptée à une mise en production.</p>
+            <div class="coursfinder-limits__grid">
+              <div>
+                <h3><span class="material-symbols-outlined" aria-hidden="true">check_circle</span> Ce qui a été réalisé</h3>
+                <ul>
+                  <li>Importation des fichiers <code>.docx</code></li>
+                  <li>Extraction du texte</li>
+                  <li>Indexation dans Elasticsearch</li>
+                  <li>Recherche sur le titre et le contenu</li>
+                  <li>Affichage des résultats et de leur score</li>
+                  <li>Lancement d’Elasticsearch avec Docker</li>
+                </ul>
+              </div>
+              <div>
+                <h3><span class="material-symbols-outlined" aria-hidden="true">remove_circle_outline</span> Ce qui n’a pas été développé</h3>
+                <ul>
+                  <li>Consultation complète des documents</li>
+                  <li>API intermédiaire sécurisée</li>
+                  <li>Authentification</li>
+                  <li>Filtres avancés</li>
+                  <li>Déploiement public</li>
+                  <li>Configuration adaptée à la production</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="coursfinder-section">
+            <h2>Les technologies utilisées</h2>
+            <div class="coursfinder-stack">
+              <article class="card"><h3>Elasticsearch</h3><p>Indexation et recherche plein texte</p></article>
+              <article class="card"><h3>Vue.js</h3><p>Interface de recherche et résultats</p></article>
+              <article class="card"><h3>Node.js</h3><p>Exécution du script d’importation</p></article>
+              <article class="card"><h3>Mammoth</h3><p>Extraction du texte des fichiers Word</p></article>
+              <article class="card"><h3>Tailwind CSS</h3><p>Mise en forme de l’interface</p></article>
+              <article class="card"><h3>Docker</h3><p>Lancement local d’Elasticsearch</p></article>
+            </div>
+          </section>
+
+          <section class="coursfinder-section coursfinder-learning">
+            <div class="coursfinder-prose">
+              <h2>Ce que cette expérimentation m’a appris</h2>
+              <p>CoursFinder m’a offert une première approche concrète d’Elasticsearch. J’ai pu découvrir le principe d’un index, l’enregistrement de documents et la recherche plein texte sur plusieurs champs.</p>
+              <p>Le projet m’a également permis de relier plusieurs étapes souvent présentées séparément : lire des fichiers Word, en extraire le texte, préparer les données, les indexer puis les exploiter depuis une interface web.</p>
+              <p>Avec le recul, je construirais différemment une application destinée à être réellement utilisée. J’ajouterais notamment une API entre le front-end et Elasticsearch, une configuration sécurisée, une meilleure gestion des erreurs et une véritable consultation des documents trouvés.</p>
+            </div>
+            <blockquote>CoursFinder n’est pas un produit terminé, mais il m’a permis de comprendre toute la chaîne située entre un document Word et un résultat de recherche.</blockquote>
+          </section>
+
+          <section class="coursfinder-final card">
+            <p class="eyebrow">Code source</p>
+            <h2>Consulter le projet</h2>
+            <p>Le prototype n’est pas disponible en ligne, mais son code source reste consultable sur GitHub.</p>
+            <div class="coursfinder-actions">
+              <BaseButton href="https://github.com/Diogo444/CoursFinder">Voir CoursFinder sur GitHub</BaseButton>
+              <BaseButton to="/#projects" variant="outline">← Découvrir mes autres projets</BaseButton>
+            </div>
           </section>
         </template>
 
@@ -382,51 +562,133 @@ useJsonLd('project-page-structured-data', () => {
           </section>
         </template>
 
-        <template v-else>
-          <section>
-            <h2>Objectif du projet</h2>
-            <p>
-              <strong>Qrela</strong> est un générateur de QR code conçu pour rester <strong>gratuit</strong>,
-              <strong> sans inscription</strong>, <strong>sans abonnement</strong> et <strong>entièrement personnalisable</strong>.
-            </p>
-            <p>
-              Ce projet a aussi une dimension pragmatique : tester un modèle simple avec Google AdSense pour aider
-              à financer l'infrastructure qui héberge mes outils web.
-            </p>
-          </section>
-
-          <section>
-            <h2>Ce que Qrela permet</h2>
-            <div class="feature-grid">
-              <article class="feature-card"><div class="feature-icon">🔗</div><h4>Types de contenu</h4><p>URL, texte, email, téléphone, SMS et Wi-Fi, avec validation des champs.</p></article>
-              <article class="feature-card"><div class="feature-icon">🖼️</div><h4>Export PNG / SVG</h4><p>Téléchargement immédiat en PNG pour le web ou SVG pour l'impression.</p></article>
-              <article class="feature-card"><div class="feature-icon">🎨</div><h4>Personnalisation avancée</h4><p>Taille, marge, correction d'erreur, styles de points et couleurs.</p></article>
-              <article class="feature-card"><div class="feature-icon">🔒</div><h4>Confidentialité</h4><p>Génération locale dans le navigateur, sans envoi du contenu saisi au serveur.</p></article>
+        <template v-else-if="project.slug === 'qrela'">
+          <section class="qrela-section qrela-origin">
+            <p class="eyebrow">L’origine</p>
+            <h2>Un outil né d’un besoin personnel</h2>
+            <div class="qrela-origin__prose">
+              <p>Qrela est né d’un besoin assez simple : je cherchais un moyen de créer rapidement un QR code sans devoir ouvrir un compte ou découvrir, au moment du téléchargement, que certaines fonctions étaient payantes.</p>
+              <p>J’aurais pu utiliser l’un des nombreux générateurs déjà disponibles, mais j’ai préféré créer mon propre outil. Cela me permettait de répondre à mon besoin tout en travaillant davantage avec JavaScript vanilla, sans utiliser Angular ou Vue pour gérer l’interface.</p>
+              <p>Le projet a ensuite évolué pour devenir un outil public. L’objectif était de proposer un générateur gratuit, utilisable immédiatement et suffisamment complet pour ne pas se limiter à une simple URL.</p>
             </div>
           </section>
 
-          <section>
-            <h2>Stack technique et architecture</h2>
-            <p>
-              Qrela est développé avec une stack front-end légère : <strong>Vite.js</strong>,
-              <strong> JavaScript vanilla</strong>, <strong>Tailwind CSS</strong> et
-              <strong> qr-code-styling</strong>.
-            </p>
-            <div class="architecture-box">
-              <div class="architecture-flow">
-                <div class="arch-item"><div class="feature-icon">👤</div><span>Utilisateur</span></div>
-                <span class="arch-arrow">→</span>
-                <div class="arch-item"><div class="feature-icon">⚡</div><span>App Vite.js</span></div>
-                <span class="arch-arrow">→</span>
-                <div class="arch-item"><div class="feature-icon">🧠</div><span>QR Engine</span></div>
-                <span class="arch-arrow">→</span>
-                <div class="arch-item"><div class="feature-icon">📤</div><span>PNG / SVG</span></div>
+          <section class="qrela-section">
+            <p class="eyebrow">Contenus</p>
+            <h2>Plusieurs types de contenus dans un même générateur</h2>
+            <p class="qrela-section__lead">Chaque choix adapte les champs affichés dans le formulaire. L’aperçu est mis à jour directement pendant la saisie, sans avoir à relancer la génération.</p>
+            <div class="qrela-types">
+              <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">link</span><div><h3>URL</h3><p>Ouvrir un site ou une page</p></div></article>
+              <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">notes</span><div><h3>Texte</h3><p>Afficher un contenu libre</p></div></article>
+              <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">mail</span><div><h3>Email</h3><p>Préparer un message</p></div></article>
+              <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">call</span><div><h3>Téléphone</h3><p>Composer un numéro</p></div></article>
+              <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">sms</span><div><h3>SMS</h3><p>Préparer un SMS</p></div></article>
+              <article class="qrela-type card"><span class="material-symbols-outlined" aria-hidden="true">wifi</span><div><h3>Wi-Fi</h3><p>Partager les informations d’un réseau</p></div></article>
+            </div>
+            <div class="qrela-export">
+              <span class="material-symbols-outlined" aria-hidden="true">download</span>
+              <p>Une fois le QR code terminé, il peut être téléchargé en <strong>PNG</strong> pour une utilisation courante ou en <strong>SVG</strong> pour conserver une image nette lors d’une impression ou d’un agrandissement.</p>
+            </div>
+          </section>
+
+          <section class="qrela-section qrela-customization">
+            <figure class="qrela-figure">
+              <img
+                src="/projets/qrela/acceuil Apparence.png"
+                width="1920"
+                height="1080"
+                loading="lazy"
+                alt="Options de personnalisation de Qrela avec le choix des couleurs, du style des points, des coins et l’ajout d’un logo."
+              >
+              <figcaption>Les réglages d’apparence permettent d’ajuster précisément le rendu du QR code.</figcaption>
+            </figure>
+            <div class="qrela-prose">
+              <p class="eyebrow">Personnalisation</p>
+              <h2>Personnaliser le QR code sans compliquer son utilisation</h2>
+              <p>Je ne voulais pas limiter Qrela à la génération d’un carré noir et blanc. L’outil propose plusieurs réglages pour adapter le résultat à un site, une affiche ou un document.</p>
+              <p>Il est possible de modifier la taille, la marge, le style des points, la forme des coins et les couleurs. Qrela prend également en charge les dégradés, les fonds transparents et l’ajout d’une image ou d’un logo au centre.</p>
+              <p>J’ai ajouté plusieurs presets pour obtenir rapidement un style classique, sombre, coloré ou avec un contraste renforcé. Les réglages plus précis restent disponibles pour les personnes qui souhaitent créer leur propre apparence.</p>
+              <p>La personnalisation doit néanmoins conserver un QR code lisible. L’interface explique donc le rôle de la marge, du contraste et du niveau de correction d’erreur.</p>
+            </div>
+          </section>
+
+          <section class="qrela-section qrela-privacy">
+            <p class="eyebrow">Confidentialité</p>
+            <h2>Une génération locale, sans compte</h2>
+            <p>Qrela fonctionne entièrement dans le navigateur. Le texte, le mot de passe Wi-Fi ou toute autre information saisie n’est pas envoyé à un serveur pour produire l’image.</p>
+            <div class="qrela-privacy__grid">
+              <article><span class="material-symbols-outlined" aria-hidden="true">person_off</span><h3>Aucune inscription</h3><p>Pas de compte utilisateur, de tableau de bord ni de stockage des QR codes générés.</p></article>
+              <article><span class="material-symbols-outlined" aria-hidden="true">shield_lock</span><h3>Données conservées localement</h3><p>Le contenu est transformé en QR code directement dans le navigateur.</p></article>
+              <article><span class="material-symbols-outlined" aria-hidden="true">all_inclusive</span><h3>Aucune limite de scans</h3><p>Le lien n’est pas redirigé et Qrela ne suit pas le nombre d’utilisations.</p></article>
+            </div>
+            <p class="qrela-privacy__note"><strong>À savoir :</strong> les QR codes créés sont statiques. Une fois téléchargés, leur contenu ne peut plus être modifié. Pour changer une adresse ou un texte, il faut en générer un nouveau.</p>
+          </section>
+
+          <section class="qrela-section qrela-code">
+            <div class="qrela-prose">
+              <p class="eyebrow">Développement</p>
+              <h2>Construire l’interface en JavaScript vanilla</h2>
+              <p>J’ai volontairement développé Qrela en JavaScript vanilla avec Vite. Ce choix m’a permis de travailler directement sur la gestion des événements, l’état de l’interface et la mise à jour du QR code, sans m’appuyer sur le système de composants d’un framework.</p>
+              <p>La bibliothèque <code>qr-code-styling</code> prend en charge la génération et la personnalisation du QR code. Tailwind CSS permet de conserver une présentation cohérente sur ordinateur comme sur mobile.</p>
+              <p>Cette organisation était importante, car l’application possède de nombreux réglages qui doivent rester synchronisés. Une modification de couleur, de contenu ou de taille doit immédiatement être visible dans l’aperçu sans provoquer une régénération inutile à chaque frappe.</p>
+            </div>
+            <div class="qrela-code__map" aria-label="Organisation du code de Qrela">
+              <article><span>01</span><h3>Génération et export</h3><p>Création du QR code et téléchargement en PNG ou SVG.</p></article>
+              <article><span>02</span><h3>Gestion de l’interface</h3><p>Événements du formulaire et mise à jour de l’aperçu.</p></article>
+              <article><span>03</span><h3>État de l’application</h3><p>Synchronisation du contenu et des réglages visuels.</p></article>
+              <article><span>04</span><h3>Validation et presets</h3><p>Contrôle des données et styles prêts à utiliser.</p></article>
+            </div>
+          </section>
+
+          <section class="qrela-section qrela-deployment">
+            <div>
+              <p class="eyebrow">Mise en ligne</p>
+              <h2>Un outil déployé et mis à jour automatiquement</h2>
+              <p>Qrela est construit avec Vite puis servi par Nginx dans un conteneur Docker. Le conteneur rejoint le réseau utilisé par Caddy, qui rend ensuite l’application accessible depuis son sous-domaine.</p>
+              <p>Le déploiement est automatisé avec GitHub Actions. Lorsqu’une modification est envoyée sur la branche principale, le workflow se connecte à mon VPS, récupère la nouvelle version du dépôt et reconstruit le conteneur.</p>
+              <p>Cette partie du projet m’a permis d’aller au-delà de la création de l’interface. Qrela est un véritable outil public que je peux corriger et faire évoluer sans effectuer manuellement toutes les étapes du déploiement.</p>
+            </div>
+            <div class="qrela-deployment__flow" aria-label="Chaîne de déploiement de Qrela">
+              <div><strong>GitHub Actions</strong><span>Automatisation</span></div>
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span>
+              <div><strong>Docker + Nginx</strong><span>Construction et service</span></div>
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span>
+              <div><strong>Caddy + VPS</strong><span>Mise à disposition publique</span></div>
+            </div>
+          </section>
+
+          <section class="qrela-section qrela-learnings">
+            <p class="eyebrow">Bilan</p>
+            <h2>Ce que je retiens de Qrela</h2>
+            <div class="qrela-learnings__grid">
+              <div class="qrela-prose">
+                <p>Qrela m’a permis de revenir aux bases du développement front-end en construisant une interface dynamique avec JavaScript vanilla.</p>
+                <p>J’ai travaillé sur la transformation de plusieurs types de données, la synchronisation d’un formulaire avec un aperçu en temps réel, la personnalisation d’un rendu graphique et l’export dans plusieurs formats.</p>
+                <p>Le projet m’a également appris à réfléchir à ce qui se passe après le développement : confidentialité des données, pages d’aide, référencement, déploiement et maintenance.</p>
               </div>
+              <blockquote>Aujourd’hui, Qrela est disponible gratuitement et peut être utilisé sans créer de compte. Il répond toujours au besoin qui m’avait poussé à le développer, tout en étant accessible à d’autres personnes.</blockquote>
+            </div>
+          </section>
+
+          <section class="qrela-final card">
+            <p class="eyebrow">À vous de créer</p>
+            <h2>Créer votre QR code avec Qrela</h2>
+            <p>L’outil est disponible gratuitement, sans inscription et directement depuis votre navigateur.</p>
+            <div class="qrela-actions">
+              <BaseButton href="https://qrela.diogo-andrade.org/">Essayer Qrela</BaseButton>
+              <BaseButton to="/#projects" variant="outline">Voir mes autres projets</BaseButton>
             </div>
           </section>
         </template>
 
-        <section v-if="project.slug !== 'ginku' && project.slug !== 'miam-dv'">
+        <template v-else>
+          <section>
+            <h2>Présentation du projet</h2>
+            <p>{{ project.summary }}</p>
+          </section>
+        </template>
+
+        <section v-if="project.slug !== 'ginku' && project.slug !== 'miam-dv' && project.slug !== 'qrela' && project.slug !== 'coursfinder'">
           <h2>Voir le projet</h2>
           <p>Le projet est disponible en ligne ou sur GitHub selon les liens ci-dessous.</p>
           <div class="cta-section">

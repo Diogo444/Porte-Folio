@@ -33,6 +33,7 @@ export type Project = {
   subtitle: string;
   summary: string;
   image: string;
+  cardImage?: string;
   links: ProjectLink[];
   tags: string[];
 };
@@ -188,7 +189,7 @@ export const technologies: Technology[] = [
     name: "NestJS",
     family: "Framework Node.js",
     description:
-      "Framework Node.js inspiré d'Angular avec une architecture modulaire. Parfait pour créer des APIs REST robustes avec authentification JWT, validation, et documentation Swagger.",
+      "Framework Node.js inspiré d'Angular avec une architecture modulaire. Parfait pour créer des API REST robustes avec authentification JWT, validation et documentation Swagger.",
     color: "var(--tech-nest-dark)",
     textColor: "var(--color-white)",
     icon: "/assets/SVG/NestJS.svg",
@@ -197,7 +198,7 @@ export const technologies: Technology[] = [
     name: "Node.js",
     family: "Runtime JavaScript",
     description:
-      "Runtime JavaScript côté serveur pour des applications performantes et évolutives. Idéal pour les APIs, les serveurs temps réel, et les outils de build.",
+      "Runtime JavaScript côté serveur pour des applications performantes et évolutives. Idéal pour les API, les serveurs temps réel et les outils de build.",
     color: "var(--tech-node-dark)",
     textColor: "var(--color-white)",
     icon: "/assets/SVG/nodejs.svg",
@@ -245,12 +246,13 @@ export const projects: Project[] = [
     slug: "ginku",
     title: "Ginku — Consulter les transports de Besançon sur le Web et Android",
     cardTitle: "Ginku — Transports à Besançon",
-    category: "Projet Personnel",
+    category: "Projet personnel",
     subtitle:
       "Une application Vue.js disponible sur le Web et Android pour consulter les informations du réseau Ginko",
     summary:
       "Une application Vue.js et Android permettant de consulter les horaires, les arrêts proches et les informations du réseau de transport de Besançon.",
     image: "/projets/ginku/accueil-favoris.png",
+    cardImage: "/assets/img/project-ginku.webp",
     tags: ["Vue.js", "Node.js", "Capacitor", "Docker"],
     links: [
       {
@@ -267,15 +269,15 @@ export const projects: Project[] = [
   },
   {
     slug: "coursfinder",
-    title: "CoursFinder · Moteur de recherche pour mes cours",
-    cardTitle: "CoursFinder — Recherche dans mes cours",
-    category: "Projet Personnel",
+    title: "CoursFinder : découvrir Elasticsearch avec mes documents de cours",
+    cardTitle: "CoursFinder — Projet Elasticsearch",
+    category: "Projet expérimental",
     subtitle:
-      "Première expérience concrète avec Elasticsearch, Vue.js et Tailwind CSS",
+      "Un prototype local pour comprendre l’indexation de documents Word et la recherche plein texte",
     summary:
-      "Un moteur de recherche permettant d’importer des documents Word, d’en extraire le contenu et de l’indexer avec Elasticsearch.",
+      "Projet expérimental créé pour découvrir Elasticsearch : extraction de cours Word, indexation de leur contenu et recherche plein texte depuis une interface Vue.js.",
     image: "/assets/img/project-coursfinder.png",
-    tags: ["Vue.js", "Tailwind CSS", "Elasticsearch", "JavaScript"],
+    tags: ["Elasticsearch", "Vue.js", "Node.js", "Mammoth", "Tailwind CSS", "Docker"],
     links: [
       { label: "Consulter le code source", href: "https://github.com/Diogo444/CoursFinder" },
     ],
@@ -284,7 +286,7 @@ export const projects: Project[] = [
     slug: "miam-dv",
     title: "Miam DV — Consulter les menus de l’internat plus simplement",
     cardTitle: "Miam DV — Menus accessibles",
-    category: "Projet Personnel",
+    category: "Projet personnel",
     subtitle:
       "Une application Angular pour consulter et administrer les menus d’un internat",
     summary:
@@ -302,15 +304,15 @@ export const projects: Project[] = [
   },
   {
     slug: "qrela",
-    title: "Qrela · Générateur de QR code gratuit",
-    cardTitle: "Qrela — Générateur de QR codes",
-    category: "Projet Produit",
+    title: "Qrela : créer un QR code gratuitement et sans inscription",
+    cardTitle: "Qrela — Générateur de QR code",
+    category: "Outil web",
     subtitle:
-      "Un outil Vite.js sans inscription, personnalisable, avec export PNG/SVG",
+      "Un générateur personnalisable qui fonctionne directement dans le navigateur, sans compte",
     summary:
-      "Un outil gratuit et sans inscription permettant de créer, personnaliser et exporter des QR codes en PNG ou en SVG.",
+      "Générateur de QR code gratuit et personnalisable développé en JavaScript vanilla. Création locale, sans inscription, avec export PNG ou SVG.",
     image: "/assets/img/project-qrela.webp",
-    tags: ["Vite.js", "JavaScript", "Tailwind CSS"],
+    tags: ["JavaScript", "Vite", "Tailwind CSS", "qr-code-styling", "Docker"],
     links: [
       {
         label: "Voir la démonstration",

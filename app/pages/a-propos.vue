@@ -100,7 +100,7 @@ useJsonLd('about-breadcrumbs', createBreadcrumbJsonLd([
           </li>
           <li>
             <p class="about-timeline__date">Mai à juillet 2025</p>
-            <div class="about-timeline__content"><h3>Stagiaire développeur web full-stack</h3><p class="about-timeline__place">Amphenol FCI — Besançon</p><p>Développement d’une application de gestion des signatures d’e-mail avec Angular et Node.js, comprenant une authentification Active Directory, la personnalisation des signatures et la gestion des administrateurs.</p></div>
+            <div class="about-timeline__content"><h3>Stagiaire développeur web full-stack</h3><p class="about-timeline__place">Amphenol FCI — Besançon</p><p>Développement d’une application de gestion des signatures d’email avec Angular et Node.js, comprenant une authentification Active Directory, la personnalisation des signatures et la gestion des administrateurs.</p></div>
           </li>
           <li>
             <p class="about-timeline__date">Décembre 2024 à janvier 2025</p>

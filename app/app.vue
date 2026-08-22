@@ -15,7 +15,7 @@ useSeoMeta({
     ogType: 'website',
     ogLocale: 'fr_FR',
     ogImage: absoluteSiteUrl(site.ogImage),
-    twitterCard: 'summary_large_image',
+    twitterCard: 'summary',
     twitterImage: absoluteSiteUrl(site.ogImage),
 })
 

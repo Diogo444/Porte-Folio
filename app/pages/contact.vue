@@ -3,9 +3,9 @@ import { site, socialLinks } from '~/data/portfolio'
 import BaseButton from '../components/ui/BaseButton.vue'
 
 usePageSeo({
-  title: 'Contact - Projet web, accessibilité et front-end',
+  title: 'Contact — opportunité front-end Angular',
   description:
-    'Contactez Diogo Andrade pour un projet web, une application Angular ou Vue.js, une interface accessible, une refonte UX ou une intégration API.',
+    'Contactez Diogo Andrade pour une opportunité de développeur front-end Angular, un échange sur l’accessibilité web ou l’un de ses projets.',
   path: '/contact',
 })
 
@@ -20,7 +20,7 @@ useJsonLd('contact-page-structured-data', [
     '@id': absoluteSiteUrl('/contact#contact-page'),
     url: absoluteSiteUrl('/contact'),
     name: 'Contact Diogo Andrade',
-    description: 'Page de contact pour discuter de projets web front-end, accessibilité et APIs.',
+    description: 'Page de contact pour une opportunité front-end Angular ou un échange sur l’accessibilité et les projets présentés.',
     mainEntity: {
       '@id': absoluteSiteUrl('/#person'),
     },
@@ -34,8 +34,8 @@ useJsonLd('contact-page-structured-data', [
       <div class="container">
         <h1>Contactez-moi</h1>
         <p>
-          Un projet, une question, une opportunité de collaboration ? Je suis toujours ouvert à la discussion
-          et je réponds généralement sous 24 à 48 heures.
+          Une opportunité professionnelle, une question sur mon parcours ou sur l’un de mes projets ?
+          Je suis ouvert à la discussion et je réponds généralement sous 24 à 48 heures ouvrées.
         </p>
       </div>
     </section>
@@ -52,10 +52,10 @@ useJsonLd('contact-page-structured-data', [
           <div class="contact-card-grid">
             <a class="contact-card" :href="`mailto:${site.email}`">
               <div class="contact-card__icon contact-card__icon--primary">
-                <span class="material-symbols-outlined">mail</span>
+                <span class="material-symbols-outlined" aria-hidden="true">mail</span>
               </div>
               <h3>Email</h3>
-              <p>Pour les demandes détaillées et les propositions de projet</p>
+              <p>Pour les opportunités professionnelles et les demandes détaillées</p>
               <strong>{{ site.email }}</strong>
             </a>
 
@@ -72,13 +72,13 @@ useJsonLd('contact-page-structured-data', [
                 :class="social.icon === 'linkedin' ? 'contact-card__icon--linkedin' : 'contact-card__icon--github'"
               >
                 <span v-if="social.icon === 'linkedin'">in</span>
-                <span v-else class="material-symbols-outlined">code</span>
+                <span v-else class="material-symbols-outlined" aria-hidden="true">code</span>
               </div>
               <h3>{{ social.label }}</h3>
               <p>
                 {{ social.icon === 'linkedin'
-                  ? 'Pour les opportunités professionnelles et le networking'
-                  : 'Pour voir mes projets open source et contributions'
+                  ? 'Pour les opportunités professionnelles et mon réseau'
+                  : 'Pour consulter mes projets et leur code source'
                 }}
               </p>
               <strong>{{ social.icon === 'linkedin' ? 'Diogo Andrade' : '@Diogo444' }}</strong>
@@ -92,45 +92,46 @@ useJsonLd('contact-page-structured-data', [
           <div class="feature-grid">
             <article class="feature-card">
               <div class="feature-icon">⏱️</div>
-              <h4>Réponse rapide</h4>
+              <h3>Réponse rapide</h3>
               <p>Je m'efforce de répondre à tous les messages dans un délai de 24 à 48 heures ouvrées.</p>
             </article>
             <article class="feature-card">
               <div class="feature-icon">🎯</div>
-              <h4>Écoute attentive</h4>
-              <p>Je prends le temps de comprendre vos besoins et objectifs avant de proposer des solutions.</p>
+              <h3>Échange attentif</h3>
+              <p>Je prends le temps de comprendre le contexte du poste, de l’équipe ou de votre question.</p>
             </article>
             <article class="feature-card">
               <div class="feature-icon">💡</div>
-              <h4>Conseils personnalisés</h4>
-              <p>Je partage mon expertise pour vous orienter vers les meilleures solutions techniques.</p>
+              <h3>Réponses concrètes</h3>
+              <p>Je réponds aussi précisément que possible et partage les informations utiles sur mon expérience.</p>
             </article>
             <article class="feature-card">
               <div class="feature-icon">🤝</div>
-              <h4>Transparence</h4>
-              <p>Communication claire sur les délais, coûts et contraintes techniques dès le départ.</p>
+              <h3>Transparence</h3>
+              <p>Je présente clairement ma disponibilité, mes compétences et les limites de mon expérience.</p>
             </article>
           </div>
         </section>
 
         <section>
-          <h2>Types de projets</h2>
+          <h2>Sujets sur lesquels échanger</h2>
           <p>
-            Je suis particulièrement intéressé par les projets qui valorisent l'accessibilité et l'expérience utilisateur.
+            Je recherche principalement un CDI en développement front-end à partir de juillet 2027,
+            tout en restant disponible pour échanger autour du Web et de l’accessibilité.
           </p>
           <ul>
-            <li><strong>Développement d'applications web</strong> : création d'applications complètes avec Angular ou Vue.js.</li>
-            <li><strong>Audit et amélioration d'accessibilité</strong> : recommandations pour rendre un site conforme aux normes WCAG.</li>
-            <li><strong>Refonte d'interfaces</strong> : modernisation de sites existants avec les dernières bonnes pratiques UX.</li>
-            <li><strong>Intégration d'APIs</strong> : connexion à des services tiers et création de backends sur mesure.</li>
-            <li><strong>Formation et conseil</strong> : accompagnement sur l'accessibilité et le développement front-end.</li>
+            <li><strong>Opportunités professionnelles</strong> : postes de développeur front-end, principalement avec Angular et TypeScript.</li>
+            <li><strong>Accessibilité numérique</strong> : retours d’expérience sur les lecteurs d’écran, la navigation au clavier et les interfaces inclusives.</li>
+            <li><strong>Projets présentés</strong> : questions techniques ou fonctionnelles sur Ginku, Miam DV, CoursFinder et Qrela.</li>
+            <li><strong>Développement web</strong> : échanges autour de Vue.js, Node.js, des API, de Docker et du déploiement.</li>
           </ul>
         </section>
 
         <section class="card section-card contact-preview">
-          <h2>Prêt à démarrer ?</h2>
+          <h2>Échangeons</h2>
           <p>
-            N'attendez plus pour donner vie à votre projet. Envoyez-moi un message et discutons de vos besoins !
+            Si mon profil correspond à votre recherche ou si vous souhaitez en savoir plus sur mon parcours,
+            envoyez-moi un message.
           </p>
           <BaseButton :href="`mailto:${site.email}`">
             <span class="material-symbols-outlined" aria-hidden="true">mail</span>

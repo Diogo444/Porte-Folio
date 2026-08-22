@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   css: ["~/assets/css/global.css"],
 
   hooks: {
@@ -38,6 +38,31 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
+    "/**": {
+      headers: {
+        "Content-Security-Policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Strict-Transport-Security": "max-age=31536000",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+      },
+    },
+    "/_nuxt/**": {
+      headers: {
+        "Cache-Control": "public, max-age=31536000, immutable",
+      },
+    },
+    "/assets/**": {
+      headers: {
+        "Cache-Control": "public, max-age=604800, stale-while-revalidate=86400",
+      },
+    },
+    "/projets/**": {
+      headers: {
+        "Cache-Control": "public, max-age=604800, stale-while-revalidate=86400",
+      },
+    },
     "/a-propos.html": { redirect: "/a-propos" },
     "/technologies.html": { redirect: "/technologies" },
     "/contact.html": { redirect: "/contact" },
@@ -59,7 +84,7 @@ export default defineNuxtConfig({
         {
           name: "description",
           content:
-            "Portfolio de Diogo Andrade, développeur front-end spécialisé en Angular, Vue.js, accessibilité numérique, APIs NestJS/Node et déploiement Docker.",
+            "Portfolio de Diogo Andrade, développeur front-end spécialisé en Angular, Vue.js, accessibilité numérique, API NestJS/Node et déploiement Docker.",
         },
         { name: "robots", content: "index,follow" },
         { name: "author", content: "Diogo Andrade" },
@@ -76,7 +101,7 @@ export default defineNuxtConfig({
           content:
             "https://diogo-andrade.org/assets/img/android-chrome-512x512.png",
         },
-        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:card", content: "summary" },
         {
           name: "twitter:image",
           content:
@@ -92,11 +117,7 @@ export default defineNuxtConfig({
         },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap",
-        },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined",
+          href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=all_inclusive,arrow_back,arrow_downward,arrow_forward,arrow_upward,call,check_circle,close,code,dark_mode,database,description,download,light_mode,link,mail,menu,notes,open_in_new,person_off,remove_circle_outline,search,shield_lock,sms,text_snippet,wifi&display=block",
         },
         { rel: "manifest", href: "/site.webmanifest" },
         {

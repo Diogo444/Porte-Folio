@@ -3,10 +3,11 @@ const scriptsConsent = useScriptTriggerConsent();
 
 const { consent } = useScriptGoogleAnalytics({
   id: "G-GNVRFR1HQR",
-  trigger: scriptsConsent,
-  bundle: false,
-  proxy: false,
-  warmupStrategy: false,
+  scriptOptions: {
+    trigger: scriptsConsent,
+    bundle: false,
+    warmupStrategy: false,
+  },
   defaultConsent: {
     ad_storage: "denied",
     ad_user_data: "denied",
@@ -18,6 +19,7 @@ const { consent } = useScriptGoogleAnalytics({
 const isVisible = ref(false);
 
 const CONSENT_STORAGE_KEY = "analytics-consent";
+const OPEN_PREFERENCES_EVENT = "open-cookie-preferences";
 
 type AnalyticsConsent = "accepted" | "refused";
 
@@ -46,10 +48,24 @@ function acceptAnalytics(): void {
 function refuseAnalytics(): void {
   localStorage.setItem(CONSENT_STORAGE_KEY, "refused");
 
+  consent.update({
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    analytics_storage: "denied",
+  });
+  scriptsConsent.revoke();
+
   isVisible.value = false;
 }
 
+function openPreferences(): void {
+  isVisible.value = true;
+}
+
 onMounted(() => {
+  window.addEventListener(OPEN_PREFERENCES_EVENT, openPreferences);
+
   const storedConsent = localStorage.getItem(
     CONSENT_STORAGE_KEY,
   ) as AnalyticsConsent | null;
@@ -73,6 +89,10 @@ onMounted(() => {
 
   // Aucun choix n'a encore été enregistré : on affiche la bannière.
   isVisible.value = true;
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener(OPEN_PREFERENCES_EVENT, openPreferences);
 });
 </script>
 
@@ -275,7 +295,7 @@ onMounted(() => {
 }
 
 .cookie-consent__button--primary {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: var(--button-primary-background);
   color: #ffffff;
   box-shadow: 0 0.45rem 1.15rem color-mix(in srgb, var(--color-primary) 32%, transparent);
 }
@@ -291,7 +311,7 @@ onMounted(() => {
 }
 
 .cookie-consent__button--primary:hover {
-  background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+  background: var(--button-primary-background-hover);
   box-shadow: 0 0.65rem 1.35rem color-mix(in srgb, var(--color-primary) 42%, transparent);
 }
 
