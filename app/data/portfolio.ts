@@ -267,15 +267,15 @@ export const projects: Project[] = [
   },
   {
     slug: "coursfinder",
-    title: "CoursFinder · Moteur de recherche pour mes cours",
-    cardTitle: "CoursFinder — Recherche dans mes cours",
-    category: "Projet Personnel",
+    title: "CoursFinder : découvrir Elasticsearch avec mes documents de cours",
+    cardTitle: "CoursFinder — Projet Elasticsearch",
+    category: "Projet expérimental",
     subtitle:
-      "Première expérience concrète avec Elasticsearch, Vue.js et Tailwind CSS",
+      "Un prototype local pour comprendre l’indexation de documents Word et la recherche plein texte",
     summary:
-      "Un moteur de recherche permettant d’importer des documents Word, d’en extraire le contenu et de l’indexer avec Elasticsearch.",
+      "Projet expérimental créé pour découvrir Elasticsearch : extraction de cours Word, indexation de leur contenu et recherche plein texte depuis une interface Vue.js.",
     image: "/assets/img/project-coursfinder.png",
-    tags: ["Vue.js", "Tailwind CSS", "Elasticsearch", "JavaScript"],
+    tags: ["Elasticsearch", "Vue.js", "Node.js", "Mammoth", "Tailwind CSS", "Docker"],
     links: [
       { label: "Consulter le code source", href: "https://github.com/Diogo444/CoursFinder" },
     ],

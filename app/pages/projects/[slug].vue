@@ -15,11 +15,15 @@ usePageSeo({
     ? 'Ginku : application web et Android pour les transports de Besançon | Diogo Andrade'
     : project.value?.slug === 'miam-dv'
       ? 'Miam DV : menus d’internat accessibles avec Angular | Diogo Andrade'
+      : project.value?.slug === 'coursfinder'
+        ? 'CoursFinder : projet Elasticsearch et Vue.js | Diogo Andrade'
     : `${project.value?.cardTitle || 'Projet'} - Étude de cas`,
   description: () => project.value?.slug === 'ginku'
     ? 'Découvrez Ginku, mon application Vue.js et Android pour consulter les horaires, les arrêts proches et les informations du réseau de transport de Besançon.'
     : project.value?.slug === 'miam-dv'
       ? 'Découvrez Miam DV, une application Angular et NestJS conçue pour consulter et administrer les menus d’un internat en tenant compte de l’accessibilité.'
+      : project.value?.slug === 'coursfinder'
+        ? 'Découvrez CoursFinder, un projet expérimental créé pour apprendre Elasticsearch en indexant des cours Word et en les recherchant depuis Vue.js.'
     : project.value?.summary || 'Page projet de Diogo Andrade.',
   path: () => (project.value ? `/projects/${project.value.slug}` : route.path),
   image: () => project.value?.image || site.ogImage,
@@ -97,6 +101,22 @@ useJsonLd('project-page-structured-data', () => {
       </div>
     </section>
 
+    <section v-else-if="project.slug === 'coursfinder'" class="coursfinder-hero">
+      <div class="container coursfinder-hero__content">
+        <p class="eyebrow">Projet expérimental</p>
+        <h1>CoursFinder : découvrir Elasticsearch avec mes documents de cours</h1>
+        <p class="coursfinder-hero__lead">Un prototype local créé pour comprendre l’indexation de documents Word et la recherche plein texte avec Elasticsearch.</p>
+        <ul class="coursfinder-tags" aria-label="Technologies principales">
+          <li>Elasticsearch</li>
+          <li>Vue.js</li>
+          <li>Node.js</li>
+          <li>Docker</li>
+        </ul>
+        <BaseButton href="https://github.com/Diogo444/CoursFinder">Voir le code source sur GitHub</BaseButton>
+        <span class="material-symbols-outlined coursfinder-hero__icon" aria-hidden="true">search</span>
+      </div>
+    </section>
+
     <section v-else class="article-hero" :style="{ backgroundImage: `url('${project.image}')` }">
       <div class="article-hero__content">
         <span class="article-hero__tag">{{ project.category }}</span>
@@ -117,6 +137,7 @@ useJsonLd('project-page-structured-data', () => {
       :class="{
         'ginku-article': project.slug === 'ginku',
         'miam-article': project.slug === 'miam-dv',
+        'coursfinder-article': project.slug === 'coursfinder',
       }"
     >
       <div class="article-content">
@@ -238,41 +259,158 @@ useJsonLd('project-page-structured-data', () => {
         </template>
 
         <template v-else-if="project.slug === 'coursfinder'">
-          <section>
-            <h2>L'idée de départ</h2>
-            <p>
-              <strong>CoursFinder</strong> est né d'un besoin très simple : retrouver rapidement une information
-              dans mes fichiers de cours. L'objectif était d'uploader mes documents Word, d'extraire le texte,
-              puis de chercher dedans avec Elasticsearch.
-            </p>
-            <div class="info-box">
-              <p><strong>Le concept :</strong> uploader mes fichiers Word, extraire automatiquement le texte et le titre, puis indexer le tout pour une recherche rapide.</p>
+          <section class="coursfinder-section coursfinder-intro">
+            <div class="coursfinder-prose">
+              <h2>Un projet conçu pour expérimenter</h2>
+              <p>CoursFinder est un petit projet personnel que j’ai développé pour découvrir Elasticsearch autrement qu’en suivant uniquement de la documentation ou quelques exemples isolés.</p>
+              <p>Je voulais comprendre comment des documents pouvaient être transformés en données interrogeables par un moteur de recherche. Pour donner un cas concret à cette expérimentation, j’ai utilisé mes propres fichiers de cours au format Word.</p>
+              <p>L’objectif n’était pas de construire une application destinée à être mise en ligne ou maintenue sur le long terme. Je souhaitais surtout mettre en place une chaîne complète, depuis l’importation d’un document jusqu’à l’affichage des résultats dans une interface web.</p>
+            </div>
+            <aside class="coursfinder-facts card" aria-label="Informations principales sur CoursFinder">
+              <dl>
+                <div><dt>Type</dt><dd>Projet personnel expérimental</dd></div>
+                <div><dt>Objectif</dt><dd>Découvrir Elasticsearch</dd></div>
+                <div><dt>Utilisation</dt><dd>Prototype local</dd></div>
+                <div><dt>État</dt><dd>Expérimentation terminée</dd></div>
+                <div><dt>Démonstration</dt><dd>Non disponible</dd></div>
+              </dl>
+            </aside>
+          </section>
+
+          <section class="coursfinder-section">
+            <h2>Des documents Word aux résultats de recherche</h2>
+            <div class="coursfinder-flow" aria-label="Fonctionnement général de CoursFinder">
+              <article>
+                <span class="material-symbols-outlined" aria-hidden="true">description</span>
+                <p class="coursfinder-flow__step">01</p>
+                <h3>Document Word</h3>
+                <p>Dépôt d’un fichier <code>.docx</code></p>
+              </article>
+              <span class="material-symbols-outlined coursfinder-flow__arrow" aria-hidden="true">arrow_forward</span>
+              <article>
+                <span class="material-symbols-outlined" aria-hidden="true">text_snippet</span>
+                <p class="coursfinder-flow__step">02</p>
+                <h3>Extraction du texte</h3>
+                <p>Lecture du contenu avec Mammoth</p>
+              </article>
+              <span class="material-symbols-outlined coursfinder-flow__arrow" aria-hidden="true">arrow_forward</span>
+              <article>
+                <span class="material-symbols-outlined" aria-hidden="true">database</span>
+                <p class="coursfinder-flow__step">03</p>
+                <h3>Indexation</h3>
+                <p>Enregistrement dans Elasticsearch</p>
+              </article>
+              <span class="material-symbols-outlined coursfinder-flow__arrow" aria-hidden="true">arrow_forward</span>
+              <article>
+                <span class="material-symbols-outlined" aria-hidden="true">search</span>
+                <p class="coursfinder-flow__step">04</p>
+                <h3>Recherche</h3>
+                <p>Affichage des résultats avec Vue.js</p>
+              </article>
             </div>
           </section>
 
-          <section>
-            <h2>Comment ça fonctionne ?</h2>
-            <div class="feature-grid">
-              <article class="feature-card"><div class="feature-icon">📄</div><h4>Upload de documents</h4><p>L'interface permet d'uploader des fichiers Word (.docx) contenant mes notes de cours.</p></article>
-              <article class="feature-card"><div class="feature-icon">🧾</div><h4>Extraction de texte</h4><p>Le contenu textuel est extrait automatiquement, ainsi que le titre du document.</p></article>
-              <article class="feature-card"><div class="feature-icon">🔎</div><h4>Indexation Elasticsearch</h4><p>Les données sont envoyées à Elasticsearch qui les indexe pour une recherche rapide.</p></article>
-              <article class="feature-card"><div class="feature-icon">⚡</div><h4>Recherche instantanée</h4><p>Une simple requête permet de retrouver tous les documents contenant un terme précis.</p></article>
+          <section class="coursfinder-section coursfinder-split">
+            <div class="coursfinder-prose">
+              <h2>Transformer des fichiers Word en données recherchables</h2>
+              <p>La première étape consistait à récupérer le contenu de mes documents <code>.docx</code>.</p>
+              <p>J’ai créé un script Node.js qui parcourt un dossier contenant les fichiers à traiter. La bibliothèque Mammoth extrait leur texte brut, sans conserver leur mise en page ni leurs images. Le nom du fichier devient ensuite le titre du document, tandis que le texte extrait constitue son contenu.</p>
+              <p>Ces deux informations sont enregistrées dans un index Elasticsearch nommé <code>cours</code>. Cette partie du projet m’a permis de mieux comprendre qu’un moteur de recherche ne travaille pas directement avec les fichiers d’origine : il faut d’abord en extraire les informations utiles et les organiser sous une forme qu’il pourra indexer.</p>
+            </div>
+            <aside class="coursfinder-technical card" aria-labelledby="coursfinder-data-title">
+              <p class="eyebrow">Structure de l’index</p>
+              <h3 id="coursfinder-data-title">Données envoyées à Elasticsearch</h3>
+              <dl>
+                <div><dt><code>title</code></dt><dd>Nom du fichier Word</dd></div>
+                <div><dt><code>content</code></dt><dd>Texte extrait du document</dd></div>
+                <div><dt>Index utilisé</dt><dd><code>cours</code></dd></div>
+              </dl>
+              <p class="coursfinder-note">Après son indexation, chaque document est déplacé dans un dossier d’archive pour éviter qu’il soit traité une seconde fois.</p>
+            </aside>
+          </section>
+
+          <section class="coursfinder-section coursfinder-search">
+            <div class="coursfinder-result-wrap">
+              <div class="coursfinder-result card" aria-label="Exemple de la structure d’un résultat de recherche">
+                <span class="material-symbols-outlined" aria-hidden="true">description</span>
+                <div>
+                  <h3>Cours de réseau.docx</h3>
+                  <p>Aperçu du contenu du document correspondant à la recherche…</p>
+                  <p class="coursfinder-result__score">Score de pertinence : <strong>4,72</strong></p>
+                </div>
+              </div>
+              <p class="coursfinder-caption">Exemple représentant la structure d’un résultat, et non une capture de l’application.</p>
+            </div>
+            <div class="coursfinder-prose">
+              <h2>Rechercher dans le contenu depuis Vue.js</h2>
+              <p>Pour tester les données indexées, j’ai développé une petite interface avec Vue.js et Tailwind CSS.</p>
+              <p>L’utilisateur saisit un mot ou une expression, puis l’application interroge Elasticsearch sur deux champs : le titre du document et son contenu. La recherche utilise une requête <code>multi_match</code>, ce qui permet de rechercher le même terme dans ces deux zones.</p>
+              <p>Les résultats affichent le nom du fichier, un aperçu des premières lignes de son contenu ainsi que le score de pertinence calculé par Elasticsearch. L’interface propose également quelques suggestions et permet de relancer une requête depuis la page des résultats.</p>
+              <p>Le projet reste volontairement simple : le bouton prévu pour ouvrir un cours n’a notamment pas été finalisé.</p>
             </div>
           </section>
 
-          <section>
-            <h2>Le défi : configurer Elasticsearch</h2>
-            <p>
-              La partie la plus formatrice du projet a été la configuration d'Elasticsearch : paramètres de sécurité,
-              ports, index, mapping et requêtes. Plusieurs essais ont été nécessaires avant d'obtenir une configuration
-              stable.
-            </p>
-            <h3>Ce que j'ai appris</h3>
-            <ul>
-              <li><strong>Lire la doc officielle</strong> reste indispensable pour des outils qui évoluent vite.</li>
-              <li><strong>Configuration fine</strong> : comprendre elasticsearch.yml et les options de sécurité.</li>
-              <li><strong>Tester, échouer, recommencer</strong> : plusieurs installations ratées avant la bonne configuration.</li>
-            </ul>
+          <section class="coursfinder-section coursfinder-limits">
+            <p class="eyebrow">Périmètre du projet</p>
+            <h2>Un prototype pensé pour fonctionner localement</h2>
+            <p>Elasticsearch est lancé dans un conteneur Docker en mode nœud unique. Les données de l’index sont conservées dans un volume local afin de les retrouver après le redémarrage du conteneur.</p>
+            <p>Dans cette première version, l’interface Vue communique directement avec Elasticsearch sur <code>localhost</code>. La sécurité du moteur et les restrictions CORS ont été désactivées pour simplifier les essais. Cette configuration convient à une expérimentation sur mon ordinateur, mais ne serait pas adaptée à une mise en production.</p>
+            <div class="coursfinder-limits__grid">
+              <div>
+                <h3><span class="material-symbols-outlined" aria-hidden="true">check_circle</span> Ce qui a été réalisé</h3>
+                <ul>
+                  <li>Importation des fichiers <code>.docx</code></li>
+                  <li>Extraction du texte</li>
+                  <li>Indexation dans Elasticsearch</li>
+                  <li>Recherche sur le titre et le contenu</li>
+                  <li>Affichage des résultats et de leur score</li>
+                  <li>Lancement d’Elasticsearch avec Docker</li>
+                </ul>
+              </div>
+              <div>
+                <h3><span class="material-symbols-outlined" aria-hidden="true">remove_circle_outline</span> Ce qui n’a pas été développé</h3>
+                <ul>
+                  <li>Consultation complète des documents</li>
+                  <li>API intermédiaire sécurisée</li>
+                  <li>Authentification</li>
+                  <li>Filtres avancés</li>
+                  <li>Déploiement public</li>
+                  <li>Configuration adaptée à la production</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="coursfinder-section">
+            <h2>Les technologies utilisées</h2>
+            <div class="coursfinder-stack">
+              <article class="card"><h3>Elasticsearch</h3><p>Indexation et recherche plein texte</p></article>
+              <article class="card"><h3>Vue.js</h3><p>Interface de recherche et résultats</p></article>
+              <article class="card"><h3>Node.js</h3><p>Exécution du script d’importation</p></article>
+              <article class="card"><h3>Mammoth</h3><p>Extraction du texte des fichiers Word</p></article>
+              <article class="card"><h3>Tailwind CSS</h3><p>Mise en forme de l’interface</p></article>
+              <article class="card"><h3>Docker</h3><p>Lancement local d’Elasticsearch</p></article>
+            </div>
+          </section>
+
+          <section class="coursfinder-section coursfinder-learning">
+            <div class="coursfinder-prose">
+              <h2>Ce que cette expérimentation m’a appris</h2>
+              <p>CoursFinder m’a offert une première approche concrète d’Elasticsearch. J’ai pu découvrir le principe d’un index, l’enregistrement de documents et la recherche plein texte sur plusieurs champs.</p>
+              <p>Le projet m’a également permis de relier plusieurs étapes souvent présentées séparément : lire des fichiers Word, en extraire le texte, préparer les données, les indexer puis les exploiter depuis une interface web.</p>
+              <p>Avec le recul, je construirais différemment une application destinée à être réellement utilisée. J’ajouterais notamment une API entre le frontend et Elasticsearch, une configuration sécurisée, une meilleure gestion des erreurs et une véritable consultation des documents trouvés.</p>
+            </div>
+            <blockquote>CoursFinder n’est pas un produit terminé, mais il m’a permis de comprendre toute la chaîne située entre un document Word et un résultat de recherche.</blockquote>
+          </section>
+
+          <section class="coursfinder-final card">
+            <p class="eyebrow">Code source</p>
+            <h2>Consulter le projet</h2>
+            <p>Le prototype n’est pas disponible en ligne, mais son code source reste consultable sur GitHub.</p>
+            <div class="coursfinder-actions">
+              <BaseButton href="https://github.com/Diogo444/CoursFinder">Voir CoursFinder sur GitHub</BaseButton>
+              <BaseButton to="/#projects" variant="outline">← Découvrir mes autres projets</BaseButton>
+            </div>
           </section>
         </template>
 
